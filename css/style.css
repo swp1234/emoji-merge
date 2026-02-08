@@ -18,96 +18,6 @@
     --cell-gap: 8px;
     --cell-size: calc((var(--board-size) - var(--cell-gap) * 5) / 4);
 
-    /* Tile colors */
-    --tile-2: #eee4da;
-    --tile-4: #ede0c8;
-    --tile-8: #f2b179;
-    --tile-16: #f59563;
-    --tile-32: #f67c5f;
-    --tile-64: #f65e3b;
-    --tile-128: #edcf72;
-    --tile-256: #edcc61;
-    --tile-512: #edc850;
-    --tile-1024: #edc53f;
-    --tile-2048: #edc22e;
-    --tile-super: #3c3a32;
-    --tile-text-light: #776e65;
-    --tile-text-dark: #f9f6f2;
-}
-
-/* Theme: Classic */
-[data-theme="classic"] {
-    --bg-deep: #faf8ef;
-    --bg-surface: #f5f0e4;
-    --surface-glass: rgba(0, 0, 0, 0.03);
-    --border-glass: rgba(0, 0, 0, 0.08);
-    --border-glass-hover: rgba(0, 0, 0, 0.15);
-    --text: #776e65;
-    --text-secondary: rgba(119, 110, 101, 0.7);
-    --text-dim: rgba(119, 110, 101, 0.4);
-    --primary: #f4a261;
-    --accent: #e76f51;
-    --cell-bg: #cdc1b4;
-    --board-bg: #bbada0;
-}
-
-/* Theme: Neon */
-[data-theme="neon"] {
-    --tile-2: #1a1a2e;
-    --tile-4: #16213e;
-    --tile-8: #0f3460;
-    --tile-16: #e94560;
-    --tile-32: #ff6b6b;
-    --tile-64: #ff2e63;
-    --tile-128: #00d2ff;
-    --tile-256: #00b4d8;
-    --tile-512: #7209b7;
-    --tile-1024: #b5179e;
-    --tile-2048: #f72585;
-    --tile-super: #0d1137;
-    --primary: #00d2ff;
-    --accent: #f72585;
-    --primary-glow: rgba(0, 210, 255, 0.3);
-}
-
-/* Theme: Candy */
-[data-theme="candy"] {
-    --tile-2: #fce4ec;
-    --tile-4: #f8bbd0;
-    --tile-8: #f48fb1;
-    --tile-16: #f06292;
-    --tile-32: #ec407a;
-    --tile-64: #e91e63;
-    --tile-128: #ce93d8;
-    --tile-256: #ba68c8;
-    --tile-512: #ab47bc;
-    --tile-1024: #9c27b0;
-    --tile-2048: #7b1fa2;
-    --tile-super: #4a148c;
-    --primary: #e91e63;
-    --accent: #9c27b0;
-    --primary-glow: rgba(233, 30, 99, 0.3);
-}
-
-/* Theme: Ocean */
-[data-theme="ocean"] {
-    --bg-deep: #0a192f;
-    --bg-surface: #112240;
-    --tile-2: #1a365d;
-    --tile-4: #2a4a7f;
-    --tile-8: #2b6cb0;
-    --tile-16: #3182ce;
-    --tile-32: #4299e1;
-    --tile-64: #63b3ed;
-    --tile-128: #48bb78;
-    --tile-256: #38a169;
-    --tile-512: #2f855a;
-    --tile-1024: #276749;
-    --tile-2048: #22543d;
-    --tile-super: #1a202c;
-    --primary: #63b3ed;
-    --accent: #48bb78;
-    --primary-glow: rgba(99, 179, 237, 0.3);
 }
 
 * {
@@ -204,6 +114,121 @@ body {
     color: var(--text-dim);
     font-size: 11px;
     letter-spacing: 2px;
+}
+
+/* === Evolution Bar === */
+.evolution-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    background: var(--surface-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.evolution-bar::-webkit-scrollbar { display: none; }
+
+.evo-step {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.evo-emoji {
+    font-size: 16px;
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.evo-emoji.reached {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.evo-arrow {
+    color: var(--text-dim);
+    font-size: 10px;
+    margin: 0 1px;
+}
+
+/* === Chain Modal Extra === */
+.chain-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.chain-option {
+    padding: 14px;
+    border: 2px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--surface-glass);
+}
+
+.chain-option:hover { border-color: var(--border-glass-hover); }
+
+.chain-option.active {
+    border-color: var(--primary);
+    background: rgba(244, 162, 97, 0.1);
+}
+
+.chain-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.chain-icon { font-size: 22px; }
+
+.chain-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.chain-desc {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+}
+
+.chain-preview {
+    display: flex;
+    gap: 4px;
+    font-size: 18px;
+}
+
+/* === Win Emoji === */
+.win-emoji {
+    font-size: 64px;
+    margin: 12px 0;
+    animation: winPulse 1s ease infinite;
+}
+
+@keyframes winPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.overlay-max-evo {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.overlay-max-evo span {
+    font-size: 24px;
 }
 
 /* === Header === */
@@ -402,37 +427,8 @@ body {
     100% { transform: scale(1); }
 }
 
-/* Tile colors */
-.tile[data-value="2"] { background: var(--tile-2); color: var(--tile-text-light); }
-.tile[data-value="4"] { background: var(--tile-4); color: var(--tile-text-light); }
-.tile[data-value="8"] { background: var(--tile-8); color: var(--tile-text-dark); }
-.tile[data-value="16"] { background: var(--tile-16); color: var(--tile-text-dark); }
-.tile[data-value="32"] { background: var(--tile-32); color: var(--tile-text-dark); }
-.tile[data-value="64"] { background: var(--tile-64); color: var(--tile-text-dark); }
-.tile[data-value="128"] { background: var(--tile-128); color: var(--tile-text-dark); }
-.tile[data-value="256"] { background: var(--tile-256); color: var(--tile-text-dark); }
-.tile[data-value="512"] { background: var(--tile-512); color: var(--tile-text-dark); }
-.tile[data-value="1024"] { background: var(--tile-1024); color: var(--tile-text-dark); }
-.tile[data-value="2048"] { background: var(--tile-2048); color: var(--tile-text-dark); box-shadow: 0 0 20px var(--primary-glow); }
-
-.tile.super {
-    background: var(--tile-super);
-    color: var(--tile-text-dark);
-    box-shadow: 0 0 24px var(--primary-glow);
-}
-
-/* Neon theme: all tiles get text-dark */
-[data-theme="neon"] .tile { color: var(--tile-text-dark) !important; }
-[data-theme="neon"] .tile[data-value="2"],
-[data-theme="neon"] .tile[data-value="4"] {
-    color: var(--text-dim) !important;
-}
-
-/* Candy theme: all text white */
-[data-theme="candy"] .tile { color: #fff !important; }
-
-/* Ocean theme: all text white */
-[data-theme="ocean"] .tile { color: #fff !important; }
+/* Tile colors - applied dynamically by JS via inline styles */
+/* Base tile has no background - set by JS based on evolution chain */
 
 /* === Score Popup === */
 .score-popup {

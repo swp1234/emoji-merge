@@ -1,4 +1,4 @@
-// === 2048 Game Engine (Smooth Tile Animation) ===
+// === Emoji Merge - Evolution Puzzle Engine ===
 (function() {
     'use strict';
 
@@ -6,10 +6,10 @@
     const ANIM_MOVE_MS = 120;
     const ANIM_APPEAR_MS = 100;
 
-    let grid = [];          // grid[r][c] = 0 or tile value
-    let tileElements = {};  // id -> DOM element
+    let grid = [];
+    let tileElements = {};
     let nextTileId = 1;
-    let tileMap = [];       // tileMap[r][c] = tile id or 0
+    let tileMap = [];
 
     let score = 0;
     let bestScore = 0;
@@ -20,7 +20,7 @@
     let gameOver = false;
     let animating = false;
     let undoState = null;
-    let currentTheme = 'default';
+    let currentChain = 'animal';
     let moveCount = 0;
 
     // DOM
@@ -33,12 +33,25 @@
     const finalBestEl = document.getElementById('final-best');
     const winScoreEl = document.getElementById('win-score');
     const titleBadge = document.getElementById('title-badge');
-    const themeModal = document.getElementById('theme-modal');
-    const themeGrid = document.getElementById('theme-grid');
+    const chainModal = document.getElementById('chain-modal');
+    const chainGrid = document.getElementById('chain-grid');
     const undoBtn = document.getElementById('btn-undo');
     const statGames = document.getElementById('stat-games');
     const statBest = document.getElementById('stat-best');
-    const statMaxTile = document.getElementById('stat-max-tile');
+    const statMaxEmoji = document.getElementById('stat-max-emoji');
+    const evolutionBar = document.getElementById('evolution-bar');
+
+    // === Emoji Helpers ===
+    function getEmoji(value) {
+        const chain = EVOLUTION_CHAINS[currentChain];
+        if (!chain) return value;
+        return chain.map[value] || '✨';
+    }
+
+    function getMaxReachedEmoji() {
+        if (maxTileEver === 0) return '-';
+        return getEmoji(maxTileEver);
+    }
 
     // === Position Calculations ===
     function getBoardMetrics() {
@@ -58,11 +71,8 @@
         };
     }
 
-    function fontSize(value, tileSize) {
-        if (value < 100) return tileSize * 0.45;
-        if (value < 1000) return tileSize * 0.38;
-        if (value < 10000) return tileSize * 0.3;
-        return tileSize * 0.24;
+    function emojiFontSize(tileSize) {
+        return tileSize * 0.55;
     }
 
     // === Grid Helpers ===
@@ -70,13 +80,8 @@
         return Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
     }
 
-    function cloneGrid(g) {
-        return g.map(r => [...r]);
-    }
-
-    function cloneMap(m) {
-        return m.map(r => [...r]);
-    }
+    function cloneGrid(g) { return g.map(r => [...r]); }
+    function cloneMap(m) { return m.map(r => [...r]); }
 
     function emptyCells() {
         const cells = [];
@@ -86,20 +91,26 @@
         return cells;
     }
 
-    // === Tile DOM Management ===
+    // === Tile DOM ===
     function createTileEl(id, value, row, col, isNew) {
         const pos = positionFor(row, col);
         const el = document.createElement('div');
         el.className = 'tile';
         el.id = 'tile-' + id;
-        if (value > 2048) el.classList.add('super');
-        el.setAttribute('data-value', Math.min(value, 2048));
+
+        // Style
+        const color = getTileColor(value);
         el.style.width = pos.size + 'px';
         el.style.height = pos.size + 'px';
         el.style.top = pos.top + 'px';
         el.style.left = pos.left + 'px';
-        el.style.fontSize = fontSize(value, pos.size) + 'px';
-        el.textContent = value;
+        el.style.fontSize = emojiFontSize(pos.size) + 'px';
+        el.style.background = color.bg;
+        if (color.glow) {
+            el.style.boxShadow = '0 0 16px rgba(244,162,97,0.3)';
+        }
+
+        el.textContent = getEmoji(value);
 
         if (isNew) {
             el.style.transform = 'scale(0)';
@@ -111,26 +122,9 @@
         return el;
     }
 
-    function updateTileEl(id, value, row, col) {
-        const el = tileElements[id];
-        if (!el) return;
-        const pos = positionFor(row, col);
-        el.style.top = pos.top + 'px';
-        el.style.left = pos.left + 'px';
-        el.style.width = pos.size + 'px';
-        el.style.height = pos.size + 'px';
-        el.style.fontSize = fontSize(value, pos.size) + 'px';
-        el.setAttribute('data-value', Math.min(value, 2048));
-        if (value > 2048) el.classList.add('super');
-        el.textContent = value;
-    }
-
     function removeTileEl(id) {
         const el = tileElements[id];
-        if (el) {
-            el.remove();
-            delete tileElements[id];
-        }
+        if (el) { el.remove(); delete tileElements[id]; }
     }
 
     function animateAppear(id) {
@@ -150,14 +144,12 @@
         el.style.transform = 'scale(1)';
         requestAnimationFrame(() => {
             el.style.transition = `transform ${ANIM_APPEAR_MS}ms ease`;
-            el.style.transform = 'scale(1.15)';
-            setTimeout(() => {
-                el.style.transform = 'scale(1)';
-            }, ANIM_APPEAR_MS);
+            el.style.transform = 'scale(1.2)';
+            setTimeout(() => { el.style.transform = 'scale(1)'; }, ANIM_APPEAR_MS);
         });
     }
 
-    // === Spawn Tile ===
+    // === Spawn ===
     function spawnTile(animate) {
         const cells = emptyCells();
         if (cells.length === 0) return null;
@@ -167,9 +159,7 @@
         const id = nextTileId++;
         tileMap[cell.r][cell.c] = id;
         createTileEl(id, value, cell.r, cell.c, animate);
-        if (animate) {
-            setTimeout(() => animateAppear(id), 20);
-        }
+        if (animate) setTimeout(() => animateAppear(id), 20);
         return { r: cell.r, c: cell.c, value, id };
     }
 
@@ -177,76 +167,57 @@
     function move(direction) {
         if (gameOver || animating) return false;
 
-        // Save undo
         const prevGrid = cloneGrid(grid);
         const prevMap = cloneMap(tileMap);
         const prevScore = score;
-        const prevElements = { ...tileElements };
 
-        // Prepare move data
-        const merges = [];    // [{ fromIds: [id1, id2], toRow, toCol, newValue }]
-        const moves = [];     // [{ id, fromR, fromC, toR, toC }]
+        const merges = [];
+        const moves = [];
         let scoreGain = 0;
 
-        // Build traversal order
         const rowOrder = direction === 'down' ? [3, 2, 1, 0] : [0, 1, 2, 3];
         const colOrder = direction === 'right' ? [3, 2, 1, 0] : [0, 1, 2, 3];
 
         const newGrid = createEmpty();
         const newMap = createEmpty();
-        const merged = createEmpty(); // tracks merged this turn
 
         if (direction === 'left' || direction === 'right') {
             for (const r of rowOrder) {
-                // Collect tiles in the row in movement order
                 const tiles = [];
                 for (const c of colOrder) {
-                    if (grid[r][c] !== 0) {
+                    if (grid[r][c] !== 0)
                         tiles.push({ value: grid[r][c], id: tileMap[r][c], origC: c });
-                    }
                 }
-                // Place tiles
                 let targetC = direction === 'left' ? 0 : SIZE - 1;
                 const step = direction === 'left' ? 1 : -1;
 
                 for (let i = 0; i < tiles.length; i++) {
                     if (i + 1 < tiles.length && tiles[i].value === tiles[i + 1].value) {
-                        // Merge
                         const newVal = tiles[i].value * 2;
                         scoreGain += newVal;
                         newGrid[r][targetC] = newVal;
-
-                        // Move both tiles to target, then merge
                         const mergeId = nextTileId++;
-                        merges.push({
-                            fromIds: [tiles[i].id, tiles[i + 1].id],
-                            toRow: r, toCol: targetC,
-                            newValue: newVal, mergeId
-                        });
-                        moves.push({ id: tiles[i].id, fromR: r, fromC: tiles[i].origC, toR: r, toC: targetC });
-                        moves.push({ id: tiles[i + 1].id, fromR: r, fromC: tiles[i + 1].origC, toR: r, toC: targetC });
-
+                        merges.push({ fromIds: [tiles[i].id, tiles[i + 1].id], toRow: r, toCol: targetC, newValue: newVal, mergeId });
+                        moves.push({ id: tiles[i].id, toR: r, toC: targetC });
+                        moves.push({ id: tiles[i + 1].id, toR: r, toC: targetC });
                         newMap[r][targetC] = mergeId;
                         targetC += step;
-                        i++; // skip next
+                        i++;
                     } else {
                         newGrid[r][targetC] = tiles[i].value;
                         newMap[r][targetC] = tiles[i].id;
-                        if (tiles[i].origC !== targetC) {
-                            moves.push({ id: tiles[i].id, fromR: r, fromC: tiles[i].origC, toR: r, toC: targetC });
-                        }
+                        if (tiles[i].origC !== targetC)
+                            moves.push({ id: tiles[i].id, toR: r, toC: targetC });
                         targetC += step;
                     }
                 }
             }
         } else {
-            // up or down
             for (const c of colOrder) {
                 const tiles = [];
                 for (const r of rowOrder) {
-                    if (grid[r][c] !== 0) {
+                    if (grid[r][c] !== 0)
                         tiles.push({ value: grid[r][c], id: tileMap[r][c], origR: r });
-                    }
                 }
                 let targetR = direction === 'up' ? 0 : SIZE - 1;
                 const step = direction === 'up' ? 1 : -1;
@@ -256,60 +227,46 @@
                         const newVal = tiles[i].value * 2;
                         scoreGain += newVal;
                         newGrid[targetR][c] = newVal;
-
                         const mergeId = nextTileId++;
-                        merges.push({
-                            fromIds: [tiles[i].id, tiles[i + 1].id],
-                            toRow: targetR, toCol: c,
-                            newValue: newVal, mergeId
-                        });
-                        moves.push({ id: tiles[i].id, fromR: tiles[i].origR, fromC: c, toR: targetR, toC: c });
-                        moves.push({ id: tiles[i + 1].id, fromR: tiles[i + 1].origR, fromC: c, toR: targetR, toC: c });
-
+                        merges.push({ fromIds: [tiles[i].id, tiles[i + 1].id], toRow: targetR, toCol: c, newValue: newVal, mergeId });
+                        moves.push({ id: tiles[i].id, toR: targetR, toC: c });
+                        moves.push({ id: tiles[i + 1].id, toR: targetR, toC: c });
                         newMap[targetR][c] = mergeId;
                         targetR += step;
                         i++;
                     } else {
                         newGrid[targetR][c] = tiles[i].value;
                         newMap[targetR][c] = tiles[i].id;
-                        if (tiles[i].origR !== targetR) {
-                            moves.push({ id: tiles[i].id, fromR: tiles[i].origR, fromC: c, toR: targetR, toC: c });
-                        }
+                        if (tiles[i].origR !== targetR)
+                            moves.push({ id: tiles[i].id, toR: targetR, toC: c });
                         targetR += step;
                     }
                 }
             }
         }
 
-        // Check if anything changed
+        // Changed?
         let changed = false;
-        for (let r = 0; r < SIZE; r++) {
-            for (let c = 0; c < SIZE; c++) {
+        for (let r = 0; r < SIZE; r++)
+            for (let c = 0; c < SIZE; c++)
                 if (newGrid[r][c] !== grid[r][c]) { changed = true; break; }
-            }
-            if (changed) break;
-        }
         if (!changed) return false;
 
-        // Save undo
         undoState = { grid: prevGrid, tileMap: prevMap, score: prevScore };
         undoBtn.disabled = false;
 
-        // Apply new state
         grid = newGrid;
         tileMap = newMap;
         score += scoreGain;
         if (score > bestScore) bestScore = score;
         moveCount++;
 
-        // Track max tile
         const currentMax = Math.max(...grid.flat());
         if (currentMax > maxTileEver) maxTileEver = currentMax;
 
-        // === Animate ===
+        // Animate
         animating = true;
 
-        // Step 1: Slide tiles to new positions
         for (const m of moves) {
             const el = tileElements[m.id];
             if (el) {
@@ -320,38 +277,25 @@
             }
         }
 
-        // Step 2: After slide, handle merges and spawn
         setTimeout(() => {
-            // Process merges
             for (const merge of merges) {
-                // Remove old tiles
-                for (const oldId of merge.fromIds) {
-                    removeTileEl(oldId);
-                }
-                // Create merged tile
+                for (const oldId of merge.fromIds) removeTileEl(oldId);
                 createTileEl(merge.mergeId, merge.newValue, merge.toRow, merge.toCol, false);
                 animateMerge(merge.mergeId);
             }
 
-            // Score popup
-            if (scoreGain > 0) {
-                showScorePopup(scoreGain);
-            }
-
-            // Spawn new tile
+            if (scoreGain > 0) showScorePopup(scoreGain);
             spawnTile(true);
-
             updateScoreDisplay();
             updateStats();
+            updateEvolutionBar();
             saveState();
 
-            // Check win
             if (!won && !keepPlaying && currentMax >= 2048) {
                 won = true;
                 setTimeout(() => showWin(), 200);
             }
 
-            // Check game over
             if (isGameOver()) {
                 gameOver = true;
                 totalGames++;
@@ -359,11 +303,7 @@
                 setTimeout(() => showGameOver(), 300);
             }
 
-            // Interstitial ad trigger
-            if (moveCount > 0 && moveCount % 20 === 0) {
-                triggerInterstitialAd();
-            }
-
+            if (moveCount > 0 && moveCount % 20 === 0) triggerInterstitialAd();
             animating = false;
         }, ANIM_MOVE_MS + 10);
 
@@ -383,18 +323,29 @@
         return true;
     }
 
-    // === Full Re-render (for undo, load, resize) ===
+    // === Render All (undo, load, resize) ===
     function renderAll() {
         tilesContainer.innerHTML = '';
         tileElements = {};
-        for (let r = 0; r < SIZE; r++) {
-            for (let c = 0; c < SIZE; c++) {
-                if (grid[r][c] !== 0) {
-                    const id = tileMap[r][c];
-                    createTileEl(id, grid[r][c], r, c, false);
-                }
-            }
-        }
+        for (let r = 0; r < SIZE; r++)
+            for (let c = 0; c < SIZE; c++)
+                if (grid[r][c] !== 0)
+                    createTileEl(tileMap[r][c], grid[r][c], r, c, false);
+    }
+
+    // === Evolution Bar ===
+    function updateEvolutionBar() {
+        const chain = EVOLUTION_CHAINS[currentChain];
+        if (!chain) return;
+        const values = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
+        const maxInGrid = Math.max(...grid.flat(), 0);
+
+        evolutionBar.innerHTML = values.map((v, i) => {
+            const emoji = chain.map[v];
+            const reached = maxInGrid >= v;
+            const arrow = i < values.length - 1 ? '<span class="evo-arrow">→</span>' : '';
+            return `<span class="evo-step"><span class="evo-emoji${reached ? ' reached' : ''}">${emoji}</span>${arrow}</span>`;
+        }).join('');
     }
 
     function updateScoreDisplay() {
@@ -405,7 +356,7 @@
     function updateStats() {
         statGames.textContent = totalGames;
         statBest.textContent = bestScore.toLocaleString();
-        statMaxTile.textContent = maxTileEver;
+        statMaxEmoji.textContent = getMaxReachedEmoji();
     }
 
     function showScorePopup(points) {
@@ -420,33 +371,25 @@
         setTimeout(() => popup.remove(), 700);
     }
 
-    // === Game State ===
+    // === Overlays ===
     function showGameOver() {
         finalScoreEl.textContent = score.toLocaleString();
         finalBestEl.textContent = bestScore.toLocaleString();
+        const maxVal = Math.max(...grid.flat());
+        document.getElementById('final-max-emoji').textContent = getEmoji(maxVal);
         const titleInfo = getTitleForScore(score);
         titleBadge.textContent = `${titleInfo.title} - ${titleInfo.desc}`;
         gameOverOverlay.classList.remove('hidden');
-        if (typeof gtag === 'function') {
-            gtag('event', 'game_over', {
-                event_category: 'number_merge',
-                score: score,
-                max_tile: Math.max(...grid.flat()),
-                moves: moveCount
-            });
-        }
+        if (typeof gtag === 'function')
+            gtag('event', 'game_over', { event_category: 'emoji_merge', score, max_tile: maxVal, chain: currentChain, moves: moveCount });
     }
 
     function showWin() {
         winScoreEl.textContent = score.toLocaleString();
+        document.getElementById('win-emoji').textContent = getEmoji(2048);
         winOverlay.classList.remove('hidden');
-        if (typeof gtag === 'function') {
-            gtag('event', 'game_win', {
-                event_category: 'number_merge',
-                score: score,
-                moves: moveCount
-            });
-        }
+        if (typeof gtag === 'function')
+            gtag('event', 'game_win', { event_category: 'emoji_merge', score, chain: currentChain, moves: moveCount });
     }
 
     function newGame() {
@@ -465,11 +408,10 @@
         undoBtn.disabled = true;
         gameOverOverlay.classList.add('hidden');
         winOverlay.classList.add('hidden');
-
         spawnTile(false);
         spawnTile(false);
-
         updateScoreDisplay();
+        updateEvolutionBar();
         saveState();
     }
 
@@ -485,24 +427,24 @@
         gameOverOverlay.classList.add('hidden');
         renderAll();
         updateScoreDisplay();
+        updateEvolutionBar();
         saveState();
     }
 
     // === Persistence ===
     function saveState() {
-        const state = {
-            grid, tileMap, nextTileId, score, bestScore,
-            totalGames, maxTileEver, won, keepPlaying,
-            gameOver, currentTheme, moveCount
-        };
         try {
-            localStorage.setItem('numberMerge2048', JSON.stringify(state));
-        } catch (e) { /* quota */ }
+            localStorage.setItem('emojiMerge', JSON.stringify({
+                grid, tileMap, nextTileId, score, bestScore,
+                totalGames, maxTileEver, won, keepPlaying,
+                gameOver, currentChain, moveCount
+            }));
+        } catch (e) {}
     }
 
     function loadState() {
         try {
-            const saved = localStorage.getItem('numberMerge2048');
+            const saved = localStorage.getItem('emojiMerge');
             if (saved) {
                 const s = JSON.parse(saved);
                 grid = s.grid || createEmpty();
@@ -515,10 +457,10 @@
                 won = s.won || false;
                 keepPlaying = s.keepPlaying || false;
                 gameOver = s.gameOver || false;
-                currentTheme = s.currentTheme || 'default';
+                currentChain = s.currentChain || 'animal';
+                if (!EVOLUTION_CHAINS[currentChain]) currentChain = 'animal';
                 moveCount = s.moveCount || 0;
 
-                // Ensure tileMap has valid IDs
                 if (!tileMap || tileMap.length !== SIZE) {
                     tileMap = createEmpty();
                     for (let r = 0; r < SIZE; r++)
@@ -528,23 +470,18 @@
                 }
                 return true;
             }
-        } catch (e) { /* parse error */ }
+        } catch (e) {}
         return false;
     }
 
     // === Input ===
     document.addEventListener('keydown', (e) => {
-        if (themeModal && !themeModal.classList.contains('hidden')) return;
-        const map = {
-            ArrowLeft: 'left', ArrowRight: 'right',
-            ArrowUp: 'up', ArrowDown: 'down',
-            a: 'left', d: 'right', w: 'up', s: 'down'
-        };
+        if (chainModal && !chainModal.classList.contains('hidden')) return;
+        const map = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down', a: 'left', d: 'right', w: 'up', s: 'down' };
         const dir = map[e.key];
         if (dir) { e.preventDefault(); move(dir); }
     });
 
-    // Touch
     let touchStartX = 0, touchStartY = 0, touchActive = false;
     const board = document.getElementById('game-board');
 
@@ -555,72 +492,55 @@
         touchActive = true;
     }, { passive: true });
 
-    board.addEventListener('touchmove', (e) => {
-        if (touchActive) e.preventDefault();
-    }, { passive: false });
+    board.addEventListener('touchmove', (e) => { if (touchActive) e.preventDefault(); }, { passive: false });
 
     board.addEventListener('touchend', (e) => {
         if (!touchActive) return;
         touchActive = false;
         const dx = e.changedTouches[0].clientX - touchStartX;
         const dy = e.changedTouches[0].clientY - touchStartY;
-        const minSwipe = 30;
-        if (Math.max(Math.abs(dx), Math.abs(dy)) < minSwipe) return;
-        if (Math.abs(dx) > Math.abs(dy)) {
-            move(dx > 0 ? 'right' : 'left');
-        } else {
-            move(dy > 0 ? 'down' : 'up');
-        }
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < 30) return;
+        move(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
     }, { passive: true });
 
-    // Mouse drag
     let mouseDown = false, mouseStartX = 0, mouseStartY = 0;
-    board.addEventListener('mousedown', (e) => {
-        mouseDown = true;
-        mouseStartX = e.clientX;
-        mouseStartY = e.clientY;
-        e.preventDefault();
-    });
+    board.addEventListener('mousedown', (e) => { mouseDown = true; mouseStartX = e.clientX; mouseStartY = e.clientY; e.preventDefault(); });
     document.addEventListener('mousemove', (e) => { if (mouseDown) e.preventDefault(); });
     document.addEventListener('mouseup', (e) => {
         if (!mouseDown) return;
         mouseDown = false;
         const dx = e.clientX - mouseStartX;
         const dy = e.clientY - mouseStartY;
-        const minSwipe = 30;
-        if (Math.max(Math.abs(dx), Math.abs(dy)) < minSwipe) return;
-        if (Math.abs(dx) > Math.abs(dy)) {
-            move(dx > 0 ? 'right' : 'left');
-        } else {
-            move(dy > 0 ? 'down' : 'up');
-        }
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < 30) return;
+        move(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
     });
 
-    // === Theme ===
-    function applyTheme(themeId) {
-        currentTheme = themeId;
-        if (themeId === 'default') {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', themeId);
-        }
-        saveState();
-        renderThemeGrid();
-    }
-
-    function renderThemeGrid() {
-        themeGrid.innerHTML = '';
-        THEMES.forEach(t => {
+    // === Chain Selection ===
+    function renderChainGrid() {
+        chainGrid.innerHTML = '';
+        Object.entries(EVOLUTION_CHAINS).forEach(([key, chain]) => {
             const opt = document.createElement('div');
-            opt.className = 'theme-option' + (currentTheme === t.id ? ' active' : '');
+            opt.className = 'chain-option' + (currentChain === key ? ' active' : '');
+            const previewValues = [2, 4, 8, 16, 32, 64];
             opt.innerHTML = `
-                <div class="theme-preview">
-                    ${t.colors.map(c => `<div class="theme-dot" style="background:${c}"></div>`).join('')}
+                <div class="chain-header">
+                    <span class="chain-icon">${chain.icon}</span>
+                    <span class="chain-name">${chain.name}</span>
                 </div>
-                <div class="theme-name">${t.name}</div>
+                <div class="chain-desc">${chain.desc}</div>
+                <div class="chain-preview">${previewValues.map(v => chain.map[v]).join(' → ')}</div>
             `;
-            opt.addEventListener('click', () => applyTheme(t.id));
-            themeGrid.appendChild(opt);
+            opt.addEventListener('click', () => {
+                if (currentChain !== key) {
+                    currentChain = key;
+                    renderAll();
+                    updateEvolutionBar();
+                    updateStats();
+                    saveState();
+                    renderChainGrid();
+                }
+            });
+            chainGrid.appendChild(opt);
         });
     }
 
@@ -631,17 +551,18 @@
 
     // === Share ===
     function shareResult() {
-        const maxTile = Math.max(...grid.flat());
+        const maxVal = Math.max(...grid.flat());
         const titleInfo = getTitleForScore(score);
-        const text = `숫자 합치기 2048\n점수: ${score.toLocaleString()}\n최고 타일: ${maxTile}\n칭호: ${titleInfo.title}\n\nhttps://swp1234.github.io/number-merge/`;
+        const chain = EVOLUTION_CHAINS[currentChain];
+        const text = `이모지 머지 - 진화 퍼즐\n체인: ${chain.name}\n최고 진화: ${getEmoji(maxVal)}\n점수: ${score.toLocaleString()}\n칭호: ${titleInfo.title}\n\nhttps://swp1234.github.io/number-merge/`;
         if (navigator.share) {
-            navigator.share({ title: '숫자 합치기 2048', text });
+            navigator.share({ title: '이모지 머지 결과', text });
         } else if (navigator.clipboard) {
             navigator.clipboard.writeText(text).then(() => alert('결과가 복사되었습니다!'));
         }
     }
 
-    // === Event Listeners ===
+    // === Events ===
     document.getElementById('btn-new').addEventListener('click', () => {
         if (score > 0 && !gameOver) {
             if (!confirm('현재 게임을 포기하고 새 게임을 시작할까요?')) return;
@@ -652,31 +573,18 @@
 
     document.getElementById('btn-undo').addEventListener('click', undo);
 
-    document.getElementById('btn-theme').addEventListener('click', () => {
-        renderThemeGrid();
-        themeModal.classList.remove('hidden');
+    document.getElementById('btn-chain').addEventListener('click', () => {
+        renderChainGrid();
+        chainModal.classList.remove('hidden');
     });
 
-    document.getElementById('theme-backdrop').addEventListener('click', () => {
-        themeModal.classList.add('hidden');
-    });
-
-    document.getElementById('theme-close').addEventListener('click', () => {
-        themeModal.classList.add('hidden');
-    });
-
+    document.getElementById('chain-backdrop').addEventListener('click', () => chainModal.classList.add('hidden'));
+    document.getElementById('chain-close').addEventListener('click', () => chainModal.classList.add('hidden'));
     document.getElementById('btn-retry').addEventListener('click', () => newGame());
     document.getElementById('btn-share').addEventListener('click', shareResult);
-    document.getElementById('btn-continue').addEventListener('click', () => {
-        keepPlaying = true;
-        winOverlay.classList.add('hidden');
-    });
-    document.getElementById('btn-new-after-win').addEventListener('click', () => {
-        totalGames++;
-        newGame();
-    });
+    document.getElementById('btn-continue').addEventListener('click', () => { keepPlaying = true; winOverlay.classList.add('hidden'); });
+    document.getElementById('btn-new-after-win').addEventListener('click', () => { totalGames++; newGame(); });
 
-    // Resize
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
@@ -686,22 +594,16 @@
     // === Init ===
     function init() {
         const loaded = loadState();
-        applyTheme(currentTheme);
-
         if (loaded && grid.flat().some(v => v > 0) && !gameOver) {
             renderAll();
             updateScoreDisplay();
         } else {
             newGame();
         }
+        updateEvolutionBar();
         updateStats();
-
-        if (typeof gtag === 'function') {
-            gtag('event', 'page_view', {
-                page_title: '숫자 합치기 2048',
-                page_location: window.location.href
-            });
-        }
+        if (typeof gtag === 'function')
+            gtag('event', 'page_view', { page_title: '이모지 머지', page_location: window.location.href });
     }
 
     init();

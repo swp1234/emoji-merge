@@ -1,7 +1,7 @@
 {
-    "name": "숫자 합치기 2048",
-    "short_name": "2048",
-    "description": "같은 숫자를 합쳐 2048을 만드는 퍼즐 게임",
+    "name": "이모지 머지 - 진화 퍼즐",
+    "short_name": "Emoji Merge",
+    "description": "같은 이모지를 합쳐 진화시키는 퍼즐 게임. 알→용, 씨앗→세계수, 물방울→은하, 감정 레벨업 4가지 체인.",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0a0a1a",

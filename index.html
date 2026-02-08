@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="robots" content="max-image-preview:large">
 
     <!-- SEO Meta Tags -->
-    <title>숫자 합치기 2048 - 무료 퍼즐 게임 | FireTools</title>
-    <meta name="description" content="2048 숫자 퍼즐 게임! 같은 숫자를 합쳐 2048을 만들어보세요. 스와이프로 즐기는 중독성 두뇌 퍼즐. 무료, 설치 없이 바로 플레이!">
-    <meta name="keywords" content="2048, 숫자 퍼즐, 퍼즐 게임, 두뇌 게임, 숫자 합치기, 무료 게임, 브라우저 게임, 캐주얼 게임">
+    <title>이모지 머지 - 진화 퍼즐 게임 | FireTools</title>
+    <meta name="description" content="같은 이모지를 합쳐 진화시키세요! 🥚→🐣→🐥→🦅→🐉→👑 알에서 용까지, 씨앗에서 세계수까지! 4가지 진화 체인. 무료 두뇌 퍼즐 게임!">
+    <meta name="keywords" content="이모지 머지, 진화 퍼즐, 합치기 게임, 이모지 게임, 2048, 무료 게임, 브라우저 게임, 캐주얼 게임, emoji merge">
     <meta name="author" content="FireTools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://swp1234.github.io/number-merge/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="숫자 합치기 2048 - 무료 퍼즐 게임">
-    <meta property="og:description" content="같은 숫자를 합쳐 2048을 만들어보세요! 스와이프로 즐기는 중독성 두뇌 퍼즐 게임.">
+    <meta property="og:title" content="이모지 머지 - 진화 퍼즐 게임 🦁">
+    <meta property="og:description" content="같은 이모지를 합쳐 진화시키세요! 🥚→🐣→🐥→🦅→🐉→👑 4가지 진화 체인에 도전!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://swp1234.github.io/number-merge/">
-    <meta property="og:image" content="https://swp1234.github.io/number-merge/og-image.png">
+    <meta property="og:image" content="https://swp1234.github.io/number-merge/icon-512.svg">
     <meta property="og:locale" content="ko_KR">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="숫자 합치기 2048 - 무료 퍼즐 게임">
-    <meta name="twitter:description" content="같은 숫자를 합쳐 2048을 만들어보세요! 스와이프로 즐기는 중독성 두뇌 퍼즐 게임.">
+    <meta name="twitter:title" content="이모지 머지 - 진화 퍼즐 게임 🦁">
+    <meta name="twitter:description" content="같은 이모지를 합쳐 진화시키세요! 🥚→🐣→🦅→🐉→👑 4가지 진화 체인에 도전!">
+    <meta name="twitter:image" content="https://swp1234.github.io/number-merge/icon-512.svg">
 
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
@@ -38,8 +40,8 @@
     {
         "@context": "https://schema.org",
         "@type": "VideoGame",
-        "name": "숫자 합치기 2048",
-        "description": "같은 숫자를 합쳐 2048을 만드는 퍼즐 게임",
+        "name": "이모지 머지 - 진화 퍼즐",
+        "description": "같은 이모지를 합쳐 진화시키는 퍼즐 게임. 알→용, 씨앗→세계수, 물방울→은하, 감정 레벨업 4가지 테마.",
         "url": "https://swp1234.github.io/number-merge/",
         "genre": "Puzzle",
         "gamePlatform": "Web Browser",
@@ -74,8 +76,8 @@
         <header class="game-header">
             <div class="header-top">
                 <div class="title-area">
-                    <h1 class="game-title">2048</h1>
-                    <p class="game-subtitle">숫자 합치기 퍼즐</p>
+                    <h1 class="game-title">Emoji Merge</h1>
+                    <p class="game-subtitle">이모지 합쳐 진화시키기</p>
                 </div>
                 <div class="scores-area">
                     <div class="score-box">
@@ -103,42 +105,41 @@
                     </svg>
                     <span>되돌리기</span>
                 </button>
-                <button class="ctrl-btn" id="btn-theme" aria-label="테마">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-                    </svg>
+                <button class="ctrl-btn" id="btn-chain" aria-label="진화 체인">
+                    <span style="font-size:16px">🧬</span>
                     <span>테마</span>
                 </button>
             </div>
         </header>
 
+        <!-- Evolution Preview -->
+        <div class="evolution-bar" id="evolution-bar">
+            <!-- Rendered by JS -->
+        </div>
+
         <!-- Game Board -->
         <main class="game-area">
             <div class="board-container">
                 <div class="board" id="game-board">
-                    <!-- Grid cells (background) -->
                     <div class="grid-bg">
                         <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
                         <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
                         <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
                         <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
                     </div>
-                    <!-- Tiles will be rendered here -->
                     <div class="tiles-container" id="tiles-container"></div>
                 </div>
             </div>
-
-            <!-- Score popup container -->
             <div id="score-popup-container"></div>
         </main>
 
         <!-- Game Over Overlay -->
         <div class="overlay hidden" id="game-over-overlay">
             <div class="overlay-content">
-                <h2 class="overlay-title">게임 오버!</h2>
+                <h2 class="overlay-title">진화 종료!</h2>
                 <p class="overlay-score">점수: <span id="final-score">0</span></p>
                 <p class="overlay-best">최고 점수: <span id="final-best">0</span></p>
+                <p class="overlay-max-evo">최고 진화: <span id="final-max-emoji"></span></p>
                 <div class="overlay-title-badge" id="title-badge"></div>
                 <div class="overlay-buttons">
                     <button class="btn-primary" id="btn-retry">다시 하기</button>
@@ -150,24 +151,25 @@
         <!-- Win Overlay -->
         <div class="overlay hidden" id="win-overlay">
             <div class="overlay-content win">
-                <h2 class="overlay-title">2048 달성!</h2>
+                <h2 class="overlay-title">최종 진화 달성!</h2>
+                <div class="win-emoji" id="win-emoji"></div>
                 <p class="overlay-score">점수: <span id="win-score">0</span></p>
                 <div class="overlay-buttons">
-                    <button class="btn-primary" id="btn-continue">계속 하기</button>
+                    <button class="btn-primary" id="btn-continue">계속 진화하기</button>
                     <button class="btn-secondary" id="btn-new-after-win">새 게임</button>
                 </div>
             </div>
         </div>
 
-        <!-- Theme Modal -->
-        <div class="modal hidden" id="theme-modal">
-            <div class="modal-backdrop" id="theme-backdrop"></div>
+        <!-- Chain Selection Modal -->
+        <div class="modal hidden" id="chain-modal">
+            <div class="modal-backdrop" id="chain-backdrop"></div>
             <div class="modal-content">
-                <h3 class="modal-title">테마 선택</h3>
-                <div class="theme-grid" id="theme-grid">
-                    <!-- Themes rendered by JS -->
+                <h3 class="modal-title">진화 체인 선택</h3>
+                <div class="chain-grid" id="chain-grid">
+                    <!-- Rendered by JS -->
                 </div>
-                <button class="modal-close" id="theme-close">닫기</button>
+                <button class="modal-close" id="chain-close">닫기</button>
             </div>
         </div>
 
@@ -182,8 +184,8 @@
                 <span class="stat-label">최고 점수</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" id="stat-max-tile">0</span>
-                <span class="stat-label">최고 타일</span>
+                <span class="stat-number" id="stat-max-emoji">-</span>
+                <span class="stat-label">최고 진화</span>
             </div>
         </section>
 
@@ -193,15 +195,15 @@
             <div class="how-grid">
                 <div class="how-item">
                     <span class="how-icon">👆</span>
-                    <p><strong>스와이프</strong>하여 타일을 이동</p>
+                    <p><strong>스와이프</strong>하여 타일 이동</p>
                 </div>
                 <div class="how-item">
-                    <span class="how-icon">🔢</span>
-                    <p>같은 <strong>숫자끼리</strong> 합치기</p>
+                    <span class="how-icon">🧬</span>
+                    <p>같은 이모지를 합쳐 <strong>진화</strong></p>
                 </div>
                 <div class="how-item">
-                    <span class="how-icon">🏆</span>
-                    <p><strong>2048</strong>을 만들면 승리!</p>
+                    <span class="how-icon">👑</span>
+                    <p><strong>최종 진화</strong>를 달성하세요!</p>
                 </div>
             </div>
         </section>
