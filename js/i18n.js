@@ -1,7 +1,7 @@
 class I18n {
     constructor() {
         this.translations = {};
-        this.supportedLanguages = ['ko', 'en', 'zh', 'hi', 'ru'];
+        this.supportedLanguages = ['ko', 'en', 'ja', 'es', 'pt', 'zh', 'id', 'tr', 'de', 'fr', 'hi', 'ru'];
         this.currentLang = this.detectLanguage();
     }
 
@@ -52,6 +52,9 @@ class I18n {
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             el.placeholder = this.t(el.getAttribute('data-i18n-placeholder'));
         });
+        document.querySelectorAll('[data-aria-label-i18n]').forEach(el => {
+            el.setAttribute('aria-label', this.t(el.getAttribute('data-aria-label-i18n')));
+        });
         document.title = this.t('app.title');
         const meta = document.querySelector('meta[name="description"]');
         if (meta) meta.content = this.t('app.description');
@@ -65,7 +68,14 @@ class I18n {
         const names = {
             'ko': '한국어',
             'en': 'English',
+            'ja': '日本語',
+            'es': 'Español',
+            'pt': 'Português',
             'zh': '简体中文',
+            'id': 'Bahasa Indonesia',
+            'tr': 'Türkçe',
+            'de': 'Deutsch',
+            'fr': 'Français',
             'hi': 'हिन्दी',
             'ru': 'Русский'
         };

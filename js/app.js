@@ -640,13 +640,13 @@
         // Strategy tips based on state
         let strategyTip = '';
         if (emptyCellCount <= 3) {
-            strategyTip = '빈 칸이 부족합니다! 한쪽 방향으로 밀어서 공간을 확보하세요. 큰 값은 모서리에 유지하는 것이 좋습니다.';
+            strategyTip = i18n.t('premium.tooFewEmpty');
         } else if (maxVal >= 512) {
-            strategyTip = '최종 진화에 가까워지고 있습니다! 최고 값 타일을 모서리에 고정하고, 인접 타일을 순서대로 정렬하세요.';
+            strategyTip = i18n.t('premium.nearEnd');
         } else if (maxVal >= 128) {
-            strategyTip = '좋은 흐름입니다! 한 방향(왼쪽 또는 아래)을 주로 사용하면서 큰 값을 한쪽에 모으세요.';
+            strategyTip = i18n.t('premium.goodFlow');
         } else {
-            strategyTip = '초반에는 한 방향을 위주로 이동하면서 감을 잡으세요. 되돌리기를 활용하면 더 높은 점수를 얻을 수 있습니다.';
+            strategyTip = i18n.t('premium.beginnerTip');
         }
 
         // Prediction
@@ -655,26 +655,26 @@
         const content = document.getElementById('premium-content');
         content.innerHTML = `
             <div class="premium-stat-grid">
-                <div class="premium-stat"><span class="stat-val">${score.toLocaleString()}</span><span class="stat-lbl">현재 점수</span></div>
-                <div class="premium-stat"><span class="stat-val">${efficiency}</span><span class="stat-lbl">이동당 점수</span></div>
-                <div class="premium-stat"><span class="stat-val">${moveCount}</span><span class="stat-lbl">총 이동 수</span></div>
-                <div class="premium-stat"><span class="stat-val">${densityScore}%</span><span class="stat-lbl">보드 밀도</span></div>
+                <div class="premium-stat"><span class="stat-val">${score.toLocaleString()}</span><span class="stat-lbl">${i18n.t('premium.currentScore')}</span></div>
+                <div class="premium-stat"><span class="stat-val">${efficiency}</span><span class="stat-lbl">${i18n.t('premium.scorePerMove')}</span></div>
+                <div class="premium-stat"><span class="stat-val">${moveCount}</span><span class="stat-lbl">${i18n.t('premium.totalMoves')}</span></div>
+                <div class="premium-stat"><span class="stat-val">${densityScore}%</span><span class="stat-lbl">${i18n.t('premium.boardDensity')}</span></div>
             </div>
             <div class="premium-analysis-item">
-                <h4>🏆 칭호: ${titleInfo.title}</h4>
-                <p>${titleInfo.desc} - ${chain.name} 체인으로 ${getEmoji(maxVal)} (레벨 ${maxLevel})까지 진화했습니다.</p>
+                <h4>🏆 ${i18n.t('premium.titleBadge')}: ${titleInfo.title}</h4>
+                <p>${titleInfo.desc} - ${chain.name} ${i18n.t('premium.chainWith')} ${getEmoji(maxVal)} (${i18n.t('premium.level')} ${maxLevel}) ${i18n.t('premium.until')}</p>
             </div>
             <div class="premium-analysis-item">
-                <h4>📊 보드 상태</h4>
-                <p>빈 칸 ${emptyCellCount}개, 채워진 칸 ${filledCells}개. ${Object.entries(valueCounts).map(([v, c]) => `${getEmoji(Number(v))}×${c}`).join(' ')}</p>
+                <h4>📊 ${i18n.t('premium.boardStatus')}</h4>
+                <p>${i18n.t('premium.emptyCount')} ${emptyCellCount}, ${i18n.t('premium.filledCount')} ${filledCells}. ${Object.entries(valueCounts).map(([v, c]) => `${getEmoji(Number(v))}×${c}`).join(' ')}</p>
             </div>
             <div class="premium-analysis-item">
-                <h4>💡 전략 팁</h4>
+                <h4>💡 ${i18n.t('premium.strategyTip')}</h4>
                 <p>${strategyTip}</p>
             </div>
             <div class="premium-analysis-item">
-                <h4>🔮 예상 최대 진화</h4>
-                <p>현재 흐름이라면 ${getEmoji(predictedMax)} (${predictedMax})까지 도달할 수 있습니다. ${predictedMax >= 2048 ? '최종 진화 달성이 가능합니다!' : '조금 더 전략적으로 플레이해보세요.'}</p>
+                <h4>🔮 ${i18n.t('premium.predictedMax')}</h4>
+                <p>${getEmoji(predictedMax)} (${predictedMax}). ${predictedMax >= 2048 ? i18n.t('premium.canAchieveMax') : i18n.t('premium.playMore')}</p>
             </div>
         `;
 
@@ -684,7 +684,7 @@
 
     document.getElementById('btn-premium').addEventListener('click', async () => {
         if (score === 0 && moveCount === 0) {
-            alert('먼저 게임을 플레이해주세요!');
+            alert(i18n.t('game.alertPlayFirst'));
             return;
         }
         await showInterstitialAd();
@@ -696,18 +696,22 @@
         const maxVal = Math.max(...grid.flat());
         const titleInfo = getTitleForScore(score);
         const chain = EVOLUTION_CHAINS[currentChain];
-        const text = `이모지 머지 - 진화 퍼즐\n체인: ${chain.name}\n최고 진화: ${getEmoji(maxVal)}\n점수: ${score.toLocaleString()}\n칭호: ${titleInfo.title}\n\nhttps://dopabrain.com/emoji-merge/`;
+        const chainLabel = i18n.t('premium.chainWith');
+        const maxEvoLabel = i18n.t('game.maxEvolution');
+        const scoreLabel = i18n.t('game.score');
+        const titleLabel = '칭호';
+        const text = `Emoji Merge\n${chainLabel}: ${chain.name}\n${maxEvoLabel}: ${getEmoji(maxVal)}\n${scoreLabel}: ${score.toLocaleString()}\nTitle: ${titleInfo.title}\n\nhttps://dopabrain.com/emoji-merge/`;
         if (navigator.share) {
-            navigator.share({ title: '이모지 머지 결과', text });
+            navigator.share({ title: i18n.t('game.resultTitle'), text });
         } else if (navigator.clipboard) {
-            navigator.clipboard.writeText(text).then(() => alert('결과가 복사되었습니다!'));
+            navigator.clipboard.writeText(text).then(() => alert(i18n.t('game.resultCopied')));
         }
     }
 
     // === Events ===
     document.getElementById('btn-new').addEventListener('click', () => {
         if (score > 0 && !gameOver) {
-            if (!confirm('현재 게임을 포기하고 새 게임을 시작할까요?')) return;
+            if (!confirm(i18n.t('game.confirmNewGame'))) return;
         }
         totalGames++;
         newGame();
