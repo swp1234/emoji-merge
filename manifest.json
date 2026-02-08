@@ -1,0 +1,24 @@
+{
+    "name": "숫자 합치기 2048",
+    "short_name": "2048",
+    "description": "같은 숫자를 합쳐 2048을 만드는 퍼즐 게임",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0a0a1a",
+    "theme_color": "#0a0a1a",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "icon-192.svg",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-512.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}
