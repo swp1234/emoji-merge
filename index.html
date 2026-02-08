@@ -189,6 +189,31 @@
             </div>
         </section>
 
+        <!-- Premium Button -->
+        <section class="premium-section">
+            <button class="premium-btn" id="btn-premium">
+                <span class="premium-icon">🧠</span>
+                <span class="premium-text">AI 게임 분석</span>
+                <span class="premium-badge">PRO</span>
+            </button>
+        </section>
+
+        <!-- Interstitial Ad Modal -->
+        <div class="overlay hidden" id="interstitial-overlay">
+            <div class="overlay-content interstitial">
+                <p class="ad-notice">광고</p>
+                <div class="ad-placeholder-large">AD</div>
+                <p class="ad-timer"><span id="ad-countdown">5</span>초 후 닫기 가능</p>
+                <button class="btn-secondary" id="btn-close-ad" disabled>닫기 (<span id="ad-countdown-btn">5</span>)</button>
+            </div>
+        </div>
+
+        <!-- Premium Result -->
+        <section class="premium-result hidden" id="premium-result">
+            <h3 class="premium-result-title">🧠 AI 게임 분석</h3>
+            <div id="premium-content"></div>
+        </section>
+
         <!-- How to Play -->
         <section class="how-to-play">
             <h2>게임 방법</h2>
@@ -205,6 +230,33 @@
                     <span class="how-icon">👑</span>
                     <p><strong>최종 진화</strong>를 달성하세요!</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- Recommendation Cards -->
+        <section class="rec-section">
+            <h2 class="rec-title">이것도 해보세요!</h2>
+            <div class="rec-grid">
+                <a href="https://swp1234.github.io/stack-tower/" class="rec-card">
+                    <span class="rec-emoji">🏗️</span>
+                    <span class="rec-name">Stack Tower</span>
+                    <span class="rec-desc">블록 쌓기 타이밍 게임</span>
+                </a>
+                <a href="https://swp1234.github.io/zigzag-runner/" class="rec-card">
+                    <span class="rec-emoji">⚡</span>
+                    <span class="rec-name">Zigzag Runner</span>
+                    <span class="rec-desc">방향 전환 아케이드</span>
+                </a>
+                <a href="https://swp1234.github.io/emotion-temp/" class="rec-card">
+                    <span class="rec-emoji">🌡️</span>
+                    <span class="rec-name">감정 온도계</span>
+                    <span class="rec-desc">나의 감정 온도는?</span>
+                </a>
+                <a href="https://swp1234.github.io/past-life/" class="rec-card">
+                    <span class="rec-emoji">⏳</span>
+                    <span class="rec-name">전생 직업</span>
+                    <span class="rec-desc">나의 전생 직업은?</span>
+                </a>
             </div>
         </section>
 
@@ -227,5 +279,14 @@
 
     <script src="js/game-data.js"></script>
     <script src="js/app.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+                .then(r => console.log('SW registered:', r.scope))
+                .catch(e => console.log('SW registration failed:', e));
+        });
+    }
+    </script>
 </body>
 </html>

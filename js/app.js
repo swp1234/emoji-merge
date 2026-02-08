@@ -549,6 +549,113 @@
         console.log('[AD] Interstitial at move', moveCount);
     }
 
+    // === Premium ===
+    function showInterstitialAd() {
+        return new Promise((resolve) => {
+            const overlay = document.getElementById('interstitial-overlay');
+            const closeBtn = document.getElementById('btn-close-ad');
+            const countdown1 = document.getElementById('ad-countdown');
+            const countdown2 = document.getElementById('ad-countdown-btn');
+
+            overlay.classList.remove('hidden');
+            closeBtn.disabled = true;
+            closeBtn.textContent = '닫기 (5)';
+            let seconds = 5;
+            countdown1.textContent = seconds;
+            countdown2.textContent = seconds;
+
+            const timer = setInterval(() => {
+                seconds--;
+                countdown1.textContent = seconds;
+                countdown2.textContent = seconds;
+                closeBtn.textContent = `닫기 (${seconds})`;
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    closeBtn.disabled = false;
+                    closeBtn.textContent = '닫기';
+                }
+            }, 1000);
+
+            closeBtn.addEventListener('click', function handler() {
+                closeBtn.removeEventListener('click', handler);
+                overlay.classList.add('hidden');
+                resolve();
+            });
+        });
+    }
+
+    function generatePremiumAnalysis() {
+        const maxVal = Math.max(...grid.flat(), 0);
+        const filledCells = grid.flat().filter(v => v > 0).length;
+        const emptyCellCount = 16 - filledCells;
+        const chain = EVOLUTION_CHAINS[currentChain];
+        const titleInfo = getTitleForScore(score);
+        const efficiency = moveCount > 0 ? (score / moveCount).toFixed(1) : 0;
+        const maxLevel = Math.log2(maxVal || 2);
+
+        // Value distribution
+        const valueCounts = {};
+        grid.flat().filter(v => v > 0).forEach(v => {
+            valueCounts[v] = (valueCounts[v] || 0) + 1;
+        });
+
+        // Board density score
+        const densityScore = Math.round((filledCells / 16) * 100);
+
+        // Strategy tips based on state
+        let strategyTip = '';
+        if (emptyCellCount <= 3) {
+            strategyTip = '빈 칸이 부족합니다! 한쪽 방향으로 밀어서 공간을 확보하세요. 큰 값은 모서리에 유지하는 것이 좋습니다.';
+        } else if (maxVal >= 512) {
+            strategyTip = '최종 진화에 가까워지고 있습니다! 최고 값 타일을 모서리에 고정하고, 인접 타일을 순서대로 정렬하세요.';
+        } else if (maxVal >= 128) {
+            strategyTip = '좋은 흐름입니다! 한 방향(왼쪽 또는 아래)을 주로 사용하면서 큰 값을 한쪽에 모으세요.';
+        } else {
+            strategyTip = '초반에는 한 방향을 위주로 이동하면서 감을 잡으세요. 되돌리기를 활용하면 더 높은 점수를 얻을 수 있습니다.';
+        }
+
+        // Prediction
+        const predictedMax = Math.min(2048, maxVal * (emptyCellCount > 4 ? 4 : 2));
+
+        const content = document.getElementById('premium-content');
+        content.innerHTML = `
+            <div class="premium-stat-grid">
+                <div class="premium-stat"><span class="stat-val">${score.toLocaleString()}</span><span class="stat-lbl">현재 점수</span></div>
+                <div class="premium-stat"><span class="stat-val">${efficiency}</span><span class="stat-lbl">이동당 점수</span></div>
+                <div class="premium-stat"><span class="stat-val">${moveCount}</span><span class="stat-lbl">총 이동 수</span></div>
+                <div class="premium-stat"><span class="stat-val">${densityScore}%</span><span class="stat-lbl">보드 밀도</span></div>
+            </div>
+            <div class="premium-analysis-item">
+                <h4>🏆 칭호: ${titleInfo.title}</h4>
+                <p>${titleInfo.desc} - ${chain.name} 체인으로 ${getEmoji(maxVal)} (레벨 ${maxLevel})까지 진화했습니다.</p>
+            </div>
+            <div class="premium-analysis-item">
+                <h4>📊 보드 상태</h4>
+                <p>빈 칸 ${emptyCellCount}개, 채워진 칸 ${filledCells}개. ${Object.entries(valueCounts).map(([v, c]) => `${getEmoji(Number(v))}×${c}`).join(' ')}</p>
+            </div>
+            <div class="premium-analysis-item">
+                <h4>💡 전략 팁</h4>
+                <p>${strategyTip}</p>
+            </div>
+            <div class="premium-analysis-item">
+                <h4>🔮 예상 최대 진화</h4>
+                <p>현재 흐름이라면 ${getEmoji(predictedMax)} (${predictedMax})까지 도달할 수 있습니다. ${predictedMax >= 2048 ? '최종 진화 달성이 가능합니다!' : '조금 더 전략적으로 플레이해보세요.'}</p>
+            </div>
+        `;
+
+        document.getElementById('premium-result').classList.remove('hidden');
+        document.getElementById('premium-result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    document.getElementById('btn-premium').addEventListener('click', async () => {
+        if (score === 0 && moveCount === 0) {
+            alert('먼저 게임을 플레이해주세요!');
+            return;
+        }
+        await showInterstitialAd();
+        generatePremiumAnalysis();
+    });
+
     // === Share ===
     function shareResult() {
         const maxVal = Math.max(...grid.flat());

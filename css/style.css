@@ -772,5 +772,202 @@ body {
     .container { padding: 16px 24px 32px; }
 }
 
+/* === Premium Section === */
+.premium-section {
+    margin-bottom: 16px;
+}
+
+.premium-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(244,162,97,0.15), rgba(231,111,81,0.15));
+    border: 1px solid rgba(244,162,97,0.3);
+    border-radius: var(--radius);
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.premium-btn:hover {
+    background: linear-gradient(135deg, rgba(244,162,97,0.25), rgba(231,111,81,0.25));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px var(--primary-glow);
+}
+
+.premium-btn:active { transform: scale(0.97); }
+
+.premium-icon { font-size: 20px; }
+
+.premium-badge {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+/* Interstitial Ad */
+.overlay-content.interstitial {
+    padding: 24px;
+}
+
+.ad-notice {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.ad-placeholder-large {
+    background: var(--surface-glass);
+    border: 1px dashed var(--border-glass);
+    border-radius: var(--radius-sm);
+    padding: 60px 20px;
+    color: var(--text-dim);
+    font-size: 24px;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+}
+
+.ad-timer {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.ad-timer span {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+/* Premium Result */
+.premium-result {
+    background: var(--surface-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(244,162,97,0.3);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.premium-result-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.premium-analysis-item {
+    background: rgba(255,255,255,0.03);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.premium-analysis-item:last-child { margin-bottom: 0; }
+
+.premium-analysis-item h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.premium-analysis-item p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.premium-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.premium-stat {
+    text-align: center;
+    padding: 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius: var(--radius-sm);
+}
+
+.premium-stat .stat-val {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+}
+
+.premium-stat .stat-lbl {
+    font-size: 10px;
+    color: var(--text-dim);
+}
+
+/* === Recommendation Cards === */
+.rec-section {
+    margin-bottom: 16px;
+}
+
+.rec-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.rec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.rec-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 10px;
+    background: var(--surface-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.rec-card:hover {
+    border-color: var(--border-glass-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.rec-emoji {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.rec-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+
+.rec-desc {
+    font-size: 11px;
+    color: var(--text-dim);
+}
+
 /* === Utility === */
 .hidden { display: none !important; }
