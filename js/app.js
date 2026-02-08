@@ -302,34 +302,44 @@
             }
         }
 
+        if (moves.length > 0 && sfx) sfx.swoosh();
+
         setTimeout(() => {
-            for (const merge of merges) {
-                for (const oldId of merge.fromIds) removeTileEl(oldId);
-                createTileEl(merge.mergeId, merge.newValue, merge.toRow, merge.toCol, false);
-                animateMerge(merge.mergeId);
-            }
+            try {
+                for (const merge of merges) {
+                    for (const oldId of merge.fromIds) removeTileEl(oldId);
+                    createTileEl(merge.mergeId, merge.newValue, merge.toRow, merge.toCol, false);
+                    if (sfx) sfx.merge();
+                    animateMerge(merge.mergeId);
+                }
 
-            if (scoreGain > 0) showScorePopup(scoreGain);
-            spawnTile(true);
-            updateScoreDisplay();
-            updateStats();
-            updateEvolutionBar();
-            saveState();
-
-            if (!won && !keepPlaying && currentMax >= 2048) {
-                won = true;
-                setTimeout(() => showWin(), 200);
-            }
-
-            if (isGameOver()) {
-                gameOver = true;
-                totalGames++;
+                if (scoreGain > 0) showScorePopup(scoreGain);
+                spawnTile(true);
+                updateScoreDisplay();
+                updateStats();
+                updateEvolutionBar();
                 saveState();
-                setTimeout(() => showGameOver(), 300);
-            }
 
-            if (moveCount > 0 && moveCount % 20 === 0) triggerInterstitialAd();
-            animating = false;
+                if (!won && !keepPlaying && currentMax >= 2048) {
+                    won = true;
+                    if (sfx) sfx.levelUp();
+                    setTimeout(() => showWin(), 200);
+                }
+
+                if (isGameOver()) {
+                    gameOver = true;
+                    totalGames++;
+                    if (sfx) sfx.gameOver();
+                    saveState();
+                    setTimeout(() => showGameOver(), 300);
+                }
+
+                if (moveCount > 0 && moveCount % 20 === 0) triggerInterstitialAd();
+            } catch(e) {
+                console.error('Animation callback error:', e);
+            } finally {
+                animating = false;
+            }
         }, ANIM_MOVE_MS + 10);
 
         return true;
