@@ -1,0 +1,43 @@
+{
+    "app": {
+        "title": "이모지 머지 - 진화 퍼즐 게임 | DopaBrain",
+        "description": "같은 이모지를 합쳐 진화시키세요! 🥚→🐣→🐥→🦅→🐉→👑 알에서 용까지, 씨앗에서 세계수까지! 4가지 진화 체인. 무료 두뇌 퍼즐 게임!"
+    },
+    "game": {
+        "title": "Emoji Merge",
+        "subtitle": "이모지 합쳐 진화시키기",
+        "score": "점수",
+        "best": "최고",
+        "newGame": "새 게임",
+        "undo": "되돌리기",
+        "theme": "테마",
+        "gameOver": "진화 종료!",
+        "finalScore": "점수",
+        "finalBest": "최고 점수",
+        "finalMaxEmoji": "최고 진화",
+        "retry": "다시 하기",
+        "share": "결과 공유",
+        "win": "최종 진화 달성!",
+        "continuePlay": "계속 진화하기",
+        "newAfterWin": "새 게임",
+        "selectChain": "진화 체인 선택",
+        "close": "닫기",
+        "games": "게임 수",
+        "maxEvolution": "최고 진화",
+        "howToPlay": "게임 방법",
+        "swipe": "스와이프",
+        "swipeDesc": "하여 타일 이동",
+        "merge": "같은 이모지를 합쳐",
+        "mergeDesc": "진화",
+        "achieve": "최종 진화",
+        "achieveDesc": "를 달성하세요!",
+        "tryMore": "이것도 해보세요!",
+        "premium": "AI 게임 분석",
+        "premiumPro": "PRO",
+        "ad": "광고",
+        "adCountdown": "초 후 닫기 가능",
+        "close": "닫기",
+        "back": "DopaBrain 홈",
+        "copyright": "© 2026 DopaBrain"
+    }
+}

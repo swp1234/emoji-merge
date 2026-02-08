@@ -1,0 +1,43 @@
+{
+    "app": {
+        "title": "Emoji Merge - Evolution Puzzle Game | DopaBrain",
+        "description": "Merge the same emojis to evolve! 🥚→🐣→🐥→🦅→🐉→👑 From egg to dragon, from seed to world tree! 4 evolution chains. Free brain puzzle game!"
+    },
+    "game": {
+        "title": "Emoji Merge",
+        "subtitle": "Merge and evolve emojis",
+        "score": "Score",
+        "best": "Best",
+        "newGame": "New Game",
+        "undo": "Undo",
+        "theme": "Theme",
+        "gameOver": "Evolution Complete!",
+        "finalScore": "Score",
+        "finalBest": "Best Score",
+        "finalMaxEmoji": "Max Evolution",
+        "retry": "Retry",
+        "share": "Share Result",
+        "win": "Final Evolution Achieved!",
+        "continuePlay": "Keep Playing",
+        "newAfterWin": "New Game",
+        "selectChain": "Select Evolution Chain",
+        "close": "Close",
+        "games": "Games Played",
+        "maxEvolution": "Max Evolution",
+        "howToPlay": "How to Play",
+        "swipe": "Swipe",
+        "swipeDesc": "to move tiles",
+        "merge": "Merge same emojis to",
+        "mergeDesc": "evolve",
+        "achieve": "Achieve the",
+        "achieveDesc": "final evolution!",
+        "tryMore": "Try These Too!",
+        "premium": "AI Game Analysis",
+        "premiumPro": "PRO",
+        "ad": "Advertisement",
+        "adCountdown": "seconds until closeable",
+        "close": "Close",
+        "back": "DopaBrain Home",
+        "copyright": "© 2026 DopaBrain"
+    }
+}

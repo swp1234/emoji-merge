@@ -68,6 +68,18 @@
     </div>
 
     <div class="container">
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button class="lang-btn" id="lang-toggle" aria-label="Language">🌐</button>
+            <div class="lang-menu hidden" id="lang-menu">
+                <button class="lang-option" data-lang="ko">한국어</button>
+                <button class="lang-option" data-lang="en">English</button>
+                <button class="lang-option" data-lang="zh">简体中文</button>
+                <button class="lang-option" data-lang="hi">हिन्दी</button>
+                <button class="lang-option" data-lang="ru">Русский</button>
+            </div>
+        </div>
+
         <!-- Ad Banner Top -->
         <div class="ad-banner ad-top">
             <span class="ad-placeholder">AD</span>
@@ -278,6 +290,7 @@
         </div>
     </div>
 
+    <script src="js/i18n.js"></script>
     <script src="js/game-data.js"></script>
     <script src="js/app.js"></script>
     <script>

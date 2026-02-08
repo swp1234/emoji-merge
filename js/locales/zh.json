@@ -1,0 +1,43 @@
+{
+    "app": {
+        "title": "表情符号合并 - 进化拼图游戏 | DopaBrain",
+        "description": "合并相同的表情符号来进化!🥚→🐣→🐥→🦅→🐉→👑 从蛋到龙，从种子到世界树!4条进化链。免费大脑拼图游戏!"
+    },
+    "game": {
+        "title": "表情符号合并",
+        "subtitle": "合并和进化表情符号",
+        "score": "分数",
+        "best": "最高",
+        "newGame": "新游戏",
+        "undo": "撤销",
+        "theme": "主题",
+        "gameOver": "进化完成！",
+        "finalScore": "分数",
+        "finalBest": "最高分数",
+        "finalMaxEmoji": "最大进化",
+        "retry": "重试",
+        "share": "分享结果",
+        "win": "达成最终进化！",
+        "continuePlay": "继续游戏",
+        "newAfterWin": "新游戏",
+        "selectChain": "选择进化链",
+        "close": "关闭",
+        "games": "游戏次数",
+        "maxEvolution": "最大进化",
+        "howToPlay": "游戏规则",
+        "swipe": "滑动",
+        "swipeDesc": "移动瓷砖",
+        "merge": "合并相同的表情符号以",
+        "mergeDesc": "进化",
+        "achieve": "实现",
+        "achieveDesc": "最终进化！",
+        "tryMore": "也尝试这些！",
+        "premium": "AI游戏分析",
+        "premiumPro": "专业版",
+        "ad": "广告",
+        "adCountdown": "秒后可关闭",
+        "close": "关闭",
+        "back": "DopaBrain主页",
+        "copyright": "© 2026 DopaBrain"
+    }
+}

@@ -1,6 +1,31 @@
 // === Emoji Merge - Evolution Puzzle Engine ===
-(function() {
+(async function() {
     'use strict';
+
+    // Initialize i18n
+    await i18n.loadTranslations(i18n.getCurrentLanguage());
+    i18n.updateUI();
+
+    const langToggle = document.getElementById('lang-toggle');
+    const langMenu = document.getElementById('lang-menu');
+    const langOptions = document.querySelectorAll('.lang-option');
+
+    document.querySelector(`[data-lang="${i18n.getCurrentLanguage()}"]`)?.classList.add('active');
+
+    langToggle?.addEventListener('click', () => langMenu.classList.toggle('hidden'));
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.language-selector')) langMenu?.classList.add('hidden');
+    });
+
+    langOptions.forEach(opt => {
+        opt.addEventListener('click', async () => {
+            await i18n.setLanguage(opt.getAttribute('data-lang'));
+            langOptions.forEach(o => o.classList.remove('active'));
+            opt.classList.add('active');
+            langMenu.classList.add('hidden');
+        });
+    });
 
     const SIZE = 4;
     const ANIM_MOVE_MS = 120;
@@ -546,7 +571,7 @@
 
     // === Ad ===
     function triggerInterstitialAd() {
-        console.log('[AD] Interstitial at move', moveCount);
+        showInterstitialAd();
     }
 
     // === Premium ===
