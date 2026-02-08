@@ -286,11 +286,12 @@
         if (score > bestScore) bestScore = score;
         moveCount++;
 
-        const currentMax = Math.max(...grid.flat());
+        const currentMax = Math.max(...grid.flat(), 0);
         if (currentMax > maxTileEver) maxTileEver = currentMax;
 
         // Animate
         animating = true;
+        let moveCompleted = false;
 
         // Use transitionend to safely complete animation
         let transitionCount = 0;
@@ -318,6 +319,8 @@
         const timeoutId = setTimeout(completeMove, ANIM_MOVE_MS + 50);
 
         function completeMove() {
+            if (moveCompleted) return;
+            moveCompleted = true;
             clearTimeout(timeoutId);
             try {
                 for (const merge of merges) {
@@ -357,11 +360,6 @@
         }
 
         if (moves.length > 0 && sfx) sfx.swoosh();
-
-        // If no moves, reset immediately
-        if (moves.length === 0) {
-            animating = false;
-        }
 
         return true;
     }
@@ -572,10 +570,7 @@
         mouseStartY = e.clientY;
         e.preventDefault();
     });
-    document.addEventListener('mousemove', (e) => {
-        if (mouseDown) e.preventDefault();
-    });
-    document.addEventListener('mouseup', (e) => {
+    board.addEventListener('mouseup', (e) => {
         if (!mouseDown) return;
         mouseDown = false;
         try {
@@ -798,7 +793,7 @@
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => renderAll(), 100);
+        resizeTimeout = setTimeout(() => { if (!animating) renderAll(); }, 100);
     });
 
     // === Init ===

@@ -326,7 +326,8 @@ body {
     backdrop-filter: blur(12px);
     border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);
-    padding: 8px 10px;
+    padding: 10px 12px;
+    min-height: 44px;
     color: var(--text-secondary);
     font-size: 12px;
     font-weight: 600;
@@ -1057,6 +1058,12 @@ body {
 .lang-option.active {
     background: rgba(6, 182, 212, 0.3);
     font-weight: 600;
+}
+
+/* === Focus Visible === */
+*:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 /* === Utility === */
