@@ -661,7 +661,7 @@
         const maxVal = Math.max(...grid.flat());
         const titleInfo = getTitleForScore(score);
         const chain = EVOLUTION_CHAINS[currentChain];
-        const text = `이모지 머지 - 진화 퍼즐\n체인: ${chain.name}\n최고 진화: ${getEmoji(maxVal)}\n점수: ${score.toLocaleString()}\n칭호: ${titleInfo.title}\n\nhttps://swp1234.github.io/emoji-merge/`;
+        const text = `이모지 머지 - 진화 퍼즐\n체인: ${chain.name}\n최고 진화: ${getEmoji(maxVal)}\n점수: ${score.toLocaleString()}\n칭호: ${titleInfo.title}\n\nhttps://dopabrain.com/emoji-merge/`;
         if (navigator.share) {
             navigator.share({ title: '이모지 머지 결과', text });
         } else if (navigator.clipboard) {
