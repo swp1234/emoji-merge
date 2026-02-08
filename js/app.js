@@ -348,7 +348,7 @@
                     setTimeout(() => showGameOver(), 300);
                 }
 
-                if (moveCount > 0 && moveCount % 20 === 0) triggerInterstitialAd();
+                if (moveCount > 0 && moveCount % 50 === 0) triggerInterstitialAd();
             } catch(e) {
                 console.error('Animation callback error:', e);
             } finally {
@@ -624,37 +624,62 @@
     }
 
     // === Premium ===
+    let adTimer = null;
+    let adCloseHandler = null;
+
     function showInterstitialAd() {
         return new Promise((resolve) => {
             const overlay = document.getElementById('interstitial-overlay');
             const closeBtn = document.getElementById('btn-close-ad');
             const countdown1 = document.getElementById('ad-countdown');
-            const countdown2 = document.getElementById('ad-countdown-btn');
+
+            // Clean up any previous ad state
+            if (adTimer) { clearInterval(adTimer); adTimer = null; }
+            if (adCloseHandler) {
+                closeBtn.removeEventListener('click', adCloseHandler);
+                adCloseHandler = null;
+            }
 
             overlay.classList.remove('hidden');
             closeBtn.disabled = true;
-            closeBtn.textContent = '닫기 (5)';
             let seconds = 5;
-            countdown1.textContent = seconds;
-            countdown2.textContent = seconds;
 
-            const timer = setInterval(() => {
+            // Update countdown displays safely
+            function updateCountdown(sec) {
+                if (countdown1) countdown1.textContent = sec;
+                const btnCountdown = document.getElementById('ad-countdown-btn');
+                if (btnCountdown) btnCountdown.textContent = sec;
+            }
+
+            updateCountdown(seconds);
+
+            adTimer = setInterval(() => {
                 seconds--;
-                countdown1.textContent = seconds;
-                countdown2.textContent = seconds;
-                closeBtn.textContent = `닫기 (${seconds})`;
+                updateCountdown(seconds);
                 if (seconds <= 0) {
-                    clearInterval(timer);
+                    clearInterval(adTimer);
+                    adTimer = null;
                     closeBtn.disabled = false;
-                    closeBtn.textContent = '닫기';
                 }
             }, 1000);
 
-            closeBtn.addEventListener('click', function handler() {
-                closeBtn.removeEventListener('click', handler);
+            // Fallback: force-enable close button after 6 seconds
+            const fallbackTimeout = setTimeout(() => {
+                if (adTimer) { clearInterval(adTimer); adTimer = null; }
+                closeBtn.disabled = false;
+            }, 6500);
+
+            function closeAd() {
+                clearTimeout(fallbackTimeout);
+                if (adTimer) { clearInterval(adTimer); adTimer = null; }
+                closeBtn.removeEventListener('click', closeAd);
+                adCloseHandler = null;
                 overlay.classList.add('hidden');
                 resolve();
-            });
+            }
+
+            adCloseHandler = closeAd;
+            closeBtn.addEventListener('click', closeAd);
         });
     }
 
