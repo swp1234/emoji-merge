@@ -292,19 +292,33 @@
         // Animate
         animating = true;
 
+        // Use transitionend to safely complete animation
+        let transitionCount = 0;
+        const totalTransitions = moves.length;
+
+        const onTransitionEnd = () => {
+            transitionCount++;
+            if (transitionCount >= totalTransitions) {
+                completeMove();
+            }
+        };
+
         for (const m of moves) {
             const el = tileElements[m.id];
             if (el) {
                 const pos = positionFor(m.toR, m.toC);
                 el.style.transition = `top ${ANIM_MOVE_MS}ms ease, left ${ANIM_MOVE_MS}ms ease`;
+                el.addEventListener('transitionend', onTransitionEnd, { once: true });
                 el.style.top = pos.top + 'px';
                 el.style.left = pos.left + 'px';
             }
         }
 
-        if (moves.length > 0 && sfx) sfx.swoosh();
+        // Fallback timeout in case transitionend doesn't fire
+        const timeoutId = setTimeout(completeMove, ANIM_MOVE_MS + 50);
 
-        setTimeout(() => {
+        function completeMove() {
+            clearTimeout(timeoutId);
             try {
                 for (const merge of merges) {
                     for (const oldId of merge.fromIds) removeTileEl(oldId);
@@ -340,7 +354,14 @@
             } finally {
                 animating = false;
             }
-        }, ANIM_MOVE_MS + 10);
+        }
+
+        if (moves.length > 0 && sfx) sfx.swoosh();
+
+        // If no moves, reset immediately
+        if (moves.length === 0) {
+            animating = false;
+        }
 
         return true;
     }
@@ -521,16 +542,22 @@
     const board = document.getElementById('game-board');
 
     board.addEventListener('touchstart', (e) => {
-        if (e.touches.length !== 1) return;
+        if (e.touches.length !== 1) {
+            touchActive = false;
+            return;
+        }
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
         touchActive = true;
     }, { passive: true });
 
-    board.addEventListener('touchmove', (e) => { if (touchActive) e.preventDefault(); }, { passive: false });
+    board.addEventListener('touchmove', (e) => { if (touchActive && e.touches.length === 1) e.preventDefault(); }, { passive: false });
 
     board.addEventListener('touchend', (e) => {
-        if (!touchActive) return;
+        if (!touchActive || e.changedTouches.length === 0) {
+            touchActive = false;
+            return;
+        }
         touchActive = false;
         const dx = e.changedTouches[0].clientX - touchStartX;
         const dy = e.changedTouches[0].clientY - touchStartY;
@@ -539,15 +566,27 @@
     }, { passive: true });
 
     let mouseDown = false, mouseStartX = 0, mouseStartY = 0;
-    board.addEventListener('mousedown', (e) => { mouseDown = true; mouseStartX = e.clientX; mouseStartY = e.clientY; e.preventDefault(); });
-    document.addEventListener('mousemove', (e) => { if (mouseDown) e.preventDefault(); });
+    board.addEventListener('mousedown', (e) => {
+        mouseDown = true;
+        mouseStartX = e.clientX;
+        mouseStartY = e.clientY;
+        e.preventDefault();
+    });
+    document.addEventListener('mousemove', (e) => {
+        if (mouseDown) e.preventDefault();
+    });
     document.addEventListener('mouseup', (e) => {
         if (!mouseDown) return;
         mouseDown = false;
-        const dx = e.clientX - mouseStartX;
-        const dy = e.clientY - mouseStartY;
-        if (Math.max(Math.abs(dx), Math.abs(dy)) < 30) return;
-        move(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+        try {
+            const dx = e.clientX - mouseStartX;
+            const dy = e.clientY - mouseStartY;
+            if (Math.max(Math.abs(dx), Math.abs(dy)) < 30) return;
+            move(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+        } catch(e) {
+            console.error('Mouse move error:', e);
+            mouseDown = false;
+        }
     });
 
     // === Chain Selection ===
