@@ -348,7 +348,7 @@
                     setTimeout(() => showGameOver(), 300);
                 }
 
-                if (moveCount > 0 && moveCount % 50 === 0) triggerInterstitialAd();
+                if (moveCount > 0 && moveCount % 100 === 0) triggerInterstitialAd();
             } catch(e) {
                 console.error('Animation callback error:', e);
             } finally {
