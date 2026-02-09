@@ -4,10 +4,19 @@
 class SoundEngine {
     constructor() {
         this.ctx = null;
-        this.enabled = localStorage.getItem('sfx_enabled') !== 'false';
+        this.enabled = this._loadSoundEnabled();
         this.volume = 0.3;
         this.masterGain = null;
         this.initialized = false;
+    }
+
+    _loadSoundEnabled() {
+        try {
+            return localStorage.getItem('sfx_enabled') !== 'false';
+        } catch (e) {
+            console.warn('localStorage not available (private/incognito mode)', e);
+            return true;
+        }
     }
 
     // Initialize AudioContext on first user interaction
@@ -29,7 +38,11 @@ class SoundEngine {
     // Save preference
     toggle() {
         this.enabled = !this.enabled;
-        localStorage.setItem('sfx_enabled', this.enabled);
+        try {
+            localStorage.setItem('sfx_enabled', this.enabled);
+        } catch (e) {
+            console.warn('Could not save sound preference', e);
+        }
         if (this.masterGain) {
             this.masterGain.gain.setValueAtTime(this.enabled ? this.volume : 0, this.ctx.currentTime);
         }
