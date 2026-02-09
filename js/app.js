@@ -305,7 +305,15 @@
         const cells = emptyCells();
         if (cells.length === 0) return null;
         const cell = cells[Math.floor(Math.random() * cells.length)];
-        const value = Math.random() < 0.9 ? 2 : 4;
+        // Improved difficulty curve: always spawn 2 early game, then gradually 90%
+        // First 5 moves: 100% chance of 2 (easier early game for flow state)
+        // Moves 6-15: 95% chance of 2
+        // Moves 15+: 90% chance of 2 (normal difficulty)
+        let prob2 = 0.9;
+        if (moveCount <= 5) prob2 = 1.0;
+        else if (moveCount <= 15) prob2 = 0.95;
+
+        const value = Math.random() < prob2 ? 2 : 4;
         grid[cell.r][cell.c] = value;
         const id = nextTileId++;
         tileMap[cell.r][cell.c] = id;
