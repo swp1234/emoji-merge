@@ -1710,3 +1710,13 @@ body {
 
 /* === Utility === */
 .hidden { display: none !important; }
+
+/* === Accessibility Improvements === */
+button:focus-visible,a:focus-visible,input:focus-visible,[role="button"]:focus-visible{outline:3px solid #00b894;outline-offset:2px;}
+button,a[href],input[type="button"],input[type="submit"],[role="button"]{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;}
+.skip-link{position:absolute;top:-40px;left:0;background:#00b894;color:white;padding:8px;text-decoration:none;z-index:100;}
+.skip-link:focus{top:0;}
+[role="dialog"]{z-index:1000;}
+@media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}}
+@media (prefers-contrast: more){button{border:2px solid #00b894;}}
+.game-card:focus-visible{outline:3px solid #00b894;outline-offset:4px;}

@@ -46,7 +46,9 @@
         "emotionName": "감정 온도계",
         "emotionDesc": "나의 감정 온도는?",
         "pastLifeName": "전생 직업",
-        "pastLifeDesc": "나의 전생 직업은?"
+        "pastLifeDesc": "나의 전생 직업은?",
+        "colorMemoryName": "색상 기억력",
+        "colorMemoryDesc": "기억력 도전 게임"
     },
     "premium": {
         "currentScore": "현재 점수",
