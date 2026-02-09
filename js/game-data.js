@@ -91,6 +91,7 @@ function getTitleForScore(score) {
 
 // Stage system for progression
 const STAGES = [
+    { value: 128, name: '도입', emoji: '🌤️', bonus: 200, desc: '128 달성' },
     { value: 256, name: '입문', emoji: '🌱', bonus: 500, desc: '256 달성' },
     { value: 512, name: '중급', emoji: '🌳', bonus: 1000, desc: '512 달성' },
     { value: 1024, name: '고급', emoji: '🌲', bonus: 2000, desc: '1024 달성' },

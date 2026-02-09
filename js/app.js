@@ -433,7 +433,7 @@
     function updateEvolutionBar() {
         const chain = EVOLUTION_CHAINS[currentChain];
         if (!chain) return;
-        const values = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
+        const values = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096];  // IMPROVED: Added 4096 milestone
         const maxInGrid = Math.max(...grid.flat(), 0);
 
         let nextTargetIdx = -1;
