@@ -46,7 +46,9 @@
         "emotionName": "Duygu Termometresi",
         "emotionDesc": "Senin duygu sıcaklığın nedir?",
         "pastLifeName": "Önceki Yaşam Mesleği",
-        "pastLifeDesc": "Önceki hayatında ne iş yapıyordun?"
+        "pastLifeDesc": "Önceki hayatında ne iş yapıyordun?",
+        "colorMemoryName": "Renk Belleği",
+        "colorMemoryDesc": "Bellek Meydan Okuma Oyunu"
     },
     "premium": {
         "currentScore": "Mevcut Puan",
