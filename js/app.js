@@ -52,6 +52,12 @@
     let currentChain = 'animal';
     let moveCount = 0;
 
+    // Leaderboard system
+    let leaderboard = null;
+    if (typeof LeaderboardManager !== 'undefined') {
+        leaderboard = new LeaderboardManager('emoji-merge', 10);
+    }
+
     // Dopamine enhancements
     let mergeCombo = 0;
     let lastMergeScore = 0;
@@ -752,6 +758,22 @@
         triggerScreenFlash('flash-danger', 300);
         mergeCombo = 0; // Reset combo on game over
 
+        // Add score to leaderboard
+        if (leaderboard) {
+            const leaderboardResult = leaderboard.addScore(score, {
+                chain: currentChain,
+                moves: moveCount,
+                maxTile: maxVal
+            });
+
+            if (leaderboardResult.isNewRecord) {
+                bestScore = score;
+            }
+
+            // Display leaderboard
+            displayEmojiMergeLeaderboard(leaderboardResult);
+        }
+
         gameOverOverlay.classList.remove('hidden');
         if (typeof gtag === 'function')
             gtag('event', 'game_over', { event_category: 'emoji_merge', score, max_tile: maxVal, chain: currentChain, moves: moveCount });
@@ -1332,6 +1354,39 @@
 
         if (typeof gtag === 'function')
             gtag('event', 'page_view', { page_title: '이모지 머지', page_location: window.location.href });
+    }
+
+    function displayEmojiMergeLeaderboard(leaderboardResult) {
+        if (!leaderboard) return;
+
+        let leaderboardContainer = document.querySelector('.leaderboard-section');
+        if (!leaderboardContainer) {
+            leaderboardContainer = document.createElement('div');
+            leaderboardContainer.className = 'leaderboard-section';
+            gameOverOverlay.appendChild(leaderboardContainer);
+        }
+
+        const topScores = leaderboard.getTopScores(5);
+        let html = '<div class="leaderboard-title">🏆 Top 5 Scores</div>';
+        html += '<div class="leaderboard-list">';
+
+        topScores.forEach((entry, index) => {
+            const medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
+            const isCurrentScore = entry.score === score && leaderboardResult.isNewRecord;
+            const classes = isCurrentScore ? 'leaderboard-item highlight' : 'leaderboard-item';
+
+            html += `
+                <div class="${classes}">
+                    <span class="medal">${medals[index] || (index + 1) + '.'}</span>
+                    <span class="score-value">${entry.score}</span>
+                    <span class="score-date">${entry.date}</span>
+                </div>
+            `;
+        });
+
+        html += '</div>';
+
+        leaderboardContainer.innerHTML = html;
     }
 
     init();
