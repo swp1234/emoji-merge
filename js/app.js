@@ -2,9 +2,13 @@
 (async function() {
     'use strict';
 
-    // Initialize i18n
-    await i18n.loadTranslations(i18n.getCurrentLanguage());
-    i18n.updateUI();
+    // Initialize i18n with error handling
+    try {
+        await i18n.loadTranslations(i18n.getCurrentLanguage());
+        i18n.updateUI();
+    } catch (e) {
+        console.warn('i18n load failed:', e.message);
+    }
 
     const langToggle = document.getElementById('lang-toggle');
     const langMenu = document.getElementById('lang-menu');
@@ -811,51 +815,68 @@
     // === Persistence ===
     function saveState() {
         try {
+            if (typeof localStorage === 'undefined') return;
             localStorage.setItem('emojiMerge', JSON.stringify({
                 grid, tileMap, nextTileId, score, bestScore,
                 totalGames, maxTileEver, won, keepPlaying,
                 gameOver, currentChain, moveCount, reachedStages,
                 discoveredEmojis, totalMerges, mergeHistory, dailyChallenges, milestoneRewards
             }));
-        } catch (e) {}
+        } catch (e) {
+            console.warn('Could not save game state:', e.message);
+        }
     }
 
     function loadState() {
         try {
-            const saved = localStorage.getItem('emojiMerge');
-            if (saved) {
-                const s = JSON.parse(saved);
-                grid = s.grid || createEmpty();
-                tileMap = s.tileMap || createEmpty();
-                nextTileId = s.nextTileId || 1;
-                score = s.score || 0;
-                bestScore = s.bestScore || 0;
-                totalGames = s.totalGames || 0;
-                maxTileEver = s.maxTileEver || 0;
-                won = s.won || false;
-                keepPlaying = s.keepPlaying || false;
-                gameOver = s.gameOver || false;
-                currentChain = s.currentChain || 'animal';
-                if (!EVOLUTION_CHAINS[currentChain]) currentChain = 'animal';
-                moveCount = s.moveCount || 0;
-                reachedStages = s.reachedStages || {};
-                discoveredEmojis = s.discoveredEmojis || {};
-                totalMerges = s.totalMerges || 0;
-                mergeHistory = s.mergeHistory || [];
-                dailyChallenges = s.dailyChallenges || {};
-                milestoneRewards = s.milestoneRewards || {};
+            if (typeof localStorage === 'undefined') return false;
 
-                if (!tileMap || tileMap.length !== SIZE) {
-                    tileMap = createEmpty();
-                    for (let r = 0; r < SIZE; r++)
-                        for (let c = 0; c < SIZE; c++)
-                            if (grid[r][c] !== 0)
-                                tileMap[r][c] = nextTileId++;
-                }
-                return true;
+            const saved = localStorage.getItem('emojiMerge');
+            if (!saved) return false;
+
+            let s = null;
+            try {
+                s = JSON.parse(saved);
+            } catch (parseErr) {
+                console.warn('Save data corrupted:', parseErr.message);
+                localStorage.removeItem('emojiMerge');
+                return false;
             }
-        } catch (e) {}
-        return false;
+
+            if (!s || typeof s !== 'object') return false;
+
+            grid = s.grid || createEmpty();
+            tileMap = s.tileMap || createEmpty();
+            nextTileId = (s.nextTileId && !isNaN(s.nextTileId)) ? s.nextTileId : 1;
+            score = (s.score && !isNaN(s.score)) ? s.score : 0;
+            bestScore = (s.bestScore && !isNaN(s.bestScore)) ? s.bestScore : 0;
+            totalGames = (s.totalGames && !isNaN(s.totalGames)) ? s.totalGames : 0;
+            maxTileEver = (s.maxTileEver && !isNaN(s.maxTileEver)) ? s.maxTileEver : 0;
+            won = !!s.won;
+            keepPlaying = !!s.keepPlaying;
+            gameOver = !!s.gameOver;
+            currentChain = s.currentChain || 'animal';
+            if (!EVOLUTION_CHAINS[currentChain]) currentChain = 'animal';
+            moveCount = (s.moveCount && !isNaN(s.moveCount)) ? s.moveCount : 0;
+            reachedStages = s.reachedStages || {};
+            discoveredEmojis = s.discoveredEmojis || {};
+            totalMerges = (s.totalMerges && !isNaN(s.totalMerges)) ? s.totalMerges : 0;
+            mergeHistory = Array.isArray(s.mergeHistory) ? s.mergeHistory : [];
+            dailyChallenges = s.dailyChallenges || {};
+            milestoneRewards = s.milestoneRewards || {};
+
+            if (!tileMap || tileMap.length !== SIZE) {
+                tileMap = createEmpty();
+                for (let r = 0; r < SIZE; r++)
+                    for (let c = 0; c < SIZE; c++)
+                        if (grid[r] && grid[r][c] !== 0)
+                            tileMap[r][c] = nextTileId++;
+            }
+            return true;
+        } catch (e) {
+            console.warn('Error loading game state:', e.message);
+            return false;
+        }
     }
 
     // === Input ===
