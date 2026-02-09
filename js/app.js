@@ -53,6 +53,13 @@
     let lastMergeScore = 0;
     let reachedStages = {}; // Track which stages have been reached
 
+    // Collection & Analytics
+    let discoveredEmojis = {}; // Track discovered emoji values
+    let totalMerges = 0; // Total merge count for milestone tracking
+    let mergeHistory = []; // Last 5 merges
+    let dailyChallenges = {}; // Daily challenge tracking
+    let milestoneRewards = {}; // Milestone achievements
+
     // DOM
     const tilesContainer = document.getElementById('tiles-container');
     const currentScoreEl = document.getElementById('current-score');
@@ -81,6 +88,110 @@
     function getMaxReachedEmoji() {
         if (maxTileEver === 0) return '-';
         return getEmoji(maxTileEver);
+    }
+
+    // === Collection & Discovery System ===
+    function updateDiscoveredEmojis() {
+        for (let r = 0; r < SIZE; r++) {
+            for (let c = 0; c < SIZE; c++) {
+                if (grid[r][c] > 0) {
+                    discoveredEmojis[grid[r][c]] = true;
+                }
+            }
+        }
+    }
+
+    function getCollectionStats() {
+        const chain = EVOLUTION_CHAINS[currentChain];
+        const allValues = Object.keys(chain.map).map(Number).sort((a, b) => a - b);
+        const discovered = allValues.filter(v => discoveredEmojis[v]).length;
+        const percentage = Math.round((discovered / allValues.length) * 100);
+        return { discovered, total: allValues.length, percentage, allValues };
+    }
+
+    function trackMerge(fromValue, toValue) {
+        totalMerges++;
+        mergeHistory.unshift({ from: fromValue, to: toValue, time: Date.now() });
+        if (mergeHistory.length > 5) mergeHistory.pop();
+
+        // Update daily challenge
+        const today = new Date().toDateString();
+        if (!dailyChallenges[today]) {
+            dailyChallenges[today] = {
+                goal: getDailyGoal(),
+                progress: 0,
+                completed: false
+            };
+        }
+
+        // Check if daily challenge is completed
+        const dailyGoal = dailyChallenges[today].goal;
+        if (dailyGoal.type === 'merges') {
+            dailyChallenges[today].progress = totalMerges;
+            if (totalMerges >= dailyGoal.target && !dailyChallenges[today].completed) {
+                dailyChallenges[today].completed = true;
+                showDailyChallengeComplete(dailyGoal);
+            }
+        }
+    }
+
+    function getDailyGoal() {
+        const today = new Date();
+        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+        const goalTypes = [
+            { type: 'merges', targets: [10, 20, 30] },
+            { type: 'maxValue', targets: [256, 512, 1024] },
+            { type: 'score', targets: [1000, 2000, 5000] }
+        ];
+
+        const goalType = goalTypes[seed % goalTypes.length];
+        const target = goalType.targets[Math.floor(seed / goalTypes.length) % goalType.targets.length];
+
+        return { type: goalType.type, target, seed };
+    }
+
+    function checkMilestones() {
+        const milestones = [10, 50, 100, 500, 1000];
+        for (const milestone of milestones) {
+            if (totalMerges === milestone && !milestoneRewards[milestone]) {
+                milestoneRewards[milestone] = true;
+                score += milestone * 10;
+                showMilestoneReward(milestone);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function showMilestoneReward(milestone) {
+        const badge = document.createElement('div');
+        badge.className = 'milestone-reward-badge';
+        badge.innerHTML = `
+            <div class="milestone-emoji">🏅</div>
+            <div class="milestone-text">${i18n.t('collection.milestoneReached')}</div>
+            <div class="milestone-count">${milestone} ${i18n.t('collection.merges')}</div>
+            <div class="milestone-bonus">+${milestone * 10} ${i18n.t('game.score')}</div>
+        `;
+        document.body.appendChild(badge);
+        triggerScreenFlash('flash-success', 400);
+        triggerScreenShake(300);
+        if (sfx) sfx.levelUp();
+        setTimeout(() => badge.remove(), 2500);
+    }
+
+    function showDailyChallengeComplete(goal) {
+        const banner = document.createElement('div');
+        banner.className = 'daily-challenge-complete';
+        const goalText = goal.type === 'merges' ? `${goal.target} ${i18n.t('collection.merges')}` :
+                        goal.type === 'maxValue' ? `${getEmoji(goal.target)} ${i18n.t('collection.create')}` :
+                        `${goal.target} ${i18n.t('game.score')}`;
+        banner.innerHTML = `
+            <span class="icon">⭐</span>
+            <div>${i18n.t('collection.dailyComplete')}: ${goalText}</div>
+        `;
+        document.body.appendChild(banner);
+        if (sfx) sfx.levelUp();
+        setTimeout(() => banner.remove(), 3000);
     }
 
     // === Position Calculations ===
@@ -294,6 +405,13 @@
         // Dopamine effects on move
         mergeCombo++;
         lastMergeScore = scoreGain;
+
+        // Track merges and discoveries
+        for (const merge of merges) {
+            trackMerge(merge.fromIds[0], merge.newValue);
+            updateDiscoveredEmojis();
+            checkMilestones();
+        }
 
         const currentMax = Math.max(...grid.flat(), 0);
         if (currentMax > maxTileEver) maxTileEver = currentMax;
@@ -670,6 +788,7 @@
         spawnTile(false);
         updateScoreDisplay();
         updateEvolutionBar();
+        updateCollectionUI();
         saveState();
     }
 
@@ -695,7 +814,8 @@
             localStorage.setItem('emojiMerge', JSON.stringify({
                 grid, tileMap, nextTileId, score, bestScore,
                 totalGames, maxTileEver, won, keepPlaying,
-                gameOver, currentChain, moveCount, reachedStages
+                gameOver, currentChain, moveCount, reachedStages,
+                discoveredEmojis, totalMerges, mergeHistory, dailyChallenges, milestoneRewards
             }));
         } catch (e) {}
     }
@@ -719,6 +839,11 @@
                 if (!EVOLUTION_CHAINS[currentChain]) currentChain = 'animal';
                 moveCount = s.moveCount || 0;
                 reachedStages = s.reachedStages || {};
+                discoveredEmojis = s.discoveredEmojis || {};
+                totalMerges = s.totalMerges || 0;
+                mergeHistory = s.mergeHistory || [];
+                dailyChallenges = s.dailyChallenges || {};
+                milestoneRewards = s.milestoneRewards || {};
 
                 if (!tileMap || tileMap.length !== SIZE) {
                     tileMap = createEmpty();
@@ -788,6 +913,166 @@
             mouseDown = false;
         }
     });
+
+    // === Collection UI ===
+    function updateCollectionUI() {
+        const stats = getCollectionStats();
+        const collectionBtn = document.getElementById('btn-collection');
+        if (collectionBtn) {
+            collectionBtn.innerHTML = `
+                <span style="font-size:16px">📖</span>
+                <span data-i18n="collection.title">도감</span>
+                <span class="collection-badge">${stats.discovered}/${stats.total}</span>
+            `;
+        }
+    }
+
+    function showCollectionModal() {
+        const stats = getCollectionStats();
+        const chain = EVOLUTION_CHAINS[currentChain];
+        const modal = document.createElement('div');
+        modal.className = 'modal hidden collection-modal';
+        modal.id = 'collection-modal';
+
+        const collectionGrid = stats.allValues.map(value => {
+            const discovered = discoveredEmojis[value];
+            const emoji = discovered ? chain.map[value] : '?';
+            const name = discovered ? `${chain.map[value]} Lv.${Math.log2(value).toFixed(0)}` : '???';
+            return `
+                <div class="collection-item${discovered ? ' discovered' : ''}">
+                    <div class="collection-emoji">${emoji}</div>
+                    <div class="collection-name">${name}</div>
+                </div>
+            `;
+        }).join('');
+
+        modal.innerHTML = `
+            <div class="modal-backdrop" id="collection-backdrop"></div>
+            <div class="modal-content collection-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" data-i18n="collection.title">이모지 도감</h3>
+                    <div class="collection-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${stats.percentage}%"></div>
+                        </div>
+                        <div class="progress-text">${stats.discovered}/${stats.total} (${stats.percentage}%)</div>
+                    </div>
+                </div>
+                <div class="collection-grid">${collectionGrid}</div>
+                <button class="modal-close" id="collection-close" data-i18n="game.close">닫기</button>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        setTimeout(() => modal.classList.remove('hidden'), 10);
+
+        document.getElementById('collection-backdrop').addEventListener('click', () => {
+            modal.remove();
+        });
+        document.getElementById('collection-close').addEventListener('click', () => {
+            modal.remove();
+        });
+    }
+
+    function showMergeHistoryModal() {
+        const modal = document.createElement('div');
+        modal.className = 'modal hidden history-modal';
+        modal.id = 'history-modal';
+
+        const historyItems = mergeHistory.length > 0 ? mergeHistory.map((item, i) => `
+            <div class="history-item">
+                <span class="history-emoji">${getEmoji(item.from)}</span>
+                <span class="history-arrow">→</span>
+                <span class="history-emoji">${getEmoji(item.to)}</span>
+                <span class="history-time">${new Date(item.time).toLocaleTimeString()}</span>
+            </div>
+        `).join('') : `<p class="history-empty" data-i18n="collection.noHistory">합성 기록이 없습니다</p>`;
+
+        const maxEmoji = Object.keys(discoveredEmojis).length > 0 ?
+            getEmoji(Math.max(...Object.keys(discoveredEmojis).map(Number))) : '-';
+
+        modal.innerHTML = `
+            <div class="modal-backdrop" id="history-backdrop"></div>
+            <div class="modal-content history-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" data-i18n="collection.recentMerges">최근 합성</h3>
+                </div>
+                <div class="history-stats">
+                    <div class="history-stat">
+                        <span class="stat-label" data-i18n="collection.totalMerges">총 합성</span>
+                        <span class="stat-value">${totalMerges}</span>
+                    </div>
+                    <div class="history-stat">
+                        <span class="stat-label" data-i18n="collection.maxEmoji">최고 이모지</span>
+                        <span class="stat-value">${maxEmoji}</span>
+                    </div>
+                </div>
+                <div class="history-list">${historyItems}</div>
+                <button class="modal-close" id="history-close" data-i18n="game.close">닫기</button>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        setTimeout(() => modal.classList.remove('hidden'), 10);
+
+        document.getElementById('history-backdrop').addEventListener('click', () => {
+            modal.remove();
+        });
+        document.getElementById('history-close').addEventListener('click', () => {
+            modal.remove();
+        });
+    }
+
+    function showDailyChallengeModal() {
+        const today = new Date().toDateString();
+        const challenge = dailyChallenges[today] || { goal: getDailyGoal(), progress: 0, completed: false };
+        const goal = challenge.goal;
+        const progress = challenge.progress;
+        const isCompleted = challenge.completed;
+
+        const goalText = goal.type === 'merges' ? `${goal.target} ${i18n.t('collection.merges')}` :
+                        goal.type === 'maxValue' ? `${getEmoji(goal.target)} ${i18n.t('collection.create')}` :
+                        `${goal.target} ${i18n.t('game.score')}`;
+
+        const progressPercent = Math.min(100, Math.round((progress / (goal.type === 'merges' ? goal.target : goal.target)) * 100));
+
+        const modal = document.createElement('div');
+        modal.className = 'modal hidden daily-modal';
+        modal.id = 'daily-modal';
+
+        modal.innerHTML = `
+            <div class="modal-backdrop" id="daily-backdrop"></div>
+            <div class="modal-content daily-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" data-i18n="collection.dailyChallenge">일일 도전</h3>
+                </div>
+                <div class="daily-challenge-container">
+                    <div class="daily-goal">
+                        <span class="goal-icon">⭐</span>
+                        <span class="goal-text">${goalText}</span>
+                    </div>
+                    <div class="daily-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progressPercent}%"></div>
+                        </div>
+                        <div class="progress-text">${progress}/${goal.type === 'merges' ? goal.target : goal.target}</div>
+                    </div>
+                    ${isCompleted ? `<div class="daily-badge">✅ ${i18n.t('collection.dailyComplete')}</div>` : ''}
+                </div>
+                <button class="modal-close" id="daily-close" data-i18n="game.close">닫기</button>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        setTimeout(() => modal.classList.remove('hidden'), 10);
+
+        document.getElementById('daily-backdrop').addEventListener('click', () => {
+            modal.remove();
+        });
+        document.getElementById('daily-close').addEventListener('click', () => {
+            modal.remove();
+        });
+    }
 
     // === Chain Selection ===
     function renderChainGrid() {
@@ -1007,11 +1292,23 @@
         if (loaded && grid.flat().some(v => v > 0) && !gameOver) {
             renderAll();
             updateScoreDisplay();
+            updateDiscoveredEmojis();
         } else {
             newGame();
         }
         updateEvolutionBar();
         updateStats();
+        updateCollectionUI();
+
+        // Setup collection UI event listeners
+        const collectionBtn = document.getElementById('btn-collection');
+        const historyBtn = document.getElementById('btn-history');
+        const dailyBtn = document.getElementById('btn-daily');
+
+        if (collectionBtn) collectionBtn.addEventListener('click', showCollectionModal);
+        if (historyBtn) historyBtn.addEventListener('click', showMergeHistoryModal);
+        if (dailyBtn) dailyBtn.addEventListener('click', showDailyChallengeModal);
+
         if (typeof gtag === 'function')
             gtag('event', 'page_view', { page_title: '이모지 머지', page_location: window.location.href });
     }

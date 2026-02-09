@@ -76,5 +76,17 @@
         "advanced": "Avançado",
         "master": "Mestre",
         "legend": "Lenda"
+    },
+    "collection": {
+        "title": "Coleção",
+        "recentMerges": "Mesclagens Recentes",
+        "dailyChallenge": "Desafio Diário",
+        "merges": "mesclagens",
+        "create": "criar",
+        "totalMerges": "Total de Mesclagens",
+        "maxEmoji": "Emoji Máximo",
+        "noHistory": "Sem histórico de mesclagem ainda",
+        "milestoneReached": "Marco Alcançado!",
+        "dailyComplete": "Desafio Diário Concluído"
     }
 }

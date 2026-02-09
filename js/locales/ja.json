@@ -76,5 +76,17 @@
         "advanced": "上級",
         "master": "マスター",
         "legend": "レジェンド"
+    },
+    "collection": {
+        "title": "図鑑",
+        "recentMerges": "最近のマージ",
+        "dailyChallenge": "毎日チャレンジ",
+        "merges": "マージ",
+        "create": "作成",
+        "totalMerges": "合計マージ数",
+        "maxEmoji": "最高絵文字",
+        "noHistory": "マージ履歴がまだありません",
+        "milestoneReached": "マイルストーン達成！",
+        "dailyComplete": "毎日チャレンジ完了"
     }
 }

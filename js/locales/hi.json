@@ -76,5 +76,17 @@
         "advanced": "उन्नत",
         "master": "मास्टर",
         "legend": "किंवदंती"
+    },
+    "collection": {
+        "title": "संग्रह",
+        "recentMerges": "हाल की मर्ज",
+        "dailyChallenge": "दैनिक चुनौती",
+        "merges": "मर्ज",
+        "create": "बनाएँ",
+        "totalMerges": "कुल मर्ज",
+        "maxEmoji": "सर्वोच्च इमोजी",
+        "noHistory": "अभी तक कोई मर्ज इतिहास नहीं",
+        "milestoneReached": "मील का पत्थर पहुंचा!",
+        "dailyComplete": "दैनिक चुनौती पूर्ण"
     }
 }

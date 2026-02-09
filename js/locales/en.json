@@ -76,5 +76,17 @@
         "advanced": "Advanced",
         "master": "Master",
         "legend": "Legend"
+    },
+    "collection": {
+        "title": "Collection",
+        "recentMerges": "Recent Merges",
+        "dailyChallenge": "Daily Challenge",
+        "merges": "merges",
+        "create": "create",
+        "totalMerges": "Total Merges",
+        "maxEmoji": "Highest Emoji",
+        "noHistory": "No merge history yet",
+        "milestoneReached": "Milestone Reached!",
+        "dailyComplete": "Daily Challenge Complete"
     }
 }

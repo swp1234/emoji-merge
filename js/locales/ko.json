@@ -76,5 +76,17 @@
         "advanced": "고급",
         "master": "마스터",
         "legend": "전설"
+    },
+    "collection": {
+        "title": "도감",
+        "recentMerges": "최근 합성",
+        "dailyChallenge": "일일 도전",
+        "merges": "합성",
+        "create": "생성",
+        "totalMerges": "총 합성 횟수",
+        "maxEmoji": "최고 이모지",
+        "noHistory": "합성 기록이 없습니다",
+        "milestoneReached": "마일스톤 달성!",
+        "dailyComplete": "일일 도전 완료"
     }
 }

@@ -76,5 +76,17 @@
         "advanced": "高级",
         "master": "大师",
         "legend": "传说"
+    },
+    "collection": {
+        "title": "图鉴",
+        "recentMerges": "最近合并",
+        "dailyChallenge": "每日挑战",
+        "merges": "合并",
+        "create": "创建",
+        "totalMerges": "总合并数",
+        "maxEmoji": "最高表情符号",
+        "noHistory": "还没有合并历史",
+        "milestoneReached": "达成里程碑！",
+        "dailyComplete": "每日挑战完成"
     }
 }

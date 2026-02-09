@@ -76,5 +76,17 @@
         "advanced": "Fortgeschrittene",
         "master": "Meister",
         "legend": "Legende"
+    },
+    "collection": {
+        "title": "Sammlung",
+        "recentMerges": "Kürzliche Verschmelzungen",
+        "dailyChallenge": "Tägliche Herausforderung",
+        "merges": "Verschmelzungen",
+        "create": "erstellen",
+        "totalMerges": "Gesamtverschmelzungen",
+        "maxEmoji": "Maximales Emoji",
+        "noHistory": "Noch keine Verschmelzungshistorie",
+        "milestoneReached": "Meilenstein erreicht!",
+        "dailyComplete": "Tägliche Herausforderung abgeschlossen"
     }
 }

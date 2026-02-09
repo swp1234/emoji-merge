@@ -76,5 +76,17 @@
         "advanced": "Avanzado",
         "master": "Maestro",
         "legend": "Leyenda"
+    },
+    "collection": {
+        "title": "Colección",
+        "recentMerges": "Fusiones Recientes",
+        "dailyChallenge": "Desafío Diario",
+        "merges": "fusiones",
+        "create": "crear",
+        "totalMerges": "Total de Fusiones",
+        "maxEmoji": "Emoji Máximo",
+        "noHistory": "Sin historial de fusiones aún",
+        "milestoneReached": "¡Hito Alcanzado!",
+        "dailyComplete": "Desafío Diario Completado"
     }
 }

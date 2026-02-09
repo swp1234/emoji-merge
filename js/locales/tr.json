@@ -76,5 +76,17 @@
         "advanced": "İleri",
         "master": "Usta",
         "legend": "Efsane"
+    },
+    "collection": {
+        "title": "Koleksiyon",
+        "recentMerges": "Son Birleştirmeler",
+        "dailyChallenge": "Günlük Meydan Okuma",
+        "merges": "birleştirmeler",
+        "create": "oluştur",
+        "totalMerges": "Toplam Birleştirmeler",
+        "maxEmoji": "Maksimum Emoji",
+        "noHistory": "Henüz birleştirme geçmişi yok",
+        "milestoneReached": "Kilometre Taşına Ulaşıldı!",
+        "dailyComplete": "Günlük Meydan Okuma Tamamlandı"
     }
 }

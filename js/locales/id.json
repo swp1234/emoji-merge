@@ -76,5 +76,17 @@
         "advanced": "Lanjutan",
         "master": "Master",
         "legend": "Legendaris"
+    },
+    "collection": {
+        "title": "Koleksi",
+        "recentMerges": "Penggabungan Terbaru",
+        "dailyChallenge": "Tantangan Harian",
+        "merges": "penggabungan",
+        "create": "buat",
+        "totalMerges": "Total Penggabungan",
+        "maxEmoji": "Emoji Maksimal",
+        "noHistory": "Belum ada riwayat penggabungan",
+        "milestoneReached": "Milestone Tercapai!",
+        "dailyComplete": "Tantangan Harian Selesai"
     }
 }

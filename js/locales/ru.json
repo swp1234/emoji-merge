@@ -76,5 +76,17 @@
         "advanced": "Продвинутый",
         "master": "Мастер",
         "legend": "Легенда"
+    },
+    "collection": {
+        "title": "Коллекция",
+        "recentMerges": "Недавние объединения",
+        "dailyChallenge": "Ежедневный вызов",
+        "merges": "объединения",
+        "create": "создать",
+        "totalMerges": "Всего объединений",
+        "maxEmoji": "Макс эмодзи",
+        "noHistory": "История объединений еще нет",
+        "milestoneReached": "Веха достигнута!",
+        "dailyComplete": "Ежедневный вызов завершен"
     }
 }
