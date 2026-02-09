@@ -46,7 +46,9 @@
         "emotionName": "Termometer Emosi",
         "emotionDesc": "Berapa suhu emosi Anda?",
         "pastLifeName": "Pekerjaan Kehidupan Lalu",
-        "pastLifeDesc": "Apa pekerjaan Anda di kehidupan lalu?"
+        "pastLifeDesc": "Apa pekerjaan Anda di kehidupan lalu?",
+        "colorMemoryName": "Memori Warna",
+        "colorMemoryDesc": "Permainan tantangan memori"
     },
     "premium": {
         "currentScore": "Skor Saat Ini",

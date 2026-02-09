@@ -46,7 +46,9 @@
         "emotionName": "感情温度計",
         "emotionDesc": "あなたの感情温度は？",
         "pastLifeName": "前世の職業",
-        "pastLifeDesc": "あなたの前世の職業は？"
+        "pastLifeDesc": "あなたの前世の職業は？",
+        "colorMemoryName": "色のメモリー",
+        "colorMemoryDesc": "メモリーチャレンジゲーム"
     },
     "premium": {
         "currentScore": "現在のスコア",

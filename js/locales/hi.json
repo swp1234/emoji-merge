@@ -46,7 +46,9 @@
         "emotionName": "भावना थर्मामीटर",
         "emotionDesc": "आपका भावना तापमान क्या है?",
         "pastLifeName": "पिछला जीवन व्यवसाय",
-        "pastLifeDesc": "आपका पिछला जीवन व्यवसाय क्या था?"
+        "pastLifeDesc": "आपका पिछला जीवन व्यवसाय क्या था?",
+        "colorMemoryName": "रंग स्मृति",
+        "colorMemoryDesc": "स्मृति चुनौती खेल"
     },
     "premium": {
         "currentScore": "वर्तमान स्कोर",

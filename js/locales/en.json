@@ -46,7 +46,9 @@
         "emotionName": "Emotion Thermometer",
         "emotionDesc": "What's your emotion temperature?",
         "pastLifeName": "Past Life Job",
-        "pastLifeDesc": "What was your past life job?"
+        "pastLifeDesc": "What was your past life job?",
+        "colorMemoryName": "Color Memory",
+        "colorMemoryDesc": "Memory challenge game"
     },
     "premium": {
         "currentScore": "Current Score",

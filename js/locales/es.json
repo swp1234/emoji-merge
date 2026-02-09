@@ -46,7 +46,9 @@
         "emotionName": "Termómetro de Emoción",
         "emotionDesc": "¿Cuál es tu temperatura de emoción?",
         "pastLifeName": "Trabajo de Vida Pasada",
-        "pastLifeDesc": "¿Cuál era tu trabajo en una vida pasada?"
+        "pastLifeDesc": "¿Cuál era tu trabajo en una vida pasada?",
+        "colorMemoryName": "Memoria de Color",
+        "colorMemoryDesc": "Juego de desafío de memoria"
     },
     "premium": {
         "currentScore": "Puntuación Actual",

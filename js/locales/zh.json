@@ -46,7 +46,9 @@
         "emotionName": "情感温度计",
         "emotionDesc": "你的情感温度是多少？",
         "pastLifeName": "前世职业",
-        "pastLifeDesc": "你的前世职业是什么？"
+        "pastLifeDesc": "你的前世职业是什么？",
+        "colorMemoryName": "色彩记忆",
+        "colorMemoryDesc": "记忆力挑战游戏"
     },
     "premium": {
         "currentScore": "当前分数",

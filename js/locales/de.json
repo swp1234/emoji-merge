@@ -46,7 +46,9 @@
         "emotionName": "Emotions-Thermometer",
         "emotionDesc": "Wie ist deine Emotionstemperatur?",
         "pastLifeName": "Vergangenheit-Leben-Beruf",
-        "pastLifeDesc": "Welchen Beruf hattest du in einem früheren Leben?"
+        "pastLifeDesc": "Welchen Beruf hattest du in einem früheren Leben?",
+        "colorMemoryName": "Farbgedächtnis",
+        "colorMemoryDesc": "Gedächtnis-Challenge-Spiel"
     },
     "premium": {
         "currentScore": "Aktuelle Punktzahl",
