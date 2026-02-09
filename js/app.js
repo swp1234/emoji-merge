@@ -51,6 +51,7 @@
     // Dopamine enhancements
     let mergeCombo = 0;
     let lastMergeScore = 0;
+    let reachedStages = {}; // Track which stages have been reached
 
     // DOM
     const tilesContainer = document.getElementById('tiles-container');
@@ -297,6 +298,14 @@
         const currentMax = Math.max(...grid.flat(), 0);
         if (currentMax > maxTileEver) maxTileEver = currentMax;
 
+        // Check for stage milestones
+        const currentStage = getStageForValue(currentMax);
+        if (currentStage && !reachedStages[currentStage.value]) {
+            reachedStages[currentStage.value] = true;
+            score += currentStage.bonus;
+            showStagePopup(currentStage);
+        }
+
         // Dopamine enhancement: screen effects and popups
         if (merges.length > 0) {
             triggerScreenShake(250);
@@ -427,11 +436,31 @@
         const values = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
         const maxInGrid = Math.max(...grid.flat(), 0);
 
+        let nextTargetIdx = -1;
+        for (let i = 0; i < values.length; i++) {
+            if (maxInGrid < values[i]) {
+                nextTargetIdx = i;
+                break;
+            }
+        }
+
         evolutionBar.innerHTML = values.map((v, i) => {
             const emoji = chain.map[v];
             const reached = maxInGrid >= v;
+            const isNextTarget = i === nextTargetIdx;
             const arrow = i < values.length - 1 ? '<span class="evo-arrow">→</span>' : '';
-            return `<span class="evo-step"><span class="evo-emoji${reached ? ' reached' : ''}">${emoji}</span>${arrow}</span>`;
+            let badge = '';
+            if (reached && i > 0) {
+                // Check if this value was a stage milestone
+                const stage = getStageForValue(v);
+                if (stage && reachedStages[stage.value]) {
+                    badge = '<span class="evo-badge">🎖️</span>';
+                }
+            }
+            if (isNextTarget) {
+                badge = '<span class="evo-target">⭐</span>';
+            }
+            return `<span class="evo-step${isNextTarget ? ' target' : ''}"><span class="evo-emoji${reached ? ' reached' : ''}">${emoji}</span>${badge}${arrow}</span>`;
         }).join('');
     }
 
@@ -528,6 +557,38 @@
         setTimeout(() => banner.remove(), 2000);
     }
 
+    function showStagePopup(stage) {
+        const overlay = document.createElement('div');
+        overlay.className = 'stage-popup-overlay';
+        overlay.innerHTML = `
+            <div class="stage-popup">
+                <div class="stage-emoji">${stage.emoji}</div>
+                <div class="stage-title">${stage.name} 달성!</div>
+                <div class="stage-desc">${stage.desc}</div>
+                <div class="stage-bonus">+${stage.bonus} 보너스 점수!</div>
+                <div class="stage-confetti" style="position: absolute; width: 100%; height: 100%; pointer-events: none;"></div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        // Confetti effect
+        for (let i = 0; i < 30; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = `confetti type-${(i % 5) + 1}`;
+            confetti.style.left = (Math.random() * 100) + '%';
+            confetti.style.top = '-10px';
+            confetti.style.animation = `confetti-fall ${800 + Math.random() * 400}ms linear forwards`;
+            overlay.querySelector('.stage-confetti').appendChild(confetti);
+        }
+
+        // Screen flash and shake
+        triggerScreenFlash('flash-success', 400);
+        triggerScreenShake(400);
+        if (sfx) sfx.levelUp();
+
+        setTimeout(() => overlay.remove(), 2500);
+    }
+
     // === Overlays ===
     function showGameOver() {
         finalScoreEl.textContent = score.toLocaleString();
@@ -536,6 +597,33 @@
         document.getElementById('final-max-emoji').textContent = getEmoji(maxVal);
         const titleInfo = getTitleForScore(score);
         titleBadge.textContent = `${titleInfo.title} - ${titleInfo.desc}`;
+
+        // Add stage stats to overlay
+        const statsDiv = document.createElement('div');
+        statsDiv.className = 'game-over-stats';
+        const reachedStagesList = Object.keys(reachedStages)
+            .map(v => getStageForValue(Number(v)))
+            .filter(s => s)
+            .map(s => `${s.emoji} ${s.name}`)
+            .join(' • ');
+
+        statsDiv.innerHTML = `
+            <div class="stat-row">
+                <span>총 병합 횟수</span>
+                <span class="stat-value">${moveCount}</span>
+            </div>
+            <div class="stat-row">
+                <span>최고 이모지</span>
+                <span class="stat-value">${getEmoji(maxVal)}</span>
+            </div>
+            ${reachedStagesList ? `<div class="stat-row"><span>달성한 스테이지</span><span class="stat-value">${reachedStagesList}</span></div>` : ''}
+        `;
+
+        // Insert stats after the title badge
+        const badgeEl = document.querySelector('.overlay-title-badge');
+        if (badgeEl && badgeEl.nextSibling) {
+            badgeEl.parentNode.insertBefore(statsDiv, badgeEl.nextSibling);
+        }
 
         // Dopamine effects on game over
         triggerScreenShake(500);
@@ -569,9 +657,15 @@
         undoState = null;
         moveCount = 0;
         mergeCombo = 0; // Reset combo at game start
+        reachedStages = {}; // Reset stages for new game
         undoBtn.disabled = true;
         gameOverOverlay.classList.add('hidden');
         winOverlay.classList.add('hidden');
+
+        // Clear game-over stats if exists
+        const statsDiv = document.querySelector('.game-over-stats');
+        if (statsDiv) statsDiv.remove();
+
         spawnTile(false);
         spawnTile(false);
         updateScoreDisplay();
@@ -601,7 +695,7 @@
             localStorage.setItem('emojiMerge', JSON.stringify({
                 grid, tileMap, nextTileId, score, bestScore,
                 totalGames, maxTileEver, won, keepPlaying,
-                gameOver, currentChain, moveCount
+                gameOver, currentChain, moveCount, reachedStages
             }));
         } catch (e) {}
     }
@@ -624,6 +718,7 @@
                 currentChain = s.currentChain || 'animal';
                 if (!EVOLUTION_CHAINS[currentChain]) currentChain = 'animal';
                 moveCount = s.moveCount || 0;
+                reachedStages = s.reachedStages || {};
 
                 if (!tileMap || tileMap.length !== SIZE) {
                     tileMap = createEmpty();

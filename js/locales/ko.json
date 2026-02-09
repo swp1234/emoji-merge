@@ -68,5 +68,13 @@
         "chainWith": "체인으로",
         "level": "레벨",
         "until": "까지 진화했습니다."
+    },
+    "stages": {
+        "levelUp": "레벨 업!",
+        "beginner": "입문",
+        "intermediate": "중급",
+        "advanced": "고급",
+        "master": "마스터",
+        "legend": "전설"
     }
 }

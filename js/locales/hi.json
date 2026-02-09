@@ -68,5 +68,13 @@
         "chainWith": "श्रृंखला के साथ",
         "level": "स्तर",
         "until": "पहुंचा।"
+    },
+    "stages": {
+        "levelUp": "लेवल अप!",
+        "beginner": "शुरुआत",
+        "intermediate": "मध्यवर्ती",
+        "advanced": "उन्नत",
+        "master": "मास्टर",
+        "legend": "किंवदंती"
     }
 }

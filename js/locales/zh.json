@@ -68,5 +68,13 @@
         "chainWith": "链与",
         "level": "等级",
         "until": "达到。"
+    },
+    "stages": {
+        "levelUp": "升级！",
+        "beginner": "初学者",
+        "intermediate": "中级",
+        "advanced": "高级",
+        "master": "大师",
+        "legend": "传说"
     }
 }

@@ -68,5 +68,13 @@
         "chainWith": "Kette mit",
         "level": "Stufe",
         "until": "erreicht."
+    },
+    "stages": {
+        "levelUp": "Level Aufstieg!",
+        "beginner": "Anfänger",
+        "intermediate": "Mittelstufe",
+        "advanced": "Fortgeschrittene",
+        "master": "Meister",
+        "legend": "Legende"
     }
 }

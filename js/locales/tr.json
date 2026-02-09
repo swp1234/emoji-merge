@@ -68,5 +68,13 @@
         "chainWith": "zincir ile",
         "level": "seviye",
         "until": "ulaşıldı."
+    },
+    "stages": {
+        "levelUp": "Seviye Yükselişi!",
+        "beginner": "Başlangıç",
+        "intermediate": "Orta",
+        "advanced": "İleri",
+        "master": "Usta",
+        "legend": "Efsane"
     }
 }

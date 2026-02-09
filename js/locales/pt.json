@@ -68,5 +68,13 @@
         "chainWith": "cadeia com",
         "level": "nível",
         "until": "alcançado."
+    },
+    "stages": {
+        "levelUp": "Subida de Nível!",
+        "beginner": "Iniciante",
+        "intermediate": "Intermediário",
+        "advanced": "Avançado",
+        "master": "Mestre",
+        "legend": "Lenda"
     }
 }

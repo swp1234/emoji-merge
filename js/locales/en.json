@@ -68,5 +68,13 @@
         "chainWith": "chain with",
         "level": "level",
         "until": "reached."
+    },
+    "stages": {
+        "levelUp": "Level Up!",
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced",
+        "master": "Master",
+        "legend": "Legend"
     }
 }

@@ -68,5 +68,13 @@
         "chainWith": "rantai dengan",
         "level": "tingkat",
         "until": "tercapai."
+    },
+    "stages": {
+        "levelUp": "Naik Level!",
+        "beginner": "Pemula",
+        "intermediate": "Menengah",
+        "advanced": "Lanjutan",
+        "master": "Master",
+        "legend": "Legendaris"
     }
 }

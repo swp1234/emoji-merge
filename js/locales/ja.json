@@ -68,5 +68,13 @@
         "chainWith": "チェーンで",
         "level": "レベル",
         "until": "に到達しました。"
+    },
+    "stages": {
+        "levelUp": "レベルアップ！",
+        "beginner": "初心者",
+        "intermediate": "中級",
+        "advanced": "上級",
+        "master": "マスター",
+        "legend": "レジェンド"
     }
 }

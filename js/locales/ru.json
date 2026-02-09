@@ -68,5 +68,13 @@
         "chainWith": "цепочка с",
         "level": "уровень",
         "until": "достигнут."
+    },
+    "stages": {
+        "levelUp": "Уровень Выше!",
+        "beginner": "Новичок",
+        "intermediate": "Средний",
+        "advanced": "Продвинутый",
+        "master": "Мастер",
+        "legend": "Легенда"
     }
 }

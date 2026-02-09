@@ -88,3 +88,23 @@ function getTitleForScore(score) {
     }
     return result;
 }
+
+// Stage system for progression
+const STAGES = [
+    { value: 256, name: '입문', emoji: '🌱', bonus: 500, desc: '256 달성' },
+    { value: 512, name: '중급', emoji: '🌳', bonus: 1000, desc: '512 달성' },
+    { value: 1024, name: '고급', emoji: '🌲', bonus: 2000, desc: '1024 달성' },
+    { value: 2048, name: '마스터', emoji: '👑', bonus: 5000, desc: '2048 달성' },
+    { value: 4096, name: '전설', emoji: '🔥', bonus: 10000, desc: '4096 달성' }
+];
+
+function getStageForValue(value) {
+    for (let i = STAGES.length - 1; i >= 0; i--) {
+        if (value >= STAGES[i].value) return STAGES[i];
+    }
+    return null;
+}
+
+function getAllStages() {
+    return STAGES;
+}
