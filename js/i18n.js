@@ -6,8 +6,12 @@ class I18n {
     }
 
     detectLanguage() {
-        const savedLang = localStorage.getItem('app_language');
-        if (savedLang && this.supportedLanguages.includes(savedLang)) return savedLang;
+        try {
+            const savedLang = localStorage.getItem('app_language');
+            if (savedLang && this.supportedLanguages.includes(savedLang)) return savedLang;
+        } catch (e) {
+            console.warn('localStorage not available (private/incognito mode)', e);
+        }
         const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
         if (this.supportedLanguages.includes(browserLang)) return browserLang;
         return 'en';
@@ -39,7 +43,11 @@ class I18n {
         if (!this.supportedLanguages.includes(lang)) return false;
         if (!this.translations[lang]) await this.loadTranslations(lang);
         this.currentLang = lang;
-        localStorage.setItem('app_language', lang);
+        try {
+            localStorage.setItem('app_language', lang);
+        } catch (e) {
+            console.warn('Could not save language preference', e);
+        }
         document.documentElement.lang = lang;
         this.updateUI();
         return true;
