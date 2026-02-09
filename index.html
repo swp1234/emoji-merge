@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882" crossorigin="anonymous"></script>
     <meta name="robots" content="max-image-preview:large">
+
+    <!-- Preconnect to external services for performance -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    <!-- AdSense Script (loaded once in head) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882" crossorigin="anonymous"></script>
 
     <!-- SEO Meta Tags -->
     <title>이모지 머지 🦁 - 진화 퍼즐 게임 | DopaBrain</title>
@@ -381,12 +388,12 @@
         </div>
     </div>
 
-    <script src="../_common/storage-manager.js"></script>
-    <script src="../_common/leaderboard-manager.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/game-data.js"></script>
-    <script src="js/sound-engine.js"></script>
-    <script src="js/app.js"></script>
+    <script defer src="../_common/storage-manager.js"></script>
+    <script defer src="../_common/leaderboard-manager.js"></script>
+    <script defer src="js/i18n.js"></script>
+    <script defer src="js/game-data.js"></script>
+    <script defer src="js/sound-engine.js"></script>
+    <script defer src="js/app.js"></script>
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
