@@ -48,6 +48,10 @@
     let currentChain = 'animal';
     let moveCount = 0;
 
+    // Dopamine enhancements
+    let mergeCombo = 0;
+    let lastMergeScore = 0;
+
     // DOM
     const tilesContainer = document.getElementById('tiles-container');
     const currentScoreEl = document.getElementById('current-score');
@@ -286,8 +290,37 @@
         if (score > bestScore) bestScore = score;
         moveCount++;
 
+        // Dopamine effects on move
+        mergeCombo++;
+        lastMergeScore = scoreGain;
+
         const currentMax = Math.max(...grid.flat(), 0);
         if (currentMax > maxTileEver) maxTileEver = currentMax;
+
+        // Dopamine enhancement: screen effects and popups
+        if (merges.length > 0) {
+            triggerScreenShake(250);
+            // Show score popup for first merge location
+            if (merges.length > 0) {
+                const firstMerge = merges[0];
+                const pos = positionFor(firstMerge.toRow, firstMerge.toCol);
+                spawnScorePopup(pos.left + pos.size / 2, pos.top + pos.size / 2, `+${scoreGain}`);
+            }
+
+            // Combo bonus every 5 merges
+            if (mergeCombo % 5 === 0) {
+                triggerScreenFlash('flash-success', 150);
+                showMergeIndicator(scoreGain, mergeCombo);
+                spawnConfetti(window.innerWidth / 2, window.innerHeight / 2, 15);
+            }
+
+            // Milestone every 500 score points
+            const prevScoreMilestone = Math.floor((score - scoreGain) / 500);
+            const newScoreMilestone = Math.floor(score / 500);
+            if (newScoreMilestone > prevScoreMilestone) {
+                showMilestoneBanner(`${newScoreMilestone * 500} 점 달성!`);
+            }
+        }
 
         // Animate
         animating = true;
@@ -425,6 +458,76 @@
         setTimeout(() => popup.remove(), 700);
     }
 
+    // === DOPAMINE EFFECT FUNCTIONS ===
+    function triggerScreenShake(duration = 300) {
+        const container = document.querySelector('.container');
+        if (!container) return;
+        container.classList.add('shake');
+        setTimeout(() => container.classList.remove('shake'), duration);
+    }
+
+    function triggerScreenFlash(color = 'flash', duration = 200) {
+        const container = document.querySelector('.container');
+        if (!container) return;
+        container.classList.add(color);
+        setTimeout(() => container.classList.remove(color), duration);
+    }
+
+    function spawnScorePopup(x, y, text) {
+        const popup = document.createElement('div');
+        popup.className = 'score-popup normal';
+        popup.textContent = text;
+        popup.style.left = x + 'px';
+        popup.style.top = y + 'px';
+        document.body.appendChild(popup);
+        setTimeout(() => popup.remove(), 800);
+    }
+
+    function showMergeIndicator(score, combo) {
+        const indicator = document.createElement('div');
+        indicator.className = 'merge-indicator';
+        indicator.style.left = '50%';
+        indicator.style.top = '50%';
+        indicator.style.transform = 'translate(-50%, -50%)';
+
+        const text = document.createElement('div');
+        text.className = 'merge-text';
+        text.textContent = `+${score}!`;
+        indicator.appendChild(text);
+
+        document.body.appendChild(indicator);
+        setTimeout(() => indicator.remove(), 600);
+    }
+
+    function spawnConfetti(x, y, count = 12) {
+        for (let i = 0; i < count; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = `confetti type-${(i % 5) + 1}`;
+            confetti.style.left = x + 'px';
+            confetti.style.top = y + 'px';
+            confetti.style.transform = `translate(${(Math.random() - 0.5) * 200}px, 0) rotateZ(${Math.random() * 360}deg)`;
+
+            document.body.appendChild(confetti);
+
+            // Animate confetti fall
+            const duration = 800 + Math.random() * 400;
+            confetti.style.animation = `confetti-fall ${duration}ms linear forwards`;
+
+            setTimeout(() => confetti.remove(), duration);
+        }
+    }
+
+    function showMilestoneBanner(text) {
+        const banner = document.createElement('div');
+        banner.className = 'milestone-banner';
+        banner.innerHTML = `
+            <span class="icon">🎉</span>
+            <div>${text}</div>
+        `;
+        document.body.appendChild(banner);
+        setTimeout(() => banner.remove(), 2000);
+    }
+
     // === Overlays ===
     function showGameOver() {
         finalScoreEl.textContent = score.toLocaleString();
@@ -433,6 +536,12 @@
         document.getElementById('final-max-emoji').textContent = getEmoji(maxVal);
         const titleInfo = getTitleForScore(score);
         titleBadge.textContent = `${titleInfo.title} - ${titleInfo.desc}`;
+
+        // Dopamine effects on game over
+        triggerScreenShake(500);
+        triggerScreenFlash('flash-danger', 300);
+        mergeCombo = 0; // Reset combo on game over
+
         gameOverOverlay.classList.remove('hidden');
         if (typeof gtag === 'function')
             gtag('event', 'game_over', { event_category: 'emoji_merge', score, max_tile: maxVal, chain: currentChain, moves: moveCount });
@@ -459,6 +568,7 @@
         animating = false;
         undoState = null;
         moveCount = 0;
+        mergeCombo = 0; // Reset combo at game start
         undoBtn.disabled = true;
         gameOverOverlay.classList.add('hidden');
         winOverlay.classList.add('hidden');
