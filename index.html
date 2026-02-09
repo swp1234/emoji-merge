@@ -180,19 +180,46 @@
                 </div>
             </div>
             <div id="score-popup-container"></div>
-        </main>
-
-        <!-- Game Over Overlay -->
-        <div class="overlay hidden" id="game-over-overlay">
-            <div class="overlay-content">
-                <h2 class="overlay-title" data-i18n="game.gameOver">진화 종료!</h2>
-                <p class="overlay-score"><span data-i18n="game.score">점수</span>: <span id="final-score">0</span></p>
-                <p class="overlay-best"><span data-i18n="game.bestScore">최고 점수</span>: <span id="final-best">0</span></p>
-                <p class="overlay-max-evo"><span data-i18n="game.maxEvolution">최고 진화</span>: <span id="final-max-emoji"></span></p>
-                <div class="overlay-title-badge" id="title-badge"></div>
-                <div class="overlay-buttons">
-                    <button class="btn-primary" id="btn-retry" data-i18n="game.retry">다시 하기</button>
-                    <button class="btn-secondary" id="btn-share" data-i18n="game.share">결과 공유</button>
+                    <!-- 크로스 프로모션 추천 섹션 -->
+            <div class="recommendations-section">
+                <div class="rec-title" data-i18n="recommendations.title">이것도 해보세요</div>
+                <div class="rec-grid">
+                    <a href="https://dopabrain.com/idle-clicker/" class="rec-card" target="_blank">
+                        <span class="rec-icon">⚔️</span>
+                        <span class="rec-info">
+                            <span class="rec-name">던전 클리커</span>
+                        </span>
+                    </a>
+                    <a href="https://dopabrain.com/sky-runner/" class="rec-card" target="_blank">
+                        <span class="rec-icon">☁️</span>
+                        <span class="rec-info">
+                            <span class="rec-name">스카이 러너</span>
+                        </span>
+                    </a>
+                    <a href="https://dopabrain.com/zigzag-runner/" class="rec-card" target="_blank">
+                        <span class="rec-icon">⚡</span>
+                        <span class="rec-info">
+                            <span class="rec-name">지그재그 러너</span>
+                        </span>
+                    </a>
+                    <a href="https://dopabrain.com/stack-tower/" class="rec-card" target="_blank">
+                        <span class="rec-icon">🏢</span>
+                        <span class="rec-info">
+                            <span class="rec-name">스택 타워</span>
+                        </span>
+                    </a>
+                    <a href="https://dopabrain.com/number-puzzle/" class="rec-card" target="_blank">
+                        <span class="rec-icon">🔢</span>
+                        <span class="rec-info">
+                            <span class="rec-name">2048 퍼즐</span>
+                        </span>
+                    </a>
+                    <a href="https://dopabrain.com/color-memory/" class="rec-card" target="_blank">
+                        <span class="rec-icon">🎨</span>
+                        <span class="rec-info">
+                            <span class="rec-name">색상 기억력</span>
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -283,51 +310,7 @@
         </section>
 
         <!-- Recommendation Cards -->
-        <section class="rec-section">
-            <h2 class="rec-title" data-i18n="game.tryMore">이것도 해보세요!</h2>
-            <div class="rec-grid">
-                <a href="https://dopabrain.com/number-puzzle/" class="rec-card">
-                    <span class="rec-emoji">🔢</span>
-                    <span class="rec-name">2048 퍼즐</span>
-                    <span class="rec-desc">숫자 합치기 게임</span>
-                </a>
-                <a href="https://dopabrain.com/stack-tower/" class="rec-card">
-                    <span class="rec-emoji">🏗️</span>
-                    <span class="rec-name">Stack Tower</span>
-                    <span class="rec-desc" data-i18n="recs.stackTowerDesc">블록 쌓기 타이밍 게임</span>
-                </a>
-                <a href="https://dopabrain.com/zigzag-runner/" class="rec-card">
-                    <span class="rec-emoji">⚡</span>
-                    <span class="rec-name">Zigzag Runner</span>
-                    <span class="rec-desc" data-i18n="recs.zigzagDesc">방향 전환 아케이드</span>
-                </a>
-                <a href="https://dopabrain.com/emotion-temp/" class="rec-card">
-                    <span class="rec-emoji">🌡️</span>
-                    <span class="rec-name" data-i18n="recs.emotionName">감정 온도계</span>
-                    <span class="rec-desc" data-i18n="recs.emotionDesc">나의 감정 온도는?</span>
-                </a>
-                <a href="https://dopabrain.com/past-life/" class="rec-card">
-                    <span class="rec-emoji">⏳</span>
-                    <span class="rec-name" data-i18n="recs.pastLifeName">전생 직업</span>
-                    <span class="rec-desc" data-i18n="recs.pastLifeDesc">나의 전생 직업은?</span>
-                </a>
-                <a href="https://dopabrain.com/color-memory/" class="rec-card">
-                    <span class="rec-emoji">🎨</span>
-                    <span class="rec-name" data-i18n="recs.colorMemoryName">색상 기억력</span>
-                    <span class="rec-desc" data-i18n="recs.colorMemoryDesc">기억력 도전 게임</span>
-                </a>
-                <a href="https://dopabrain.com/brain-type/" class="rec-card">
-                    <span class="rec-emoji">🧠</span>
-                    <span class="rec-name">두뇌 유형 테스트</span>
-                    <span class="rec-desc">당신의 뇌 유형은?</span>
-                </a>
-                <a href="https://dopabrain.com/reaction-test/" class="rec-card">
-                    <span class="rec-emoji">⚡</span>
-                    <span class="rec-name">반응속도 테스트</span>
-                    <span class="rec-desc">당신의 반응속도는?</span>
-                </a>
-            </div>
-        </section>
+        
 
         <!-- Footer -->
         <footer class="game-footer">

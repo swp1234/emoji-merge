@@ -25,6 +25,19 @@
     padding: 0;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+/* 터치 최적화 */
+button, a, input, [role="button"], [role="link"] {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+input[type="text"], textarea {
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 html {
