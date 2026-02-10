@@ -90,5 +90,20 @@
         "noHistory": "합성 기록이 없습니다",
         "milestoneReached": "마일스톤 달성!",
         "dailyComplete": "일일 도전 완료"
+    },
+    "milestone": {
+        "achievement": "점 달성!"
+    },
+    "stage": {
+        "achieved": "달성!",
+        "bonus": "보너스 점수!"
+    },
+    "stats": {
+        "totalMerges": "총 병합 횟수",
+        "maxEmoji": "최고 이모지",
+        "stages": "달성한 스테이지"
+    },
+    "analytics": {
+        "pageTitle": "이모지 머지"
     }
 }

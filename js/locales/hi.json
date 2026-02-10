@@ -90,5 +90,20 @@
         "noHistory": "अभी तक कोई मर्ज इतिहास नहीं",
         "milestoneReached": "मील का पत्थर पहुंचा!",
         "dailyComplete": "दैनिक चुनौती पूर्ण"
+    },
+    "milestone": {
+        "achievement": "अंक प्राप्त!"
+    },
+    "stage": {
+        "achieved": "प्राप्त!",
+        "bonus": "बोनस अंक!"
+    },
+    "stats": {
+        "totalMerges": "कुल मर्ज",
+        "maxEmoji": "सर्वोच्च इमोजी",
+        "stages": "प्राप्त चरण"
+    },
+    "analytics": {
+        "pageTitle": "इमोजी मर्ज"
     }
 }

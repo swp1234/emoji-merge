@@ -463,7 +463,8 @@
             const prevScoreMilestone = Math.floor((score - scoreGain) / 500);
             const newScoreMilestone = Math.floor(score / 500);
             if (newScoreMilestone > prevScoreMilestone) {
-                showMilestoneBanner(`${newScoreMilestone * 500} 점 달성!`);
+                const milestoneText = `${newScoreMilestone * 500} ${i18n.t('milestone.achievement') || '점 달성!'}`;
+                showMilestoneBanner(milestoneText);
             }
         }
 
@@ -696,12 +697,14 @@
     function showStagePopup(stage) {
         const overlay = document.createElement('div');
         overlay.className = 'stage-popup-overlay';
+        const achievedText = i18n.t('stage.achieved') || '달성!';
+        const bonusText = i18n.t('stage.bonus') || '보너스 점수!';
         overlay.innerHTML = `
             <div class="stage-popup">
                 <div class="stage-emoji">${stage.emoji}</div>
-                <div class="stage-title">${stage.name} 달성!</div>
+                <div class="stage-title">${stage.name} ${achievedText}</div>
                 <div class="stage-desc">${stage.desc}</div>
-                <div class="stage-bonus">+${stage.bonus} 보너스 점수!</div>
+                <div class="stage-bonus">+${stage.bonus} ${bonusText}</div>
                 <div class="stage-confetti" style="position: absolute; width: 100%; height: 100%; pointer-events: none;"></div>
             </div>
         `;
@@ -743,16 +746,19 @@
             .map(s => `${s.emoji} ${s.name}`)
             .join(' • ');
 
+        const totalMergesLabel = i18n.t('stats.totalMerges') || '총 병합 횟수';
+        const maxEmojiLabel = i18n.t('stats.maxEmoji') || '최고 이모지';
+        const stagesLabel = i18n.t('stats.stages') || '달성한 스테이지';
         statsDiv.innerHTML = `
             <div class="stat-row">
-                <span>총 병합 횟수</span>
+                <span>${totalMergesLabel}</span>
                 <span class="stat-value">${moveCount}</span>
             </div>
             <div class="stat-row">
-                <span>최고 이모지</span>
+                <span>${maxEmojiLabel}</span>
                 <span class="stat-value">${getEmoji(maxVal)}</span>
             </div>
-            ${reachedStagesList ? `<div class="stat-row"><span>달성한 스테이지</span><span class="stat-value">${reachedStagesList}</span></div>` : ''}
+            ${reachedStagesList ? `<div class="stat-row"><span>${stagesLabel}</span><span class="stat-value">${reachedStagesList}</span></div>` : ''}
         `;
 
         // Insert stats after the title badge
@@ -1299,8 +1305,8 @@
         const chainLabel = i18n.t('premium.chainWith');
         const maxEvoLabel = i18n.t('game.maxEvolution');
         const scoreLabel = i18n.t('game.score');
-        const titleLabel = '칭호';
-        const text = `Emoji Merge\n${chainLabel}: ${chain.name}\n${maxEvoLabel}: ${getEmoji(maxVal)}\n${scoreLabel}: ${score.toLocaleString()}\nTitle: ${titleInfo.title}\n\nhttps://dopabrain.com/emoji-merge/`;
+        const titleLabel = i18n.t('premium.titleBadge') || '칭호';
+        const text = `Emoji Merge\n${chainLabel}: ${chain.name}\n${maxEvoLabel}: ${getEmoji(maxVal)}\n${scoreLabel}: ${score.toLocaleString()}\n${titleLabel}: ${titleInfo.title}\n\nhttps://dopabrain.com/emoji-merge/`;
         if (navigator.share) {
             navigator.share({ title: i18n.t('game.resultTitle'), text });
         } else if (navigator.clipboard) {
@@ -1360,8 +1366,10 @@
         if (historyBtn) historyBtn.addEventListener('click', showMergeHistoryModal);
         if (dailyBtn) dailyBtn.addEventListener('click', showDailyChallengeModal);
 
-        if (typeof gtag === 'function')
-            gtag('event', 'page_view', { page_title: '이모지 머지', page_location: window.location.href });
+        if (typeof gtag === 'function') {
+            const pageTitle = i18n.t('analytics.pageTitle') || 'Emoji Merge';
+            gtag('event', 'page_view', { page_title: pageTitle, page_location: window.location.href });
+        }
     }
 
     function displayEmojiMergeLeaderboard(leaderboardResult) {

@@ -90,5 +90,20 @@
         "noHistory": "No merge history yet",
         "milestoneReached": "Milestone Reached!",
         "dailyComplete": "Daily Challenge Complete"
+    },
+    "milestone": {
+        "achievement": "points achieved!"
+    },
+    "stage": {
+        "achieved": "Achieved!",
+        "bonus": "bonus points!"
+    },
+    "stats": {
+        "totalMerges": "Total Merges",
+        "maxEmoji": "Max Emoji",
+        "stages": "Stages Reached"
+    },
+    "analytics": {
+        "pageTitle": "Emoji Merge"
     }
 }

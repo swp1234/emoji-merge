@@ -90,5 +90,20 @@
         "noHistory": "История объединений еще нет",
         "milestoneReached": "Веха достигнута!",
         "dailyComplete": "Ежедневный вызов завершен"
+    },
+    "milestone": {
+        "achievement": "очков достигнуто!"
+    },
+    "stage": {
+        "achieved": "Достигнуто!",
+        "bonus": "бонусных очков!"
+    },
+    "stats": {
+        "totalMerges": "Всего объединений",
+        "maxEmoji": "Макс эмодзи",
+        "stages": "Достигнутые этапы"
+    },
+    "analytics": {
+        "pageTitle": "Слияние Эмодзи"
     }
 }

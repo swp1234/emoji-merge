@@ -90,5 +90,20 @@
         "noHistory": "还没有合并历史",
         "milestoneReached": "达成里程碑！",
         "dailyComplete": "每日挑战完成"
+    },
+    "milestone": {
+        "achievement": "分达成！"
+    },
+    "stage": {
+        "achieved": "达成！",
+        "bonus": "奖励分！"
+    },
+    "stats": {
+        "totalMerges": "总合并数",
+        "maxEmoji": "最高表情符号",
+        "stages": "达成阶段"
+    },
+    "analytics": {
+        "pageTitle": "表情符号合并"
     }
 }
