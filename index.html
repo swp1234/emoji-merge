@@ -268,6 +268,29 @@
             </div>
         </div>
 
+        <!-- Game Over Overlay -->
+        <div class="overlay hidden" id="game-over-overlay">
+            <div class="overlay-content gameover">
+                <h2 class="overlay-title" data-i18n="game.gameOver">게임 오버!</h2>
+                <div class="overlay-scores">
+                    <div class="overlay-score-item">
+                        <span data-i18n="game.score">점수</span>: <span id="final-score">0</span>
+                    </div>
+                    <div class="overlay-score-item">
+                        <span data-i18n="game.best">최고</span>: <span id="final-best">0</span>
+                    </div>
+                    <div class="overlay-score-item">
+                        <span id="final-max-emoji">-</span>
+                    </div>
+                </div>
+                <p class="overlay-title-badge" id="title-badge"></p>
+                <div class="overlay-buttons">
+                    <button class="btn-primary" id="btn-retry" data-i18n="game.newGame">새 게임</button>
+                    <button class="btn-secondary" id="btn-share" data-i18n="game.share">공유</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Win Overlay -->
         <div class="overlay hidden" id="win-overlay">
             <div class="overlay-content win">

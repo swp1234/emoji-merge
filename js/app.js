@@ -1333,8 +1333,8 @@
 
     document.getElementById('chain-backdrop').addEventListener('click', () => chainModal.classList.add('hidden'));
     document.getElementById('chain-close').addEventListener('click', () => chainModal.classList.add('hidden'));
-    document.getElementById('btn-retry').addEventListener('click', () => newGame());
-    document.getElementById('btn-share').addEventListener('click', shareResult);
+    document.getElementById('btn-retry')?.addEventListener('click', () => newGame());
+    document.getElementById('btn-share')?.addEventListener('click', shareResult);
     document.getElementById('btn-continue').addEventListener('click', () => { keepPlaying = true; winOverlay.classList.add('hidden'); });
     document.getElementById('btn-new-after-win').addEventListener('click', () => { totalGames++; newGame(); });
 
