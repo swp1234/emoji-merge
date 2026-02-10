@@ -98,6 +98,12 @@
         "achieved": "Achieved!",
         "bonus": "bonus points!"
     },
+    "modal": {
+        "collectionTitle": "Collection",
+        "recentMergesTitle": "Recent Merges",
+        "dailyChallengeTitle": "Daily Challenge",
+        "close": "Close"
+    },
     "stats": {
         "totalMerges": "Total Merges",
         "maxEmoji": "Max Emoji",

@@ -697,8 +697,8 @@
     function showStagePopup(stage) {
         const overlay = document.createElement('div');
         overlay.className = 'stage-popup-overlay';
-        const achievedText = i18n.t('stage.achieved') || '달성!';
-        const bonusText = i18n.t('stage.bonus') || '보너스 점수!';
+        const achievedText = window.i18n?.t('stage.achieved') || 'Achieved!';
+        const bonusText = window.i18n?.t('stage.bonus') || 'Bonus Points!';
         overlay.innerHTML = `
             <div class="stage-popup">
                 <div class="stage-emoji">${stage.emoji}</div>
@@ -746,9 +746,9 @@
             .map(s => `${s.emoji} ${s.name}`)
             .join(' • ');
 
-        const totalMergesLabel = i18n.t('stats.totalMerges') || '총 병합 횟수';
-        const maxEmojiLabel = i18n.t('stats.maxEmoji') || '최고 이모지';
-        const stagesLabel = i18n.t('stats.stages') || '달성한 스테이지';
+        const totalMergesLabel = window.i18n?.t('stats.totalMerges') || 'Total Merges';
+        const maxEmojiLabel = window.i18n?.t('stats.maxEmoji') || 'Max Emoji';
+        const stagesLabel = window.i18n?.t('stats.stages') || 'Stages Reached';
         statsDiv.innerHTML = `
             <div class="stat-row">
                 <span>${totalMergesLabel}</span>
@@ -1007,7 +1007,7 @@
             <div class="modal-backdrop" id="collection-backdrop"></div>
             <div class="modal-content collection-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" data-i18n="collection.title">이모지 도감</h3>
+                    <h3 class="modal-title" data-i18n="collection.title">Collection</h3>
                     <div class="collection-progress">
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: ${stats.percentage}%"></div>
@@ -1016,7 +1016,7 @@
                     </div>
                 </div>
                 <div class="collection-grid">${collectionGrid}</div>
-                <button class="modal-close" id="collection-close" data-i18n="game.close">닫기</button>
+                <button class="modal-close" id="collection-close" data-i18n="game.close">Close</button>
             </div>
         `;
 
@@ -1043,7 +1043,7 @@
                 <span class="history-emoji">${getEmoji(item.to)}</span>
                 <span class="history-time">${new Date(item.time).toLocaleTimeString()}</span>
             </div>
-        `).join('') : `<p class="history-empty" data-i18n="collection.noHistory">합성 기록이 없습니다</p>`;
+        `).join('') : `<p class="history-empty" data-i18n="collection.noHistory">No merge history yet</p>`;
 
         const maxEmoji = Object.keys(discoveredEmojis).length > 0 ?
             getEmoji(Math.max(...Object.keys(discoveredEmojis).map(Number))) : '-';
@@ -1052,20 +1052,20 @@
             <div class="modal-backdrop" id="history-backdrop"></div>
             <div class="modal-content history-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" data-i18n="collection.recentMerges">최근 합성</h3>
+                    <h3 class="modal-title" data-i18n="collection.recentMerges">Recent Merges</h3>
                 </div>
                 <div class="history-stats">
                     <div class="history-stat">
-                        <span class="stat-label" data-i18n="collection.totalMerges">총 합성</span>
+                        <span class="stat-label" data-i18n="collection.totalMerges">Total Merges</span>
                         <span class="stat-value">${totalMerges}</span>
                     </div>
                     <div class="history-stat">
-                        <span class="stat-label" data-i18n="collection.maxEmoji">최고 이모지</span>
+                        <span class="stat-label" data-i18n="collection.maxEmoji">Highest Emoji</span>
                         <span class="stat-value">${maxEmoji}</span>
                     </div>
                 </div>
                 <div class="history-list">${historyItems}</div>
-                <button class="modal-close" id="history-close" data-i18n="game.close">닫기</button>
+                <button class="modal-close" id="history-close" data-i18n="game.close">Close</button>
             </div>
         `;
 
@@ -1101,7 +1101,7 @@
             <div class="modal-backdrop" id="daily-backdrop"></div>
             <div class="modal-content daily-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" data-i18n="collection.dailyChallenge">일일 도전</h3>
+                    <h3 class="modal-title" data-i18n="collection.dailyChallenge">Daily Challenge</h3>
                 </div>
                 <div class="daily-challenge-container">
                     <div class="daily-goal">
@@ -1114,9 +1114,9 @@
                         </div>
                         <div class="progress-text">${progress}/${goal.type === 'merges' ? goal.target : goal.target}</div>
                     </div>
-                    ${isCompleted ? `<div class="daily-badge">✅ ${i18n.t('collection.dailyComplete')}</div>` : ''}
+                    ${isCompleted ? `<div class="daily-badge">✅ ${window.i18n?.t('collection.dailyComplete') || 'Daily Challenge Complete'}</div>` : ''}
                 </div>
-                <button class="modal-close" id="daily-close" data-i18n="game.close">닫기</button>
+                <button class="modal-close" id="daily-close" data-i18n="game.close">Close</button>
             </div>
         `;
 

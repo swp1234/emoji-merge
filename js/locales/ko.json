@@ -98,6 +98,12 @@
         "achieved": "달성!",
         "bonus": "보너스 점수!"
     },
+    "modal": {
+        "collectionTitle": "이모지 도감",
+        "recentMergesTitle": "최근 합성",
+        "dailyChallengeTitle": "일일 도전",
+        "close": "닫기"
+    },
     "stats": {
         "totalMerges": "총 병합 횟수",
         "maxEmoji": "최고 이모지",
