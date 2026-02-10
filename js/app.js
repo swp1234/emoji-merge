@@ -183,10 +183,9 @@
             <div class="milestone-bonus">+${milestone * 10} ${i18n.t('game.score')}</div>
         `;
         document.body.appendChild(badge);
-        triggerScreenFlash('flash-success', 400);
-        triggerScreenShake(300);
+        triggerScreenFlash('flash-success', 150);
         if (sfx) sfx.levelUp();
-        setTimeout(() => badge.remove(), 2500);
+        setTimeout(() => badge.remove(), 1300);
     }
 
     function showDailyChallengeComplete(goal) {
@@ -201,7 +200,7 @@
         `;
         document.body.appendChild(banner);
         if (sfx) sfx.levelUp();
-        setTimeout(() => banner.remove(), 3000);
+        setTimeout(() => banner.remove(), 1500);
     }
 
     // === Position Calculations ===
@@ -691,7 +690,7 @@
             <div>${text}</div>
         `;
         document.body.appendChild(banner);
-        setTimeout(() => banner.remove(), 2000);
+        setTimeout(() => banner.remove(), 1000);
     }
 
     function showStagePopup(stage) {
@@ -703,29 +702,15 @@
             <div class="stage-popup">
                 <div class="stage-emoji">${stage.emoji}</div>
                 <div class="stage-title">${stage.name} ${achievedText}</div>
-                <div class="stage-desc">${stage.desc}</div>
                 <div class="stage-bonus">+${stage.bonus} ${bonusText}</div>
-                <div class="stage-confetti" style="position: absolute; width: 100%; height: 100%; pointer-events: none;"></div>
             </div>
         `;
         document.body.appendChild(overlay);
 
-        // Confetti effect
-        for (let i = 0; i < 30; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = `confetti type-${(i % 5) + 1}`;
-            confetti.style.left = (Math.random() * 100) + '%';
-            confetti.style.top = '-10px';
-            confetti.style.animation = `confetti-fall ${800 + Math.random() * 400}ms linear forwards`;
-            overlay.querySelector('.stage-confetti').appendChild(confetti);
-        }
-
-        // Screen flash and shake
-        triggerScreenFlash('flash-success', 400);
-        triggerScreenShake(400);
+        triggerScreenFlash('flash-success', 150);
         if (sfx) sfx.levelUp();
 
-        setTimeout(() => overlay.remove(), 2500);
+        setTimeout(() => overlay.remove(), 1300);
     }
 
     // === Overlays ===

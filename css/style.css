@@ -1249,142 +1249,94 @@ body {
 .confetti.type-4 { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
 .confetti.type-5 { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
 
-/* Milestone Banner */
-@keyframes milestoneIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px) scale(0.9);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(0) scale(1.05);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+/* Milestone Banner - compact top toast */
+@keyframes toastIn {
+    0% { opacity: 0; transform: translateX(-50%) translateY(-16px) scale(0.9); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 }
-
-@keyframes milestoneOut {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-30px) scale(0.8);
-    }
+@keyframes toastOut {
+    0% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-16px) scale(0.9); }
 }
 
 .milestone-banner {
     position: fixed;
-    top: 50%;
+    top: 8px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     background: linear-gradient(135deg, var(--primary) 0%, #ff8c42 100%);
     color: white;
-    padding: 20px 40px;
-    border-radius: 50px;
-    font-size: 24px;
-    font-weight: 900;
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 800;
     text-align: center;
     pointer-events: none;
     z-index: 150;
-    box-shadow: 0 10px 40px rgba(244, 162, 97, 0.5);
-    animation: milestoneIn 0.5s ease-out, milestoneOut 0.5s ease-in 1.5s forwards;
+    opacity: 0.9;
+    box-shadow: 0 2px 10px rgba(244, 162, 97, 0.4);
+    animation: toastIn 0.2s ease-out, toastOut 0.2s ease-in 0.7s forwards;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .milestone-banner .icon {
-    font-size: 32px;
-    display: block;
-    margin-bottom: 8px;
+    font-size: 14px;
+    display: inline;
+    margin-bottom: 0;
 }
 
-/* === Stage Popup === */
+/* === Stage Popup - compact top toast, never blocks gameplay === */
 .stage-popup-overlay {
     position: fixed;
-    inset: 0;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    justify-content: center;
     z-index: 250;
-    background: radial-gradient(circle at center, rgba(244,162,97,0.2) 0%, rgba(0,0,0,0.4) 100%);
-    animation: fadeIn 0.3s ease;
+    pointer-events: none;
+    animation: toastIn 0.2s ease-out, toastOut 0.2s ease-in 1s forwards;
 }
 
 .stage-popup {
-    position: relative;
-    background: linear-gradient(135deg, rgba(244,162,97,0.15), rgba(231,111,81,0.15));
-    border: 2px solid var(--primary);
-    border-radius: 20px;
-    padding: 40px 30px;
+    background: linear-gradient(135deg, rgba(244,162,97,0.9), rgba(231,111,81,0.9));
+    border: 1px solid var(--primary);
+    border-radius: 16px;
+    padding: 6px 16px;
     text-align: center;
-    box-shadow: 0 0 60px var(--primary-glow), inset 0 1px 2px rgba(255,255,255,0.1);
-    animation: stagePop 0.5s cubic-bezier(0.36, 0, 0.66, 1) forwards;
-    max-width: 280px;
-}
-
-@keyframes stagePop {
-    0% {
-        opacity: 0;
-        transform: scale(0.3) rotateZ(-20deg);
-    }
-    70% {
-        transform: scale(1.1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotateZ(0deg);
-    }
+    box-shadow: 0 2px 12px var(--primary-glow);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .stage-emoji {
-    font-size: 72px;
-    margin-bottom: 12px;
-    animation: stageEmojiBounce 0.8s ease infinite;
-}
-
-@keyframes stageEmojiBounce {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-15px) scale(1.1); }
+    font-size: 20px;
+    animation: none;
 }
 
 .stage-title {
-    font-size: 32px;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 6px;
-    text-shadow: 0 0 20px rgba(244,162,97,0.3);
+    font-size: 12px;
+    font-weight: 800;
+    color: white;
+    -webkit-text-fill-color: white;
+    background: none;
+    white-space: nowrap;
 }
 
 .stage-desc {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-bottom: 12px;
+    display: none;
 }
 
 .stage-bonus {
-    font-size: 20px;
-    font-weight: 800;
+    font-size: 11px;
+    font-weight: 700;
     color: #ffd700;
-    background: rgba(255,215,0,0.15);
-    padding: 8px 12px;
-    border-radius: 8px;
-    animation: stageBonus 0.6s ease-out;
-}
-
-@keyframes stageBonus {
-    0% {
-        opacity: 0;
-        transform: translateY(10px) scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+    background: none;
+    padding: 0;
+    white-space: nowrap;
 }
 
 /* === Evolution Bar Enhancement === */
@@ -1662,78 +1614,78 @@ body {
     font-size: 13px;
 }
 
-/* === Milestone Reward Badge === */
+/* === Milestone Reward Badge - compact top toast === */
 .milestone-reward-badge {
     position: fixed;
-    top: 50%;
+    top: 8px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(135deg, var(--bg-surface), rgba(244, 162, 97, 0.15));
-    border: 2px solid var(--primary);
-    border-radius: 20px;
-    padding: 28px;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--bg-surface), rgba(244, 162, 97, 0.2));
+    border: 1px solid var(--primary);
+    border-radius: 16px;
+    padding: 6px 16px;
     text-align: center;
     z-index: 500;
-    animation: badgePopup 0.5s ease;
-    box-shadow: 0 8px 32px rgba(244, 162, 97, 0.3);
+    pointer-events: none;
+    opacity: 0.9;
+    animation: toastIn 0.2s ease-out, toastOut 0.2s ease-in 1s forwards;
+    box-shadow: 0 2px 10px rgba(244, 162, 97, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .milestone-emoji {
-    font-size: 48px;
-    margin-bottom: 8px;
+    font-size: 18px;
+    margin-bottom: 0;
 }
 
 .milestone-text {
-    font-size: 14px;
+    font-size: 11px;
     color: var(--text-secondary);
-    margin-bottom: 4px;
+    margin-bottom: 0;
+    white-space: nowrap;
 }
 
 .milestone-count {
-    font-size: 20px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 8px;
+    margin-bottom: 0;
+    white-space: nowrap;
 }
 
 .milestone-bonus {
-    font-size: 14px;
+    font-size: 11px;
     color: var(--accent);
     font-weight: 600;
+    white-space: nowrap;
 }
 
-@keyframes badgePopup {
-    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
-    50% { transform: translate(-50%, -50%) scale(1.1); }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
-
-/* === Daily Challenge Complete Banner === */
+/* === Daily Challenge Complete Banner - compact top toast === */
 .daily-challenge-complete {
     position: fixed;
-    top: 100px;
+    top: 8px;
     left: 50%;
     transform: translateX(-50%);
     background: linear-gradient(135deg, rgba(42, 157, 143, 0.9), rgba(38, 70, 83, 0.9));
     border: 1px solid rgba(42, 157, 143, 0.5);
-    border-radius: var(--radius);
-    padding: 12px 20px;
+    border-radius: 16px;
+    padding: 5px 14px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
     color: var(--text);
+    font-size: 11px;
     z-index: 500;
-    animation: slideDown 0.4s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    opacity: 0.9;
+    animation: toastIn 0.2s ease-out, toastOut 0.2s ease-in 1.2s forwards;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .daily-challenge-complete .icon {
-    font-size: 20px;
-}
-
-@keyframes slideDown {
-    from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
-    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    font-size: 14px;
 }
 
 /* === Collection Badge on Button === */
