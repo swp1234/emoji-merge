@@ -730,12 +730,13 @@
 
     // === Overlays ===
     function showGameOver() {
-        finalScoreEl.textContent = score.toLocaleString();
-        finalBestEl.textContent = bestScore.toLocaleString();
+        if (finalScoreEl) finalScoreEl.textContent = score.toLocaleString();
+        if (finalBestEl) finalBestEl.textContent = bestScore.toLocaleString();
         const maxVal = Math.max(...grid.flat());
-        document.getElementById('final-max-emoji').textContent = getEmoji(maxVal);
+        const finalMaxEmoji = document.getElementById('final-max-emoji');
+        if (finalMaxEmoji) finalMaxEmoji.textContent = getEmoji(maxVal);
         const titleInfo = getTitleForScore(score);
-        titleBadge.textContent = `${titleInfo.title} - ${titleInfo.desc}`;
+        if (titleBadge) titleBadge.textContent = `${titleInfo.title} - ${titleInfo.desc}`;
 
         // Add stage stats to overlay
         const statsDiv = document.createElement('div');
@@ -788,7 +789,7 @@
             displayEmojiMergeLeaderboard(leaderboardResult);
         }
 
-        gameOverOverlay.classList.remove('hidden');
+        if (gameOverOverlay) gameOverOverlay.classList.remove('hidden');
         if (typeof gtag === 'function')
             gtag('event', 'game_over', { event_category: 'emoji_merge', score, max_tile: maxVal, chain: currentChain, moves: moveCount });
     }
@@ -816,9 +817,9 @@
         moveCount = 0;
         mergeCombo = 0; // Reset combo at game start
         reachedStages = {}; // Reset stages for new game
-        undoBtn.disabled = true;
-        gameOverOverlay.classList.add('hidden');
-        winOverlay.classList.add('hidden');
+        if (undoBtn) undoBtn.disabled = true;
+        if (gameOverOverlay) gameOverOverlay.classList.add('hidden');
+        if (winOverlay) winOverlay.classList.add('hidden');
 
         // Clear game-over stats if exists
         const statsDiv = document.querySelector('.game-over-stats');
@@ -838,10 +839,10 @@
         tileMap = undoState.tileMap;
         score = undoState.score;
         undoState = null;
-        undoBtn.disabled = true;
+        if (undoBtn) undoBtn.disabled = true;
         gameOver = false;
         animating = false;
-        gameOverOverlay.classList.add('hidden');
+        if (gameOverOverlay) gameOverOverlay.classList.add('hidden');
         renderAll();
         updateScoreDisplay();
         updateEvolutionBar();
@@ -1379,7 +1380,7 @@
         if (!leaderboardContainer) {
             leaderboardContainer = document.createElement('div');
             leaderboardContainer.className = 'leaderboard-section';
-            gameOverOverlay.appendChild(leaderboardContainer);
+            if (gameOverOverlay) gameOverOverlay.appendChild(leaderboardContainer);
         }
 
         const topScores = leaderboard.getTopScores(5);
@@ -1405,7 +1406,11 @@
         leaderboardContainer.innerHTML = html;
     }
 
-    init();
+    try {
+        init();
+    } catch (e) {
+        console.warn('Init error:', e);
+    }
 
     // Hide app loader
     const loader = document.getElementById('app-loader');
