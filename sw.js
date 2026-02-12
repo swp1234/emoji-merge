@@ -3,7 +3,7 @@
  * Enables offline functionality with caching and improved performance
  */
 
-const CACHE_NAME = 'emoji-merge-v1';
+const CACHE_NAME = 'emoji-merge-v2';
 const ASSETS = [
     './',
     './index.html',
@@ -56,48 +56,27 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Fetch event - serve from cache first, then network
+// Fetch event - network first, fallback to cache
 self.addEventListener('fetch', (event) => {
-    // Skip non-GET requests
-    if (event.request.method !== 'GET') {
-        return;
-    }
+    if (event.request.method !== 'GET') return;
 
     // Skip external requests (ads, analytics, etc.)
-    if (event.request.url.includes('googletagmanager') ||
-        event.request.url.includes('googlesyndication') ||
-        event.request.url.includes('pagead2.google') ||
-        !event.request.url.startsWith(self.location.origin)) {
-        return;
-    }
+    if (!event.request.url.startsWith(self.location.origin)) return;
 
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            // Return cached version if available
-            if (response) {
-                return response;
-            }
-
-            // Otherwise, fetch from network
-            return fetch(event.request).then((response) => {
-                // Check if we received a valid response
-                if (!response || response.status !== 200 || response.type !== 'basic') {
-                    return response;
+        fetch(event.request)
+            .then((response) => {
+                if (response && response.status === 200) {
+                    const responseToCache = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseToCache);
+                    });
                 }
-
-                // Clone the response
-                const responseToCache = response.clone();
-
-                // Cache the fetched response for future use
-                caches.open(CACHE_NAME).then((cache) => {
-                    cache.put(event.request, responseToCache);
-                });
-
                 return response;
-            }).catch(() => {
-                // Return a fallback response if offline
-                return caches.match('./index.html');
-            });
-        })
+            })
+            .catch(() => {
+                return caches.match(event.request)
+                    .then((cached) => cached || caches.match('./index.html'));
+            })
     );
 });
