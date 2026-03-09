@@ -546,7 +546,8 @@
                     totalGames++;
                     if (sfx) sfx.gameOver();
                     if (typeof Haptic !== 'undefined') Haptic.heavy();
-                    saveState();
+                    clearGameState();
+                    savePersistentStats();
                     setTimeout(() => showGameOver(), 300);
                 }
 
@@ -815,6 +816,9 @@
     }
 
     function newGame() {
+        // Clear previous in-progress game state
+        clearGameState();
+
         grid = createEmpty();
         tileMap = createEmpty();
         tilesContainer.innerHTML = '';
@@ -862,33 +866,111 @@
     }
 
     // === Persistence ===
-    function saveState() {
+    // Persistent stats survive across games; in-progress game state is separate.
+    function savePersistentStats() {
         try {
             if (typeof localStorage === 'undefined') return;
             localStorage.setItem('emojiMerge', JSON.stringify({
-                grid, tileMap, nextTileId, score, bestScore,
-                totalGames, maxTileEver, won, keepPlaying,
-                gameOver, currentChain, moveCount, reachedStages,
-                discoveredEmojis, totalMerges, mergeHistory, dailyChallenges, milestoneRewards
+                bestScore, totalGames, maxTileEver, currentChain,
+                discoveredEmojis, totalMerges, dailyChallenges, milestoneRewards
             }));
+        } catch (e) {
+            console.warn('Could not save persistent stats:', e.message);
+        }
+    }
+
+    function loadPersistentStats() {
+        try {
+            if (typeof localStorage === 'undefined') return;
+            const saved = localStorage.getItem('emojiMerge');
+            if (!saved) return;
+            let s = null;
+            try { s = JSON.parse(saved); } catch (e) { return; }
+            if (!s || typeof s !== 'object') return;
+            bestScore = (s.bestScore && !isNaN(s.bestScore)) ? s.bestScore : 0;
+            totalGames = (s.totalGames && !isNaN(s.totalGames)) ? s.totalGames : 0;
+            maxTileEver = (s.maxTileEver && !isNaN(s.maxTileEver)) ? s.maxTileEver : 0;
+            currentChain = s.currentChain || 'animal';
+            if (!EVOLUTION_CHAINS[currentChain]) currentChain = 'animal';
+            discoveredEmojis = s.discoveredEmojis || {};
+            totalMerges = (s.totalMerges && !isNaN(s.totalMerges)) ? s.totalMerges : 0;
+            dailyChallenges = s.dailyChallenges || {};
+            milestoneRewards = s.milestoneRewards || {};
+        } catch (e) {
+            console.warn('Error loading persistent stats:', e.message);
+        }
+    }
+
+    function saveState() {
+        try {
+            if (typeof localStorage === 'undefined') return;
+            // Save in-progress game state
+            localStorage.setItem('emojiMerge_gameState', JSON.stringify({
+                grid, tileMap, nextTileId, score, won, keepPlaying,
+                gameOver, moveCount, reachedStages, mergeHistory
+            }));
+            // Also update persistent stats
+            savePersistentStats();
         } catch (e) {
             console.warn('Could not save game state:', e.message);
         }
+    }
+
+    function clearGameState() {
+        try {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.removeItem('emojiMerge_gameState');
+            }
+        } catch (e) { /* ignore */ }
     }
 
     function loadState() {
         try {
             if (typeof localStorage === 'undefined') return false;
 
-            const saved = localStorage.getItem('emojiMerge');
-            if (!saved) return false;
+            // Load persistent stats first (bestScore, totalGames, etc.)
+            loadPersistentStats();
+
+            // Then load in-progress game state
+            const saved = localStorage.getItem('emojiMerge_gameState');
+            if (!saved) {
+                // Migration: try legacy key for one-time upgrade
+                const legacy = localStorage.getItem('emojiMerge');
+                if (legacy) {
+                    let s = null;
+                    try { s = JSON.parse(legacy); } catch (e) { return false; }
+                    if (s && s.grid) {
+                        grid = s.grid || createEmpty();
+                        tileMap = s.tileMap || createEmpty();
+                        nextTileId = (s.nextTileId && !isNaN(s.nextTileId)) ? s.nextTileId : 1;
+                        score = (s.score && !isNaN(s.score)) ? s.score : 0;
+                        won = !!s.won;
+                        keepPlaying = !!s.keepPlaying;
+                        gameOver = !!s.gameOver;
+                        moveCount = (s.moveCount && !isNaN(s.moveCount)) ? s.moveCount : 0;
+                        reachedStages = s.reachedStages || {};
+                        mergeHistory = Array.isArray(s.mergeHistory) ? s.mergeHistory : [];
+                        if (!tileMap || tileMap.length !== SIZE) {
+                            tileMap = createEmpty();
+                            for (let r = 0; r < SIZE; r++)
+                                for (let c = 0; c < SIZE; c++)
+                                    if (grid[r] && grid[r][c] !== 0)
+                                        tileMap[r][c] = nextTileId++;
+                        }
+                        // Migrate: save to new key, keep legacy for persistent stats
+                        saveState();
+                        return true;
+                    }
+                }
+                return false;
+            }
 
             let s = null;
             try {
                 s = JSON.parse(saved);
             } catch (parseErr) {
                 console.warn('Save data corrupted:', parseErr.message);
-                localStorage.removeItem('emojiMerge');
+                localStorage.removeItem('emojiMerge_gameState');
                 return false;
             }
 
@@ -898,21 +980,12 @@
             tileMap = s.tileMap || createEmpty();
             nextTileId = (s.nextTileId && !isNaN(s.nextTileId)) ? s.nextTileId : 1;
             score = (s.score && !isNaN(s.score)) ? s.score : 0;
-            bestScore = (s.bestScore && !isNaN(s.bestScore)) ? s.bestScore : 0;
-            totalGames = (s.totalGames && !isNaN(s.totalGames)) ? s.totalGames : 0;
-            maxTileEver = (s.maxTileEver && !isNaN(s.maxTileEver)) ? s.maxTileEver : 0;
             won = !!s.won;
             keepPlaying = !!s.keepPlaying;
             gameOver = !!s.gameOver;
-            currentChain = s.currentChain || 'animal';
-            if (!EVOLUTION_CHAINS[currentChain]) currentChain = 'animal';
             moveCount = (s.moveCount && !isNaN(s.moveCount)) ? s.moveCount : 0;
             reachedStages = s.reachedStages || {};
-            discoveredEmojis = s.discoveredEmojis || {};
-            totalMerges = (s.totalMerges && !isNaN(s.totalMerges)) ? s.totalMerges : 0;
             mergeHistory = Array.isArray(s.mergeHistory) ? s.mergeHistory : [];
-            dailyChallenges = s.dailyChallenges || {};
-            milestoneRewards = s.milestoneRewards || {};
 
             if (!tileMap || tileMap.length !== SIZE) {
                 tileMap = createEmpty();
