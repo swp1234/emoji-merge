@@ -792,6 +792,12 @@
         if (gameOverOverlay) gameOverOverlay.classList.remove('hidden');
         if (typeof gtag === 'function')
             gtag('event', 'game_over', { event_category: 'emoji_merge', score, max_tile: maxVal, chain: currentChain, moves: moveCount });
+
+        // Save best score to dedicated localStorage key for daily-streak
+        try { localStorage.setItem('emojiMerge_bestScore', Math.max(score, bestScore)); } catch (e) { /* ignore */ }
+
+        // Report score to daily streak system
+        if (typeof DailyStreak !== 'undefined') DailyStreak.report(score);
     }
 
     function showWin() {
@@ -1410,6 +1416,11 @@
         init();
     } catch (e) {
         console.warn('Init error:', e);
+    }
+
+    // Daily streak retention system
+    if (typeof DailyStreak !== 'undefined') {
+        DailyStreak.init({ gameId: 'emoji-merge', bestScoreKey: 'emojiMerge_bestScore', minTarget: 100 });
     }
 
     // Hide app loader
