@@ -811,6 +811,21 @@
 
         // Report score to daily streak system
         if (typeof DailyStreak !== 'undefined') DailyStreak.report(score);
+
+        // Rewarded ad: watch ad for 2x score
+        if (typeof GameAds !== 'undefined') {
+            GameAds.injectRewardButton({
+                container: '#game-over-overlay',
+                label: 'Watch Ad for 2x Score',
+                onReward: () => {
+                    score *= 2;
+                    if (finalScoreEl) finalScoreEl.textContent = score.toLocaleString();
+                    updateScoreDisplay();
+                    if (typeof gtag === 'function')
+                        gtag('event', 'rewarded_ad', { event_category: 'emoji_merge', type: '2x_score', score });
+                }
+            });
+        }
     }
 
     function showWin() {
@@ -840,6 +855,7 @@
         mergeCombo = 0; // Reset combo at game start
         reachedStages = {}; // Reset stages for new game
         if (undoBtn) undoBtn.disabled = true;
+        if (typeof GameAds !== 'undefined') GameAds.removeRewardButton('#game-over-overlay');
         if (gameOverOverlay) gameOverOverlay.classList.add('hidden');
         if (winOverlay) winOverlay.classList.add('hidden');
 
