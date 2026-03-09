@@ -458,6 +458,11 @@
 
         // Dopamine enhancement: screen effects and popups
         if (merges.length > 0) {
+            // Haptic: light for normal merge, medium for high-tier (>=64)
+            if (typeof Haptic !== 'undefined') {
+                const maxMergeVal = Math.max(...merges.map(m => m.newValue));
+                if (maxMergeVal >= 64) Haptic.medium(); else Haptic.light();
+            }
             triggerScreenShake(250);
             // Show score popup for first merge location
             if (merges.length > 0) {
@@ -540,6 +545,7 @@
                     gameOver = true;
                     totalGames++;
                     if (sfx) sfx.gameOver();
+                    if (typeof Haptic !== 'undefined') Haptic.heavy();
                     saveState();
                     setTimeout(() => showGameOver(), 300);
                 }
