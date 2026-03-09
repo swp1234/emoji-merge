@@ -548,7 +548,13 @@
                     if (typeof Haptic !== 'undefined') Haptic.heavy();
                     clearGameState();
                     savePersistentStats();
-                    setTimeout(() => showGameOver(), 300);
+                    setTimeout(() => {
+                        if (typeof GameAds !== 'undefined') {
+                            GameAds.showInterstitial({ onComplete: () => showGameOver() });
+                        } else {
+                            showGameOver();
+                        }
+                    }, 300);
                 }
 
                 if (moveCount > 0 && moveCount % 100 === 0) triggerInterstitialAd();
@@ -1501,6 +1507,8 @@
     if (typeof DailyStreak !== 'undefined') {
         DailyStreak.init({ gameId: 'emoji-merge', bestScoreKey: 'emojiMerge_bestScore', minTarget: 100 });
     }
+
+    if (typeof GameAds !== 'undefined') GameAds.init();
 
     // Hide app loader
     const loader = document.getElementById('app-loader');
