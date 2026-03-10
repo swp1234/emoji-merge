@@ -59,6 +59,7 @@
     let bestScore = 0;
     let totalGames = 0;
     let maxTileEver = 0;
+    let bestCombo = 0;
     let won = false;
     let keepPlaying = false;
     let gameOver = false;
@@ -89,6 +90,21 @@
     let leaderboard = null;
     if (typeof LeaderboardManager !== 'undefined') {
         leaderboard = new LeaderboardManager('emoji-merge', 10);
+    }
+
+    // GameAchievements integration
+    if (typeof GameAchievements !== 'undefined') {
+        GameAchievements.init({
+            gameId: 'emoji-merge',
+            defs: [
+                { id: 'score_500', stat: 'bestScore', target: 500, icon: '⭐', name: 'Merger' },
+                { id: 'score_2000', stat: 'bestScore', target: 2000, icon: '🏆', name: 'Merge Master' },
+                { id: 'score_5000', stat: 'bestScore', target: 5000, icon: '👑', name: 'Merge Legend' },
+                { id: 'games_10', stat: 'totalGames', target: 10, icon: '🎮', name: 'Regular Player' },
+                { id: 'games_50', stat: 'totalGames', target: 50, icon: '🔥', name: 'Dedicated' },
+                { id: 'combo_5', stat: 'bestCombo', target: 5, icon: '💥', name: 'Chain Reaction' }
+            ]
+        });
     }
 
     // Dopamine enhancements
@@ -460,6 +476,7 @@
 
         // Dopamine effects on move
         mergeCombo++;
+        if (mergeCombo > bestCombo) bestCombo = mergeCombo;
         lastMergeScore = scoreGain;
 
         // Track merges and discoveries
@@ -835,6 +852,15 @@
 
         // Report score to daily streak system
         if (typeof DailyStreak !== 'undefined') DailyStreak.report(score);
+
+        // Report achievements
+        if (typeof GameAchievements !== 'undefined') {
+            GameAchievements.report({
+                bestScore: bestScore,
+                totalGames: totalGames,
+                bestCombo: bestCombo
+            });
+        }
 
         // Rewarded ad: watch ad for 2x score
         if (typeof GameAds !== 'undefined') {
