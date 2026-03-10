@@ -3,7 +3,7 @@
  * Enables offline functionality with caching and improved performance
  */
 
-const CACHE_NAME = 'emoji-merge-v2';
+const CACHE_NAME = 'emoji-merge-v3';
 const ASSETS = [
     './',
     './index.html',
