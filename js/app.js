@@ -290,6 +290,60 @@
         return cells;
     }
 
+    // === Hint System ===
+    let hintCooldown = false;
+
+    function findMergePairs() {
+        const pairs = [];
+        for (let r = 0; r < SIZE; r++) {
+            for (let c = 0; c < SIZE; c++) {
+                if (grid[r][c] === 0) continue;
+                const v = grid[r][c];
+                if (c + 1 < SIZE && grid[r][c + 1] === v) pairs.push([{r, c}, {r, c: c+1}]);
+                if (r + 1 < SIZE && grid[r + 1][c] === v) pairs.push([{r, c}, {r: r+1, c}]);
+            }
+        }
+        return pairs;
+    }
+
+    function showHint() {
+        if (hintCooldown || gameOver || animating) return;
+        const pairs = findMergePairs();
+        if (pairs.length === 0) return;
+
+        hintCooldown = true;
+        const pair = pairs[Math.floor(Math.random() * pairs.length)];
+
+        for (const cell of pair) {
+            const id = tileMap[cell.r][cell.c];
+            const el = tileElements[id];
+            if (el) {
+                el.classList.add('hint-glow');
+                setTimeout(() => el.classList.remove('hint-glow'), 1200);
+            }
+        }
+
+        if (sfx) sfx.swoosh();
+        setTimeout(() => { hintCooldown = false; }, 3000);
+    }
+
+    // === Emoji Particle Effect ===
+    function spawnEmojiParticles(x, y, emoji, count = 6) {
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.className = 'emoji-particle';
+            p.textContent = emoji;
+            p.style.left = x + 'px';
+            p.style.top = y + 'px';
+            const angle = (Math.PI * 2 * i) / count;
+            const dist = 40 + Math.random() * 30;
+            p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+            p.style.setProperty('--ty', Math.sin(angle) * dist - 20 + 'px');
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 700);
+        }
+    }
+
     // === Tile DOM ===
     function createTileEl(id, value, row, col, isNew) {
         const pos = positionFor(row, col);
@@ -567,6 +621,15 @@
                     createTileEl(merge.mergeId, merge.newValue, merge.toRow, merge.toCol, false);
                     if (sfx) sfx.merge();
                     animateMerge(merge.mergeId);
+                    // Emoji particle burst on merge
+                    const mPos = positionFor(merge.toRow, merge.toCol);
+                    const boardRect = document.getElementById('game-board').getBoundingClientRect();
+                    spawnEmojiParticles(
+                        boardRect.left + mPos.left + mPos.size / 2,
+                        boardRect.top + mPos.top + mPos.size / 2,
+                        getEmoji(merge.newValue),
+                        merge.newValue >= 64 ? 8 : 5
+                    );
                 }
 
                 if (scoreGain > 0) showScorePopup(scoreGain);
@@ -1080,6 +1143,7 @@
         const map = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down', a: 'left', d: 'right', w: 'up', s: 'down' };
         const dir = map[e.key];
         if (dir) { e.preventDefault(); move(dir); }
+        if (e.key === 'h' || e.key === 'H') showHint();
     });
 
     let touchStartX = 0, touchStartY = 0, touchActive = false;
@@ -1524,6 +1588,9 @@
         if (collectionBtn) collectionBtn.addEventListener('click', showCollectionModal);
         if (historyBtn) historyBtn.addEventListener('click', showMergeHistoryModal);
         if (dailyBtn) dailyBtn.addEventListener('click', showDailyChallengeModal);
+
+        const hintBtn = document.getElementById('btn-hint');
+        if (hintBtn) hintBtn.addEventListener('click', showHint);
 
         if (typeof gtag === 'function') {
             const pageTitle = i18n.t('analytics.pageTitle') || 'Emoji Merge';

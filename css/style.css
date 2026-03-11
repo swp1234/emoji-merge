@@ -1388,6 +1388,31 @@ body {
 .confetti.type-4 { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
 .confetti.type-5 { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
 
+/* Hint glow effect */
+.tile.hint-glow {
+    animation: hint-pulse 0.4s ease-in-out 3;
+    z-index: 10;
+}
+
+@keyframes hint-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+    50% { box-shadow: 0 0 20px 6px rgba(251, 191, 36, 0.6); }
+}
+
+/* Emoji particle burst */
+.emoji-particle {
+    position: fixed;
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 200;
+    animation: emoji-burst 0.6s ease-out forwards;
+}
+
+@keyframes emoji-burst {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0.3); opacity: 0; }
+}
+
 /* Milestone Banner - compact top toast */
 @keyframes toastIn {
     0% { opacity: 0; transform: translateX(-50%) translateY(-16px) scale(0.9); }
