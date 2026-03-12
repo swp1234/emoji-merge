@@ -78,7 +78,7 @@
             el.style.cssText = 'position:fixed;top:20%;left:50%;transform:translate(-50%,-50%) scale(0);font-family:var(--heading,"Syne",sans-serif);font-size:32px;font-weight:800;color:#fbbf24;text-shadow:0 0 30px rgba(251,191,36,0.6);pointer-events:none;z-index:200;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.4s;opacity:0;white-space:nowrap;';
             document.body.appendChild(el);
         }
-        el.textContent = 'NEW BEST!';
+        el.textContent = window.i18n?.t('game.newBest') || 'NEW BEST!';
         el.style.transform = 'translate(-50%,-50%) scale(1.2)';
         el.style.opacity = '1';
         setTimeout(() => {
@@ -834,7 +834,7 @@
         overlay.innerHTML = `
             <div class="stage-popup">
                 <div class="stage-emoji">${stage.emoji}</div>
-                <div class="stage-title">${stage.name} ${achievedText}</div>
+                <div class="stage-title">${window.i18n?.t(stage.nameKey) || stage.name} ${achievedText}</div>
                 <div class="stage-bonus">+${stage.bonus} ${bonusText}</div>
             </div>
         `;
@@ -854,7 +854,9 @@
         const finalMaxEmoji = document.getElementById('final-max-emoji');
         if (finalMaxEmoji) finalMaxEmoji.textContent = getEmoji(maxVal);
         const titleInfo = getTitleForScore(score);
-        if (titleBadge) titleBadge.textContent = `${titleInfo.title} - ${titleInfo.desc}`;
+        const titleName = window.i18n?.t(titleInfo.titleKey) || titleInfo.title;
+        const titleDesc = window.i18n?.t(titleInfo.descKey) || titleInfo.desc;
+        if (titleBadge) titleBadge.textContent = `${titleName} - ${titleDesc}`;
 
         // Add stage stats to overlay
         const statsDiv = document.createElement('div');
@@ -862,7 +864,7 @@
         const reachedStagesList = Object.keys(reachedStages)
             .map(v => getStageForValue(Number(v)))
             .filter(s => s)
-            .map(s => `${s.emoji} ${s.name}`)
+            .map(s => `${s.emoji} ${window.i18n?.t(s.nameKey) || s.name}`)
             .join(' • ');
 
         const totalMergesLabel = window.i18n?.t('stats.totalMerges') || 'Total Merges';
@@ -1238,7 +1240,9 @@
         const collectionGrid = stats.allValues.map(value => {
             const discovered = discoveredEmojis[value];
             const emoji = discovered ? chain.map[value] : '?';
-            const name = discovered ? `${chain.map[value]} Lv.${Math.log2(value).toFixed(0)}` : '???';
+            const lvPrefix = window.i18n?.t('game.level') || 'Lv.';
+            const undiscovered = window.i18n?.t('game.undiscovered') || '???';
+            const name = discovered ? `${chain.map[value]} ${lvPrefix}${Math.log2(value).toFixed(0)}` : undiscovered;
             return `
                 <div class="collection-item${discovered ? ' discovered' : ''}">
                     <div class="collection-emoji">${emoji}</div>
@@ -1385,9 +1389,9 @@
             opt.innerHTML = `
                 <div class="chain-header">
                     <span class="chain-icon">${chain.icon}</span>
-                    <span class="chain-name">${chain.name}</span>
+                    <span class="chain-name">${window.i18n?.t(chain.nameKey) || chain.name}</span>
                 </div>
-                <div class="chain-desc">${chain.desc}</div>
+                <div class="chain-desc">${window.i18n?.t(chain.descKey) || chain.desc}</div>
                 <div class="chain-preview">${previewValues.map(v => chain.map[v]).join(' → ')}</div>
             `;
             opt.addEventListener('click', () => {
@@ -1511,8 +1515,8 @@
                 <div class="premium-stat"><span class="stat-val">${densityScore}%</span><span class="stat-lbl">${i18n.t('premium.boardDensity')}</span></div>
             </div>
             <div class="premium-analysis-item">
-                <h4>🏆 ${i18n.t('premium.titleBadge')}: ${titleInfo.title}</h4>
-                <p>${titleInfo.desc} - ${chain.name} ${i18n.t('premium.chainWith')} ${getEmoji(maxVal)} (${i18n.t('premium.level')} ${maxLevel}) ${i18n.t('premium.until')}</p>
+                <h4>🏆 ${i18n.t('premium.titleBadge')}: ${window.i18n?.t(titleInfo.titleKey) || titleInfo.title}</h4>
+                <p>${window.i18n?.t(titleInfo.descKey) || titleInfo.desc} - ${window.i18n?.t(chain.nameKey) || chain.name} ${i18n.t('premium.chainWith')} ${getEmoji(maxVal)} (${i18n.t('premium.level')} ${maxLevel}) ${i18n.t('premium.until')}</p>
             </div>
             <div class="premium-analysis-item">
                 <h4>📊 ${i18n.t('premium.boardStatus')}</h4>
@@ -1549,8 +1553,8 @@
         const chainLabel = i18n.t('premium.chainWith');
         const maxEvoLabel = i18n.t('game.maxEvolution');
         const scoreLabel = i18n.t('game.score');
-        const titleLabel = i18n.t('premium.titleBadge') || '칭호';
-        const text = `Emoji Merge\n${chainLabel}: ${chain.name}\n${maxEvoLabel}: ${getEmoji(maxVal)}\n${scoreLabel}: ${score.toLocaleString()}\n${titleLabel}: ${titleInfo.title}\n\nhttps://dopabrain.com/emoji-merge/`;
+        const titleLabel = i18n.t('premium.titleBadge') || 'Title';
+        const text = `Emoji Merge\n${chainLabel}: ${window.i18n?.t(chain.nameKey) || chain.name}\n${maxEvoLabel}: ${getEmoji(maxVal)}\n${scoreLabel}: ${score.toLocaleString()}\n${titleLabel}: ${window.i18n?.t(titleInfo.titleKey) || titleInfo.title}\n\nhttps://dopabrain.com/emoji-merge/`;
         if (navigator.share) {
             navigator.share({ title: i18n.t('game.resultTitle'), text });
         } else if (navigator.clipboard) {

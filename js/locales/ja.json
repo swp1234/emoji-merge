@@ -40,7 +40,10 @@
         "alertPlayFirst": "まずゲームをプレイしてください！",
         "confirmNewGame": "現在のゲームを失い、新しいゲームを開始しますか？",
         "resultCopied": "結果をコピーしました！",
-        "resultTitle": "絵文字マージ結果"
+        "resultTitle": "絵文字マージ結果",
+        "newBest": "新記録！",
+        "level": "Lv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "ブロック積み重ねタイミングゲーム",
@@ -93,12 +96,58 @@
         "milestoneReached": "マイルストーン達成！",
         "dailyComplete": "毎日チャレンジ完了"
     },
-  "error": {
-    "storage": "プライベートモードでは一部機能が制限されます。",
-    "data": "データ読み込みエラー。ページを更新してください。",
-    "canvas": "グラフィック描画の問題。もう一度お試しください。",
-    "audio": "音声が利用できません。続行できます。",
-    "network": "接続を確認して再試行してください。",
-    "general": "問題が発生しました。更新するか再試行してください。"
-  }
+    "milestone": {
+        "achievement": "ポイント達成！"
+    },
+    "stage": {
+        "achieved": "達成！",
+        "bonus": "ボーナスポイント！",
+        "intro": { "name": "導入", "desc": "128 達成" },
+        "beginner": { "name": "入門", "desc": "256 達成" },
+        "intermediate": { "name": "中級", "desc": "512 達成" },
+        "advanced": { "name": "上級", "desc": "1024 達成" },
+        "master": { "name": "マスター", "desc": "2048 達成" },
+        "legend": { "name": "レジェンド", "desc": "4096 達成" }
+    },
+    "modal": {
+        "collectionTitle": "図鑑",
+        "recentMergesTitle": "最近のマージ",
+        "dailyChallengeTitle": "毎日チャレンジ",
+        "close": "閉じる"
+    },
+    "stats": {
+        "totalMerges": "合計マージ数",
+        "maxEmoji": "最高絵文字",
+        "stages": "達成ステージ"
+    },
+    "analytics": {
+        "pageTitle": "絵文字マージ"
+    },
+    "chain": {
+        "animal": { "name": "卵からドラゴンへ", "desc": "卵が孵化し、鳥が育ち、伝説のドラゴンになる！" },
+        "plant": { "name": "種から世界樹へ", "desc": "小さな種が芽吹き、巨大な森に育つ！" },
+        "space": { "name": "水滴から銀河へ", "desc": "一滴の水が海となり、星となって宇宙を満たす！" },
+        "emotion": { "name": "感情レベルアップ", "desc": "穏やかな始まりからどんどん熱くなる感情の爆発！" }
+    },
+    "title": {
+        "novice": { "name": "初心者研究員", "desc": "進化の始まり" },
+        "apprentice": { "name": "見習いトレーナー", "desc": "コツをつかみ始める" },
+        "challenger": { "name": "進化チャレンジャー", "desc": "合体の楽しさ" },
+        "mutant": { "name": "突然変異学者", "desc": "パターンが見える" },
+        "geneticist": { "name": "遺伝子工学者", "desc": "戦略的マージ" },
+        "master": { "name": "進化マスター", "desc": "高度な戦略" },
+        "architect": { "name": "生命の建築家", "desc": "自在に操る" },
+        "demigod": { "name": "創造主の見習い", "desc": "ほぼ神の領域" },
+        "creator": { "name": "創造の神", "desc": "伝説の始まり" },
+        "ruler": { "name": "万物の支配者", "desc": "すべての進化を導く" },
+        "cosmic": { "name": "宇宙の創造者", "desc": "新たな宇宙を開く者" }
+    },
+    "error": {
+        "storage": "プライベートモードでは一部機能が制限されます。",
+        "data": "データ読み込みエラー。ページを更新してください。",
+        "canvas": "グラフィック描画の問題。もう一度お試しください。",
+        "audio": "音声が利用できません。続行できます。",
+        "network": "接続を確認して再試行してください。",
+        "general": "問題が発生しました。更新するか再試行してください。"
+    }
 }

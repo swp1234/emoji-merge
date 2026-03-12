@@ -40,7 +40,10 @@
         "alertPlayFirst": "Por favor, jogue primeiro!",
         "confirmNewGame": "Tem certeza de que deseja iniciar um novo jogo e perder seu progresso atual?",
         "resultCopied": "Resultado copiado!",
-        "resultTitle": "Resultado do Emoji Merge"
+        "resultTitle": "Resultado do Emoji Merge",
+        "newBest": "NOVO RECORDE!",
+        "level": "Nv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "Jogo de timing de empilhamento de blocos",
@@ -93,12 +96,58 @@
         "milestoneReached": "Marco Alcançado!",
         "dailyComplete": "Desafio Diário Concluído"
     },
-  "error": {
-    "storage": "Algumas funções podem ser limitadas no modo privado.",
-    "data": "Erro ao carregar dados. Atualize a página.",
-    "canvas": "Problema de renderização. Tente novamente.",
-    "audio": "Áudio indisponível. Você pode continuar.",
-    "network": "Verifique sua conexão e tente novamente.",
-    "general": "Algo deu errado. Atualize ou tente novamente."
-  }
+    "milestone": {
+        "achievement": "pontos alcançados!"
+    },
+    "stage": {
+        "achieved": "Alcançado!",
+        "bonus": "pontos de bônus!",
+        "intro": { "name": "Introdução", "desc": "Alcançar 128" },
+        "beginner": { "name": "Iniciante", "desc": "Alcançar 256" },
+        "intermediate": { "name": "Intermediário", "desc": "Alcançar 512" },
+        "advanced": { "name": "Avançado", "desc": "Alcançar 1024" },
+        "master": { "name": "Mestre", "desc": "Alcançar 2048" },
+        "legend": { "name": "Lenda", "desc": "Alcançar 4096" }
+    },
+    "modal": {
+        "collectionTitle": "Coleção",
+        "recentMergesTitle": "Mesclagens Recientes",
+        "dailyChallengeTitle": "Desafio Diário",
+        "close": "Fechar"
+    },
+    "stats": {
+        "totalMerges": "Total de Mesclagens",
+        "maxEmoji": "Emoji Máximo",
+        "stages": "Estágios Alcançados"
+    },
+    "analytics": {
+        "pageTitle": "Emoji Merge"
+    },
+    "chain": {
+        "animal": { "name": "Do ovo ao dragão", "desc": "O ovo eclode, o pássaro cresce e se torna um dragão lendário!" },
+        "plant": { "name": "Da semente à árvore do mundo", "desc": "Uma pequena semente brota e cresce até se tornar uma floresta enorme!" },
+        "space": { "name": "Da gota à galáxia", "desc": "Uma gota de água se torna o mar, depois estrelas preenchendo o universo!" },
+        "emotion": { "name": "Subida de nível emocional", "desc": "De um começo calmo a uma explosão de emoções cada vez mais intensa!" }
+    },
+    "title": {
+        "novice": { "name": "Pesquisador novato", "desc": "O início da evolução" },
+        "apprentice": { "name": "Treinador aprendiz", "desc": "Começando a pegar o jeito" },
+        "challenger": { "name": "Desafiante da evolução", "desc": "A diversão de mesclar" },
+        "mutant": { "name": "Estudioso de mutações", "desc": "Padrões emergem" },
+        "geneticist": { "name": "Engenheiro genético", "desc": "Mesclagem estratégica" },
+        "master": { "name": "Mestre da evolução", "desc": "Estratégia avançada" },
+        "architect": { "name": "Arquiteto da vida", "desc": "Domínio total" },
+        "demigod": { "name": "Aprendiz de semideus", "desc": "Quase no reino divino" },
+        "creator": { "name": "Deus da criação", "desc": "O início da lenda" },
+        "ruler": { "name": "Governante de tudo", "desc": "Liderando toda a evolução" },
+        "cosmic": { "name": "Criador cósmico", "desc": "Aquele que abre novos universos" }
+    },
+    "error": {
+        "storage": "Algumas funções podem ser limitadas no modo privado.",
+        "data": "Erro ao carregar dados. Atualize a página.",
+        "canvas": "Problema de renderização. Tente novamente.",
+        "audio": "Áudio indisponível. Você pode continuar.",
+        "network": "Verifique sua conexão e tente novamente.",
+        "general": "Algo deu errado. Atualize ou tente novamente."
+    }
 }

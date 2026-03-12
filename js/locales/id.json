@@ -40,7 +40,10 @@
         "alertPlayFirst": "Harap mainkan game terlebih dahulu!",
         "confirmNewGame": "Apakah Anda yakin ingin memulai permainan baru dan kehilangan kemajuan saat ini?",
         "resultCopied": "Hasil disalin!",
-        "resultTitle": "Hasil Emoji Merge"
+        "resultTitle": "Hasil Emoji Merge",
+        "newBest": "REKOR BARU!",
+        "level": "Lv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "Permainan penumpukan blok waktu",
@@ -93,12 +96,58 @@
         "milestoneReached": "Milestone Tercapai!",
         "dailyComplete": "Tantangan Harian Selesai"
     },
-  "error": {
-    "storage": "Beberapa fitur mungkin terbatas dalam mode privat.",
-    "data": "Kesalahan memuat data. Silakan muat ulang.",
-    "canvas": "Masalah rendering grafis. Silakan coba lagi.",
-    "audio": "Audio tidak tersedia. Anda dapat melanjutkan.",
-    "network": "Periksa koneksi Anda dan coba lagi.",
-    "general": "Terjadi kesalahan. Muat ulang atau coba lagi."
-  }
+    "milestone": {
+        "achievement": "poin tercapai!"
+    },
+    "stage": {
+        "achieved": "Tercapai!",
+        "bonus": "poin bonus!",
+        "intro": { "name": "Pengantar", "desc": "Capai 128" },
+        "beginner": { "name": "Pemula", "desc": "Capai 256" },
+        "intermediate": { "name": "Menengah", "desc": "Capai 512" },
+        "advanced": { "name": "Lanjutan", "desc": "Capai 1024" },
+        "master": { "name": "Master", "desc": "Capai 2048" },
+        "legend": { "name": "Legendaris", "desc": "Capai 4096" }
+    },
+    "modal": {
+        "collectionTitle": "Koleksi",
+        "recentMergesTitle": "Penggabungan Terbaru",
+        "dailyChallengeTitle": "Tantangan Harian",
+        "close": "Tutup"
+    },
+    "stats": {
+        "totalMerges": "Total Penggabungan",
+        "maxEmoji": "Emoji Maksimal",
+        "stages": "Tahap Tercapai"
+    },
+    "analytics": {
+        "pageTitle": "Emoji Merge"
+    },
+    "chain": {
+        "animal": { "name": "Dari telur ke naga", "desc": "Telur menetas, burung tumbuh, dan menjadi naga legendaris!" },
+        "plant": { "name": "Dari benih ke pohon dunia", "desc": "Benih kecil bertunas dan tumbuh menjadi hutan raksasa!" },
+        "space": { "name": "Dari tetesan ke galaksi", "desc": "Setetes air menjadi lautan, lalu bintang-bintang mengisi alam semesta!" },
+        "emotion": { "name": "Naik level emosi", "desc": "Dari awal yang tenang hingga ledakan emosi yang semakin membara!" }
+    },
+    "title": {
+        "novice": { "name": "Peneliti pemula", "desc": "Awal evolusi" },
+        "apprentice": { "name": "Pelatih magang", "desc": "Mulai mengerti" },
+        "challenger": { "name": "Penantang evolusi", "desc": "Kesenangan menggabungkan" },
+        "mutant": { "name": "Cendekiawan mutasi", "desc": "Pola mulai terlihat" },
+        "geneticist": { "name": "Insinyur genetika", "desc": "Penggabungan strategis" },
+        "master": { "name": "Master evolusi", "desc": "Strategi tingkat lanjut" },
+        "architect": { "name": "Arsitek kehidupan", "desc": "Penguasaan total" },
+        "demigod": { "name": "Murid dewa", "desc": "Hampir di ranah ilahi" },
+        "creator": { "name": "Dewa penciptaan", "desc": "Awal legenda" },
+        "ruler": { "name": "Penguasa segalanya", "desc": "Memimpin semua evolusi" },
+        "cosmic": { "name": "Pencipta kosmik", "desc": "Pembuka alam semesta baru" }
+    },
+    "error": {
+        "storage": "Beberapa fitur mungkin terbatas dalam mode privat.",
+        "data": "Kesalahan memuat data. Silakan muat ulang.",
+        "canvas": "Masalah rendering grafis. Silakan coba lagi.",
+        "audio": "Audio tidak tersedia. Anda dapat melanjutkan.",
+        "network": "Periksa koneksi Anda dan coba lagi.",
+        "general": "Terjadi kesalahan. Muat ulang atau coba lagi."
+    }
 }

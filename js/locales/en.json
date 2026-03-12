@@ -40,7 +40,10 @@
         "alertPlayFirst": "Please play the game first!",
         "confirmNewGame": "Are you sure you want to start a new game and lose your current progress?",
         "resultCopied": "Result copied!",
-        "resultTitle": "Emoji Merge Result"
+        "resultTitle": "Emoji Merge Result",
+        "newBest": "NEW BEST!",
+        "level": "Lv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "Block stacking timing game",
@@ -98,7 +101,13 @@
     },
     "stage": {
         "achieved": "Achieved!",
-        "bonus": "bonus points!"
+        "bonus": "bonus points!",
+        "intro": { "name": "Intro", "desc": "Reach 128" },
+        "beginner": { "name": "Beginner", "desc": "Reach 256" },
+        "intermediate": { "name": "Intermediate", "desc": "Reach 512" },
+        "advanced": { "name": "Advanced", "desc": "Reach 1024" },
+        "master": { "name": "Master", "desc": "Reach 2048" },
+        "legend": { "name": "Legend", "desc": "Reach 4096" }
     },
     "modal": {
         "collectionTitle": "Collection",
@@ -114,12 +123,31 @@
     "analytics": {
         "pageTitle": "Emoji Merge"
     },
-  "error": {
-    "storage": "Some features may be limited in private mode. You can continue.",
-    "data": "Data loading error. Please refresh the page.",
-    "canvas": "Graphics rendering issue. Please try again.",
-    "audio": "Audio unavailable. You can still continue.",
-    "network": "Please check your connection and try again.",
-    "general": "Something went wrong. Please refresh or try again."
-  }
+    "chain": {
+        "animal": { "name": "From Egg to Dragon", "desc": "An egg hatches, a bird grows, and becomes a legendary dragon!" },
+        "plant": { "name": "From Seed to World Tree", "desc": "A tiny seed sprouts and grows into a massive forest!" },
+        "space": { "name": "From Droplet to Galaxy", "desc": "A drop of water becomes the sea, then stars filling the universe!" },
+        "emotion": { "name": "Emotion Level Up", "desc": "From calm beginnings to an explosion of emotions!" }
+    },
+    "title": {
+        "novice": { "name": "Novice Researcher", "desc": "The start of evolution" },
+        "apprentice": { "name": "Apprentice Trainer", "desc": "Getting the hang of it" },
+        "challenger": { "name": "Evolution Challenger", "desc": "The fun of merging" },
+        "mutant": { "name": "Mutation Scholar", "desc": "Patterns emerge" },
+        "geneticist": { "name": "Genetic Engineer", "desc": "Strategic merging" },
+        "master": { "name": "Evolution Master", "desc": "Advanced strategy" },
+        "architect": { "name": "Architect of Life", "desc": "Total mastery" },
+        "demigod": { "name": "Demigod Apprentice", "desc": "Near divine realm" },
+        "creator": { "name": "God of Creation", "desc": "The start of legend" },
+        "ruler": { "name": "Ruler of All", "desc": "Leading all evolution" },
+        "cosmic": { "name": "Cosmic Creator", "desc": "One who opens new universes" }
+    },
+    "error": {
+        "storage": "Some features may be limited in private mode. You can continue.",
+        "data": "Data loading error. Please refresh the page.",
+        "canvas": "Graphics rendering issue. Please try again.",
+        "audio": "Audio unavailable. You can still continue.",
+        "network": "Please check your connection and try again.",
+        "general": "Something went wrong. Please refresh or try again."
+    }
 }

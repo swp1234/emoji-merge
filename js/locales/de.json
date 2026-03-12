@@ -40,7 +40,10 @@
         "alertPlayFirst": "Bitte spielen Sie zuerst!",
         "confirmNewGame": "Möchten Sie das aktuelle Spiel wirklich beenden und ein neues Spiel starten?",
         "resultCopied": "Ergebnis kopiert!",
-        "resultTitle": "Emoji Merge Ergebnis"
+        "resultTitle": "Emoji Merge Ergebnis",
+        "newBest": "NEUER REKORD!",
+        "level": "Lv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "Block-Stacking-Timing-Spiel",
@@ -93,12 +96,58 @@
         "milestoneReached": "Meilenstein erreicht!",
         "dailyComplete": "Tägliche Herausforderung abgeschlossen"
     },
-  "error": {
-    "storage": "Einige Funktionen sind im privaten Modus eingeschränkt.",
-    "data": "Fehler beim Laden. Bitte Seite aktualisieren.",
-    "canvas": "Grafikfehler. Bitte erneut versuchen.",
-    "audio": "Audio nicht verfügbar. Sie können fortfahren.",
-    "network": "Bitte Verbindung prüfen und erneut versuchen.",
-    "general": "Etwas ist schiefgelaufen. Bitte aktualisieren oder erneut versuchen."
-  }
+    "milestone": {
+        "achievement": "Punkte erreicht!"
+    },
+    "stage": {
+        "achieved": "Erreicht!",
+        "bonus": "Bonuspunkte!",
+        "intro": { "name": "Einführung", "desc": "128 erreichen" },
+        "beginner": { "name": "Anfänger", "desc": "256 erreichen" },
+        "intermediate": { "name": "Mittelstufe", "desc": "512 erreichen" },
+        "advanced": { "name": "Fortgeschritten", "desc": "1024 erreichen" },
+        "master": { "name": "Meister", "desc": "2048 erreichen" },
+        "legend": { "name": "Legende", "desc": "4096 erreichen" }
+    },
+    "modal": {
+        "collectionTitle": "Sammlung",
+        "recentMergesTitle": "Kürzliche Verschmelzungen",
+        "dailyChallengeTitle": "Tägliche Herausforderung",
+        "close": "Schließen"
+    },
+    "stats": {
+        "totalMerges": "Gesamtverschmelzungen",
+        "maxEmoji": "Maximales Emoji",
+        "stages": "Erreichte Stufen"
+    },
+    "analytics": {
+        "pageTitle": "Emoji Merge"
+    },
+    "chain": {
+        "animal": { "name": "Vom Ei zum Drachen", "desc": "Das Ei schlüpft, der Vogel wächst und wird ein legendärer Drache!" },
+        "plant": { "name": "Vom Samen zum Weltenbaum", "desc": "Ein winziger Samen keimt und wächst zu einem riesigen Wald!" },
+        "space": { "name": "Vom Tropfen zur Galaxie", "desc": "Ein Wassertropfen wird zum Meer, dann füllen Sterne das Universum!" },
+        "emotion": { "name": "Emotions-Levelaufstieg", "desc": "Von ruhigen Anfängen zu einer immer heißeren Gefühlsexplosion!" }
+    },
+    "title": {
+        "novice": { "name": "Anfänger-Forscher", "desc": "Der Beginn der Evolution" },
+        "apprentice": { "name": "Lehrlings-Trainer", "desc": "Den Dreh rausbekommen" },
+        "challenger": { "name": "Evolutions-Herausforderer", "desc": "Der Spaß am Verschmelzen" },
+        "mutant": { "name": "Mutations-Gelehrter", "desc": "Muster werden sichtbar" },
+        "geneticist": { "name": "Gentechniker", "desc": "Strategisches Verschmelzen" },
+        "master": { "name": "Evolutions-Meister", "desc": "Fortgeschrittene Strategie" },
+        "architect": { "name": "Architekt des Lebens", "desc": "Völlige Meisterschaft" },
+        "demigod": { "name": "Halbgott-Lehrling", "desc": "Fast göttliches Reich" },
+        "creator": { "name": "Gott der Schöpfung", "desc": "Der Beginn der Legende" },
+        "ruler": { "name": "Herrscher über alles", "desc": "Alle Evolution anführen" },
+        "cosmic": { "name": "Kosmischer Schöpfer", "desc": "Öffner neuer Universen" }
+    },
+    "error": {
+        "storage": "Einige Funktionen sind im privaten Modus eingeschränkt.",
+        "data": "Fehler beim Laden. Bitte Seite aktualisieren.",
+        "canvas": "Grafikfehler. Bitte erneut versuchen.",
+        "audio": "Audio nicht verfügbar. Sie können fortfahren.",
+        "network": "Bitte Verbindung prüfen und erneut versuchen.",
+        "general": "Etwas ist schiefgelaufen. Bitte aktualisieren oder erneut versuchen."
+    }
 }

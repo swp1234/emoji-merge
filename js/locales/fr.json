@@ -40,7 +40,10 @@
         "alertPlayFirst": "Veuillez jouer au jeu d'abord!",
         "confirmNewGame": "Êtes-vous sûr de vouloir commencer un nouveau jeu et perdre votre progression actuelle?",
         "resultCopied": "Résultat copié!",
-        "resultTitle": "Résultat d'Emoji Merge"
+        "resultTitle": "Résultat d'Emoji Merge",
+        "newBest": "NOUVEAU RECORD !",
+        "level": "Nv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "Jeu de timing de stacking de blocs",
@@ -93,12 +96,58 @@
         "milestoneReached": "Jalon Atteint!",
         "dailyComplete": "Défi Quotidien Complété"
     },
-  "error": {
-    "storage": "Certaines fonctions peuvent être limitées en mode privé.",
-    "data": "Erreur de chargement. Veuillez rafraîchir la page.",
-    "canvas": "Problème de rendu graphique. Veuillez réessayer.",
-    "audio": "Audio indisponible. Vous pouvez continuer.",
-    "network": "Vérifiez votre connexion et réessayez.",
-    "general": "Un problème est survenu. Rafraîchissez ou réessayez."
-  }
+    "milestone": {
+        "achievement": "points atteints !"
+    },
+    "stage": {
+        "achieved": "Atteint !",
+        "bonus": "points bonus !",
+        "intro": { "name": "Introduction", "desc": "Atteindre 128" },
+        "beginner": { "name": "Débutant", "desc": "Atteindre 256" },
+        "intermediate": { "name": "Intermédiaire", "desc": "Atteindre 512" },
+        "advanced": { "name": "Avancé", "desc": "Atteindre 1024" },
+        "master": { "name": "Maître", "desc": "Atteindre 2048" },
+        "legend": { "name": "Légende", "desc": "Atteindre 4096" }
+    },
+    "modal": {
+        "collectionTitle": "Collection",
+        "recentMergesTitle": "Fusions Récentes",
+        "dailyChallengeTitle": "Défi Quotidien",
+        "close": "Fermer"
+    },
+    "stats": {
+        "totalMerges": "Total des Fusions",
+        "maxEmoji": "Emoji Maximal",
+        "stages": "Étapes Atteintes"
+    },
+    "analytics": {
+        "pageTitle": "Emoji Merge"
+    },
+    "chain": {
+        "animal": { "name": "De l'œuf au dragon", "desc": "L'œuf éclot, l'oiseau grandit et devient un dragon légendaire !" },
+        "plant": { "name": "De la graine à l'arbre du monde", "desc": "Une petite graine germe et grandit pour devenir une forêt immense !" },
+        "space": { "name": "De la goutte à la galaxie", "desc": "Une goutte d'eau devient la mer, puis des étoiles remplissent l'univers !" },
+        "emotion": { "name": "Montée de niveau émotionnel", "desc": "D'un début calme à une explosion d'émotions de plus en plus intense !" }
+    },
+    "title": {
+        "novice": { "name": "Chercheur débutant", "desc": "Le début de l'évolution" },
+        "apprentice": { "name": "Entraîneur apprenti", "desc": "Commencer à comprendre" },
+        "challenger": { "name": "Challenger d'évolution", "desc": "Le plaisir de fusionner" },
+        "mutant": { "name": "Érudit des mutations", "desc": "Les motifs apparaissent" },
+        "geneticist": { "name": "Ingénieur génétique", "desc": "Fusion stratégique" },
+        "master": { "name": "Maître de l'évolution", "desc": "Stratégie avancée" },
+        "architect": { "name": "Architecte de la vie", "desc": "Maîtrise totale" },
+        "demigod": { "name": "Apprenti demi-dieu", "desc": "Presque dans le royaume divin" },
+        "creator": { "name": "Dieu de la création", "desc": "Le début de la légende" },
+        "ruler": { "name": "Maître de tout", "desc": "Mener toute l'évolution" },
+        "cosmic": { "name": "Créateur cosmique", "desc": "Celui qui ouvre de nouveaux univers" }
+    },
+    "error": {
+        "storage": "Certaines fonctions peuvent être limitées en mode privé.",
+        "data": "Erreur de chargement. Veuillez rafraîchir la page.",
+        "canvas": "Problème de rendu graphique. Veuillez réessayer.",
+        "audio": "Audio indisponible. Vous pouvez continuer.",
+        "network": "Vérifiez votre connexion et réessayez.",
+        "general": "Un problème est survenu. Rafraîchissez ou réessayez."
+    }
 }

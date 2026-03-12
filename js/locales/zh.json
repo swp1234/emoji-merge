@@ -40,7 +40,10 @@
         "alertPlayFirst": "请先玩游戏！",
         "confirmNewGame": "您确定要开始新游戏并失去当前进度吗？",
         "resultCopied": "结果已复制！",
-        "resultTitle": "表情符号合并结果"
+        "resultTitle": "表情符号合并结果",
+        "newBest": "新纪录！",
+        "level": "Lv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "堆积木块计时游戏",
@@ -98,7 +101,19 @@
     },
     "stage": {
         "achieved": "达成！",
-        "bonus": "奖励分！"
+        "bonus": "奖励分！",
+        "intro": { "name": "入门", "desc": "达成 128" },
+        "beginner": { "name": "初学", "desc": "达成 256" },
+        "intermediate": { "name": "中级", "desc": "达成 512" },
+        "advanced": { "name": "高级", "desc": "达成 1024" },
+        "master": { "name": "大师", "desc": "达成 2048" },
+        "legend": { "name": "传说", "desc": "达成 4096" }
+    },
+    "modal": {
+        "collectionTitle": "图鉴",
+        "recentMergesTitle": "最近合并",
+        "dailyChallengeTitle": "每日挑战",
+        "close": "关闭"
     },
     "stats": {
         "totalMerges": "总合并数",
@@ -108,12 +123,31 @@
     "analytics": {
         "pageTitle": "表情符号合并"
     },
-  "error": {
-    "storage": "隐私模式下部分功能可能受限。",
-    "data": "数据加载错误，请刷新页面。",
-    "canvas": "图形渲染问题，请重试。",
-    "audio": "音频不可用，可继续使用。",
-    "network": "请检查网络连接后重试。",
-    "general": "出现问题，请刷新或重试。"
-  }
+    "chain": {
+        "animal": { "name": "从蛋到龙", "desc": "蛋孵化，鸟成长，成为传说中的龙！" },
+        "plant": { "name": "从种子到世界树", "desc": "小小的种子发芽成长为巨大的森林！" },
+        "space": { "name": "从水滴到银河", "desc": "一滴水成为大海，化为星辰填满宇宙！" },
+        "emotion": { "name": "情感升级", "desc": "从平静的开始到越来越炽热的情感爆发！" }
+    },
+    "title": {
+        "novice": { "name": "初级研究员", "desc": "进化的开始" },
+        "apprentice": { "name": "见习训练师", "desc": "开始上手" },
+        "challenger": { "name": "进化挑战者", "desc": "合并的乐趣" },
+        "mutant": { "name": "突变学者", "desc": "看到了规律" },
+        "geneticist": { "name": "基因工程师", "desc": "战略合并" },
+        "master": { "name": "进化大师", "desc": "高级策略" },
+        "architect": { "name": "生命建筑师", "desc": "运用自如" },
+        "demigod": { "name": "造物主学徒", "desc": "接近神的领域" },
+        "creator": { "name": "创造之神", "desc": "传说的开始" },
+        "ruler": { "name": "万物之主", "desc": "引领所有进化" },
+        "cosmic": { "name": "宇宙创造者", "desc": "开启新宇宙的人" }
+    },
+    "error": {
+        "storage": "隐私模式下部分功能可能受限。",
+        "data": "数据加载错误，请刷新页面。",
+        "canvas": "图形渲染问题，请重试。",
+        "audio": "音频不可用，可继续使用。",
+        "network": "请检查网络连接后重试。",
+        "general": "出现问题，请刷新或重试。"
+    }
 }

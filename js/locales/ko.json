@@ -40,7 +40,10 @@
         "alertPlayFirst": "먼저 게임을 플레이해주세요!",
         "confirmNewGame": "현재 게임을 포기하고 새 게임을 시작할까요?",
         "resultCopied": "결과가 복사되었습니다!",
-        "resultTitle": "이모지 머지 결과"
+        "resultTitle": "이모지 머지 결과",
+        "newBest": "신기록!",
+        "level": "Lv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "블록 쌓기 타이밍 게임",
@@ -98,7 +101,13 @@
     },
     "stage": {
         "achieved": "달성!",
-        "bonus": "보너스 점수!"
+        "bonus": "보너스 점수!",
+        "intro": { "name": "도입", "desc": "128 달성" },
+        "beginner": { "name": "입문", "desc": "256 달성" },
+        "intermediate": { "name": "중급", "desc": "512 달성" },
+        "advanced": { "name": "고급", "desc": "1024 달성" },
+        "master": { "name": "마스터", "desc": "2048 달성" },
+        "legend": { "name": "전설", "desc": "4096 달성" }
     },
     "modal": {
         "collectionTitle": "이모지 도감",
@@ -114,12 +123,31 @@
     "analytics": {
         "pageTitle": "이모지 머지"
     },
-  "error": {
-    "storage": "개인 정보 보호 모드에서는 일부 기능이 제한될 수 있습니다.",
-    "data": "데이터 로드 중 문제가 발생했습니다. 새로고침해주세요.",
-    "canvas": "그래픽 렌더링 중 문제가 발생했습니다. 다시 시도해주세요.",
-    "audio": "음성 기능을 사용할 수 없습니다. 계속 진행하실 수 있습니다.",
-    "network": "네트워크 연결을 확인해주세요.",
-    "general": "문제가 발생했습니다. 새로고침하거나 다시 시도해주세요."
-  }
+    "chain": {
+        "animal": { "name": "알에서 용까지", "desc": "알이 부화하고, 새가 자라 전설의 용이 되다!" },
+        "plant": { "name": "씨앗에서 세계수까지", "desc": "작은 씨앗이 싹트고 자라 거대한 숲이 되다!" },
+        "space": { "name": "물방울에서 은하까지", "desc": "한 방울의 물이 바다가 되고, 별이 되어 우주를 채우다!" },
+        "emotion": { "name": "감정 레벨업", "desc": "차분한 시작에서 점점 뜨거워지는 감정의 폭발!" }
+    },
+    "title": {
+        "novice": { "name": "초보 연구원", "desc": "진화의 시작" },
+        "apprentice": { "name": "견습 조련사", "desc": "감을 잡기 시작" },
+        "challenger": { "name": "진화 도전자", "desc": "합치기의 재미" },
+        "mutant": { "name": "돌연변이 학자", "desc": "패턴이 보인다" },
+        "geneticist": { "name": "유전공학자", "desc": "전략적 합치기" },
+        "master": { "name": "진화 마스터", "desc": "고도의 전략" },
+        "architect": { "name": "생명의 건축가", "desc": "자유자재로" },
+        "demigod": { "name": "조물주 견습생", "desc": "거의 신의 영역" },
+        "creator": { "name": "창조의 신", "desc": "전설의 시작" },
+        "ruler": { "name": "만물의 지배자", "desc": "모든 진화를 이끌다" },
+        "cosmic": { "name": "우주 창조자", "desc": "새로운 우주를 여는 자" }
+    },
+    "error": {
+        "storage": "개인 정보 보호 모드에서는 일부 기능이 제한될 수 있습니다.",
+        "data": "데이터 로드 중 문제가 발생했습니다. 새로고침해주세요.",
+        "canvas": "그래픽 렌더링 중 문제가 발생했습니다. 다시 시도해주세요.",
+        "audio": "음성 기능을 사용할 수 없습니다. 계속 진행하실 수 있습니다.",
+        "network": "네트워크 연결을 확인해주세요.",
+        "general": "문제가 발생했습니다. 새로고침하거나 다시 시도해주세요."
+    }
 }

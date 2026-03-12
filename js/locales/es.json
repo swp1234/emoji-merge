@@ -40,7 +40,10 @@
         "alertPlayFirst": "¡Por favor, juega primero!",
         "confirmNewGame": "¿Estás seguro de que quieres comenzar un nuevo juego y perder tu progreso actual?",
         "resultCopied": "¡Resultado copiado!",
-        "resultTitle": "Resultado de Emoji Merge"
+        "resultTitle": "Resultado de Emoji Merge",
+        "newBest": "¡NUEVO RÉCORD!",
+        "level": "Nv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "Juego de timing de apilamiento de bloques",
@@ -93,12 +96,58 @@
         "milestoneReached": "¡Hito Alcanzado!",
         "dailyComplete": "Desafío Diario Completado"
     },
-  "error": {
-    "storage": "Algunas funciones pueden estar limitadas en modo privado.",
-    "data": "Error al cargar datos. Actualice la página.",
-    "canvas": "Problema de renderizado. Inténtelo de nuevo.",
-    "audio": "Audio no disponible. Puede continuar.",
-    "network": "Verifique su conexión e inténtelo de nuevo.",
-    "general": "Algo salió mal. Actualice o inténtelo de nuevo."
-  }
+    "milestone": {
+        "achievement": "¡puntos alcanzados!"
+    },
+    "stage": {
+        "achieved": "¡Alcanzado!",
+        "bonus": "¡puntos de bonificación!",
+        "intro": { "name": "Introducción", "desc": "Alcanzar 128" },
+        "beginner": { "name": "Principiante", "desc": "Alcanzar 256" },
+        "intermediate": { "name": "Intermedio", "desc": "Alcanzar 512" },
+        "advanced": { "name": "Avanzado", "desc": "Alcanzar 1024" },
+        "master": { "name": "Maestro", "desc": "Alcanzar 2048" },
+        "legend": { "name": "Leyenda", "desc": "Alcanzar 4096" }
+    },
+    "modal": {
+        "collectionTitle": "Colección",
+        "recentMergesTitle": "Fusiones Recientes",
+        "dailyChallengeTitle": "Desafío Diario",
+        "close": "Cerrar"
+    },
+    "stats": {
+        "totalMerges": "Total de Fusiones",
+        "maxEmoji": "Emoji Máximo",
+        "stages": "Etapas Alcanzadas"
+    },
+    "analytics": {
+        "pageTitle": "Emoji Merge"
+    },
+    "chain": {
+        "animal": { "name": "Del huevo al dragón", "desc": "¡El huevo eclosiona, el ave crece y se convierte en un dragón legendario!" },
+        "plant": { "name": "De la semilla al árbol del mundo", "desc": "¡Una pequeña semilla brota y crece hasta convertirse en un bosque enorme!" },
+        "space": { "name": "De la gota a la galaxia", "desc": "¡Una gota de agua se convierte en mar, luego estrellas llenan el universo!" },
+        "emotion": { "name": "Subida de nivel emocional", "desc": "¡De un comienzo tranquilo a una explosión de emociones cada vez más intensa!" }
+    },
+    "title": {
+        "novice": { "name": "Investigador novato", "desc": "El inicio de la evolución" },
+        "apprentice": { "name": "Entrenador aprendiz", "desc": "Empezando a entender" },
+        "challenger": { "name": "Retador de evolución", "desc": "La diversión de fusionar" },
+        "mutant": { "name": "Erudito de mutaciones", "desc": "Los patrones emergen" },
+        "geneticist": { "name": "Ingeniero genético", "desc": "Fusión estratégica" },
+        "master": { "name": "Maestro de evolución", "desc": "Estrategia avanzada" },
+        "architect": { "name": "Arquitecto de la vida", "desc": "Dominio total" },
+        "demigod": { "name": "Aprendiz de semidiós", "desc": "Casi en el reino divino" },
+        "creator": { "name": "Dios de la creación", "desc": "El inicio de la leyenda" },
+        "ruler": { "name": "Gobernante de todo", "desc": "Liderando toda la evolución" },
+        "cosmic": { "name": "Creador cósmico", "desc": "Quien abre nuevos universos" }
+    },
+    "error": {
+        "storage": "Algunas funciones pueden estar limitadas en modo privado.",
+        "data": "Error al cargar datos. Actualice la página.",
+        "canvas": "Problema de renderizado. Inténtelo de nuevo.",
+        "audio": "Audio no disponible. Puede continuar.",
+        "network": "Verifique su conexión e inténtelo de nuevo.",
+        "general": "Algo salió mal. Actualice o inténtelo de nuevo."
+    }
 }

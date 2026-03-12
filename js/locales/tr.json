@@ -40,7 +40,10 @@
         "alertPlayFirst": "Lütfen önce oyunu oynayın!",
         "confirmNewGame": "Mevcut oyunu kaybetmek ve yeni bir oyun başlatmak istediğinizden emin misiniz?",
         "resultCopied": "Sonuç kopyalandı!",
-        "resultTitle": "Emoji Merge Sonucu"
+        "resultTitle": "Emoji Merge Sonucu",
+        "newBest": "YENİ REKOR!",
+        "level": "Sv.",
+        "undiscovered": "???"
     },
     "recs": {
         "stackTowerDesc": "Blok yığımlama zamanlama oyunu",
@@ -93,12 +96,58 @@
         "milestoneReached": "Kilometre Taşına Ulaşıldı!",
         "dailyComplete": "Günlük Meydan Okuma Tamamlandı"
     },
-  "error": {
-    "storage": "Gizli modda bazı özellikler sınırlı olabilir.",
-    "data": "Veri yükleme hatası. Lütfen sayfayı yenileyin.",
-    "canvas": "Grafik oluşturma sorunu. Lütfen tekrar deneyin.",
-    "audio": "Ses kullanılamıyor. Devam edebilirsiniz.",
-    "network": "Bağlantınızı kontrol edip tekrar deneyin.",
-    "general": "Bir şeyler ters gitti. Yenileyip tekrar deneyin."
-  }
+    "milestone": {
+        "achievement": "puan ulaşıldı!"
+    },
+    "stage": {
+        "achieved": "Ulaşıldı!",
+        "bonus": "bonus puanlar!",
+        "intro": { "name": "Giriş", "desc": "128'e Ulaş" },
+        "beginner": { "name": "Başlangıç", "desc": "256'ya Ulaş" },
+        "intermediate": { "name": "Orta", "desc": "512'ye Ulaş" },
+        "advanced": { "name": "İleri", "desc": "1024'e Ulaş" },
+        "master": { "name": "Usta", "desc": "2048'e Ulaş" },
+        "legend": { "name": "Efsane", "desc": "4096'ya Ulaş" }
+    },
+    "modal": {
+        "collectionTitle": "Koleksiyon",
+        "recentMergesTitle": "Son Birleştirmeler",
+        "dailyChallengeTitle": "Günlük Meydan Okuma",
+        "close": "Kapat"
+    },
+    "stats": {
+        "totalMerges": "Toplam Birleştirmeler",
+        "maxEmoji": "Maksimum Emoji",
+        "stages": "Ulaşılan Aşamalar"
+    },
+    "analytics": {
+        "pageTitle": "Emoji Merge"
+    },
+    "chain": {
+        "animal": { "name": "Yumurtadan ejderhaya", "desc": "Yumurta çatlar, kuş büyür ve efsanevi bir ejderha olur!" },
+        "plant": { "name": "Tohumdan dünya ağacına", "desc": "Küçük bir tohum filizlenir ve devasa bir ormana dönüşür!" },
+        "space": { "name": "Damladan galaksiye", "desc": "Bir damla su deniz olur, sonra yıldızlar evreni doldurur!" },
+        "emotion": { "name": "Duygu seviye atlama", "desc": "Sakin bir başlangıçtan giderek yoğunlaşan bir duygu patlamasına!" }
+    },
+    "title": {
+        "novice": { "name": "Acemi araştırmacı", "desc": "Evrimin başlangıcı" },
+        "apprentice": { "name": "Çırak eğitmen", "desc": "İşi kavramaya başlama" },
+        "challenger": { "name": "Evrim meydan okuyucusu", "desc": "Birleştirmenin eğlencesi" },
+        "mutant": { "name": "Mutasyon bilgini", "desc": "Kalıplar ortaya çıkıyor" },
+        "geneticist": { "name": "Genetik mühendisi", "desc": "Stratejik birleştirme" },
+        "master": { "name": "Evrim ustası", "desc": "İleri strateji" },
+        "architect": { "name": "Yaşam mimarı", "desc": "Tam ustalık" },
+        "demigod": { "name": "Yarı tanrı çırağı", "desc": "Neredeyse ilahi alan" },
+        "creator": { "name": "Yaratılış tanrısı", "desc": "Efsanenin başlangıcı" },
+        "ruler": { "name": "Her şeyin hükümdarı", "desc": "Tüm evrimi yönetmek" },
+        "cosmic": { "name": "Kozmik yaratıcı", "desc": "Yeni evrenleri açan" }
+    },
+    "error": {
+        "storage": "Gizli modda bazı özellikler sınırlı olabilir.",
+        "data": "Veri yükleme hatası. Lütfen sayfayı yenileyin.",
+        "canvas": "Grafik oluşturma sorunu. Lütfen tekrar deneyin.",
+        "audio": "Ses kullanılamıyor. Devam edebilirsiniz.",
+        "network": "Bağlantınızı kontrol edip tekrar deneyin.",
+        "general": "Bir şeyler ters gitti. Yenileyip tekrar deneyin."
+    }
 }
