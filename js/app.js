@@ -68,6 +68,7 @@
     let currentChain = 'animal';
     let moveCount = 0;
     let _newBestShown = false;
+    let hasContinued = false;
 
     function showNewBest() {
         let el = document.getElementById('new-best-flash');
@@ -906,6 +907,12 @@
             displayEmojiMergeLeaderboard(leaderboardResult);
         }
 
+        // Show/hide continue button based on state
+        const continueBtn = document.getElementById('btn-continue-game');
+        if (continueBtn) {
+            continueBtn.style.display = (undoState && !hasContinued) ? '' : 'none';
+        }
+
         if (gameOverOverlay) gameOverOverlay.classList.remove('hidden');
         if (typeof gtag === 'function')
             gtag('event', 'game_over', { event_category: 'emoji_merge', score, max_tile: maxVal, chain: currentChain, moves: moveCount });
@@ -968,6 +975,9 @@
         mergeCombo = 0; // Reset combo at game start
         reachedStages = {}; // Reset stages for new game
         _newBestShown = false;
+        hasContinued = false;
+        const continueBtn = document.getElementById('btn-continue-game');
+        if (continueBtn) continueBtn.style.display = '';
         if (undoBtn) undoBtn.disabled = true;
         if (typeof GameAds !== 'undefined') GameAds.removeRewardButton('#game-over-overlay');
         if (gameOverOverlay) gameOverOverlay.classList.add('hidden');
@@ -983,6 +993,17 @@
         updateEvolutionBar();
         updateCollectionUI();
         saveState();
+    }
+
+    function continueGame() {
+        if (!undoState || hasContinued) return;
+        hasContinued = true;
+        // Hide the continue button so it can't be used again
+        const continueBtn = document.getElementById('btn-continue-game');
+        if (continueBtn) continueBtn.style.display = 'none';
+        undo();
+        if (typeof gtag === 'function')
+            gtag('event', 'continue_game', { event_category: 'emoji_merge', score });
     }
 
     function undo() {
@@ -1557,6 +1578,7 @@
     document.getElementById('chain-close').addEventListener('click', () => chainModal.classList.add('hidden'));
     document.getElementById('btn-retry')?.addEventListener('click', () => newGame());
     document.getElementById('btn-share')?.addEventListener('click', shareResult);
+    document.getElementById('btn-continue-game')?.addEventListener('click', () => continueGame());
     document.getElementById('btn-continue').addEventListener('click', () => { keepPlaying = true; winOverlay.classList.add('hidden'); });
     document.getElementById('btn-new-after-win').addEventListener('click', () => { totalGames++; newGame(); });
 
