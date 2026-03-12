@@ -56,32 +56,32 @@ class ErrorHandler {
         }
     }
 
-    // 사용자 친화적 메시지 생성
+    // User-friendly error message
     getUserFriendlyMessage(error) {
+        const t = (key, fallback) => (window.i18n?.t?.('error.' + key)) || fallback;
         const message = error.message || String(error);
 
         if (message.includes('localStorage') || message.includes('Storage')) {
-            return '개인 정보 보호 모드에서는 일부 기능이 제한될 수 있습니다. 계속 사용 가능합니다.';
+            return t('storage', 'Some features may be limited in private mode. You can continue.');
         }
 
         if (message.includes('JSON.parse') || message.includes('JSON')) {
-            return '데이터 로드 중 문제가 발생했습니다. 페이지를 새로고침해주세요.';
+            return t('data', 'Data loading error. Please refresh the page.');
         }
 
         if (message.includes('Canvas') || message.includes('2d')) {
-            return '그래픽 렌더링 중 문제가 발생했습니다. 다시 시도해주세요.';
+            return t('canvas', 'Graphics rendering issue. Please try again.');
         }
 
         if (message.includes('Audio') || message.includes('audioContext')) {
-            return '음성 기능을 사용할 수 없습니다. 계속 진행하실 수 있습니다.';
+            return t('audio', 'Audio unavailable. You can still continue.');
         }
 
         if (message.includes('network') || message.includes('fetch')) {
-            return '네트워크 연결을 확인해주세요. 다시 시도해주세요.';
+            return t('network', 'Please check your connection and try again.');
         }
 
-        // 기본 메시지
-        return '문제가 발생했습니다. 페이지를 새로고침하거나 다시 시도해주세요.';
+        return t('general', 'Something went wrong. Please refresh or try again.');
     }
 
     // 에러 UI 표시

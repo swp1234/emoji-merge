@@ -92,5 +92,13 @@
         "noHistory": "Sin historial de fusiones aún",
         "milestoneReached": "¡Hito Alcanzado!",
         "dailyComplete": "Desafío Diario Completado"
-    }
+    },
+  "error": {
+    "storage": "Algunas funciones pueden estar limitadas en modo privado.",
+    "data": "Error al cargar datos. Actualice la página.",
+    "canvas": "Problema de renderizado. Inténtelo de nuevo.",
+    "audio": "Audio no disponible. Puede continuar.",
+    "network": "Verifique su conexión e inténtelo de nuevo.",
+    "general": "Algo salió mal. Actualice o inténtelo de nuevo."
+  }
 }
