@@ -43,7 +43,8 @@
         "resultTitle": "Hasil Emoji Merge",
         "newBest": "REKOR BARU!",
         "level": "Lv.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "Game lainnya"
     },
     "recs": {
         "stackTowerDesc": "Permainan penumpukan blok waktu",
@@ -119,6 +120,12 @@
         "totalMerges": "Total Penggabungan",
         "maxEmoji": "Emoji Maksimal",
         "stages": "Tahap Tercapai"
+    },
+    "related": {
+        "idleClicker": "Idle Clicker",
+        "blockPuzzle": "Teka-teki Blok",
+        "stackTower": "Menara Tumpuk",
+        "colorMemory": "Memori Warna"
     },
     "analytics": {
         "pageTitle": "Emoji Merge"

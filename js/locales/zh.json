@@ -43,7 +43,8 @@
         "resultTitle": "表情符号合并结果",
         "newBest": "新纪录！",
         "level": "Lv.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "更多游戏"
     },
     "recs": {
         "stackTowerDesc": "堆积木块计时游戏",
@@ -119,6 +120,12 @@
         "totalMerges": "总合并数",
         "maxEmoji": "最高表情符号",
         "stages": "达成阶段"
+    },
+    "related": {
+        "idleClicker": "放置点击",
+        "blockPuzzle": "方块拼图",
+        "stackTower": "叠叠塔",
+        "colorMemory": "颜色记忆"
     },
     "analytics": {
         "pageTitle": "表情符号合并"

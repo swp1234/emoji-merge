@@ -43,7 +43,8 @@
         "resultTitle": "इमोजी मर्ज परिणाम",
         "newBest": "नया रिकॉर्ड!",
         "level": "Lv.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "और गेम"
     },
     "recs": {
         "stackTowerDesc": "ब्लॉक स्टैकिंग टाइमिंग गेम",
@@ -119,6 +120,12 @@
         "totalMerges": "कुल मर्ज",
         "maxEmoji": "सर्वोच्च इमोजी",
         "stages": "प्राप्त चरण"
+    },
+    "related": {
+        "idleClicker": "आइडल क्लिकर",
+        "blockPuzzle": "ब्लॉक पहेली",
+        "stackTower": "स्टैक टावर",
+        "colorMemory": "रंग स्मृति"
     },
     "analytics": {
         "pageTitle": "इमोजी मर्ज"

@@ -43,7 +43,8 @@
         "resultTitle": "이모지 머지 결과",
         "newBest": "신기록!",
         "level": "Lv.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "더 많은 게임"
     },
     "recs": {
         "stackTowerDesc": "블록 쌓기 타이밍 게임",
@@ -119,6 +120,12 @@
         "totalMerges": "총 병합 횟수",
         "maxEmoji": "최고 이모지",
         "stages": "달성한 스테이지"
+    },
+    "related": {
+        "idleClicker": "아이들 클리커",
+        "blockPuzzle": "블록 퍼즐",
+        "stackTower": "스택 타워",
+        "colorMemory": "컬러 메모리"
     },
     "analytics": {
         "pageTitle": "이모지 머지"

@@ -43,7 +43,8 @@
         "resultTitle": "絵文字マージ結果",
         "newBest": "新記録！",
         "level": "Lv.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "もっとゲーム"
     },
     "recs": {
         "stackTowerDesc": "ブロック積み重ねタイミングゲーム",
@@ -119,6 +120,12 @@
         "totalMerges": "合計マージ数",
         "maxEmoji": "最高絵文字",
         "stages": "達成ステージ"
+    },
+    "related": {
+        "idleClicker": "放置クリッカー",
+        "blockPuzzle": "ブロックパズル",
+        "stackTower": "スタックタワー",
+        "colorMemory": "カラーメモリー"
     },
     "analytics": {
         "pageTitle": "絵文字マージ"

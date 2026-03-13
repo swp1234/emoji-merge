@@ -43,7 +43,8 @@
         "resultTitle": "Emoji Merge Sonucu",
         "newBest": "YENİ REKOR!",
         "level": "Sv.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "Daha fazla oyun"
     },
     "recs": {
         "stackTowerDesc": "Blok yığımlama zamanlama oyunu",
@@ -119,6 +120,12 @@
         "totalMerges": "Toplam Birleştirmeler",
         "maxEmoji": "Maksimum Emoji",
         "stages": "Ulaşılan Aşamalar"
+    },
+    "related": {
+        "idleClicker": "Boşta Tıklayıcı",
+        "blockPuzzle": "Blok Bulmaca",
+        "stackTower": "Yığın Kule",
+        "colorMemory": "Renk Hafıza"
     },
     "analytics": {
         "pageTitle": "Emoji Merge"

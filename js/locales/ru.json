@@ -43,7 +43,8 @@
         "resultTitle": "Результат Emoji Merge",
         "newBest": "НОВЫЙ РЕКОРД!",
         "level": "Ур.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "Ещё игры"
     },
     "recs": {
         "stackTowerDesc": "Игра с нарастанием блоков по времени",
@@ -119,6 +120,12 @@
         "totalMerges": "Всего объединений",
         "maxEmoji": "Макс эмодзи",
         "stages": "Достигнутые этапы"
+    },
+    "related": {
+        "idleClicker": "Кликер",
+        "blockPuzzle": "Блок-Пазл",
+        "stackTower": "Стек Башня",
+        "colorMemory": "Цветная Память"
     },
     "analytics": {
         "pageTitle": "Слияние Эмодзи"

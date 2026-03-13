@@ -1196,6 +1196,19 @@ body {
     color: var(--text-dim);
 }
 
+/* === Related Games Cards === */
+.related-tests { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; }
+.related-tests h3 { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 10px; text-align: center; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.related-card { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; text-decoration: none; color: #fff; transition: transform 0.2s, border-color 0.2s; }
+.related-card:hover { transform: translateY(-2px); border-color: var(--card-color, #3498db); }
+.related-emoji { font-size: 24px; }
+.related-name { font-size: 11px; font-weight: 600; text-align: center; color: rgba(255,255,255,0.6); }
+[data-theme="light"] .related-card { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+[data-theme="light"] .related-card:hover { background: rgba(0,0,0,0.06); }
+[data-theme="light"] .related-name { color: rgba(0,0,0,0.5); }
+[data-theme="light"] .related-tests h3 { color: rgba(0,0,0,0.4); }
+
 /* === Language Selector === */
 .language-selector {
     position: fixed;

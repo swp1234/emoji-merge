@@ -43,7 +43,8 @@
         "resultTitle": "Emoji Merge Result",
         "newBest": "NEW BEST!",
         "level": "Lv.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "More Games"
     },
     "recs": {
         "stackTowerDesc": "Block stacking timing game",
@@ -119,6 +120,12 @@
         "totalMerges": "Total Merges",
         "maxEmoji": "Max Emoji",
         "stages": "Stages Reached"
+    },
+    "related": {
+        "idleClicker": "Idle Clicker",
+        "blockPuzzle": "Block Puzzle",
+        "stackTower": "Stack Tower",
+        "colorMemory": "Color Memory"
     },
     "analytics": {
         "pageTitle": "Emoji Merge"

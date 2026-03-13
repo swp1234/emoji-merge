@@ -43,7 +43,8 @@
         "resultTitle": "Résultat d'Emoji Merge",
         "newBest": "NOUVEAU RECORD !",
         "level": "Nv.",
-        "undiscovered": "???"
+        "undiscovered": "???",
+        "moreGames": "Plus de jeux"
     },
     "recs": {
         "stackTowerDesc": "Jeu de timing de stacking de blocs",
@@ -119,6 +120,12 @@
         "totalMerges": "Total des Fusions",
         "maxEmoji": "Emoji Maximal",
         "stages": "Étapes Atteintes"
+    },
+    "related": {
+        "idleClicker": "Clicker Idle",
+        "blockPuzzle": "Puzzle de Blocs",
+        "stackTower": "Tour Empilable",
+        "colorMemory": "Mémoire de Couleurs"
     },
     "analytics": {
         "pageTitle": "Emoji Merge"
