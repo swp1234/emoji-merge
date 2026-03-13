@@ -385,7 +385,7 @@
         const el = tileElements[id];
         if (!el) return;
         requestAnimationFrame(() => {
-            el.style.transition = `transform ${ANIM_APPEAR_MS}ms ease, opacity ${ANIM_APPEAR_MS}ms ease`;
+            el.style.transition = `transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity ${ANIM_APPEAR_MS}ms ease`;
             el.style.transform = 'scale(1)';
             el.style.opacity = '1';
         });
@@ -395,11 +395,10 @@
         const el = tileElements[id];
         if (!el) return;
         el.style.transition = 'none';
-        el.style.transform = 'scale(1)';
+        el.style.transform = 'scale(0.5)';
         requestAnimationFrame(() => {
-            el.style.transition = `transform ${ANIM_APPEAR_MS}ms ease`;
-            el.style.transform = 'scale(1.2)';
-            setTimeout(() => { el.style.transform = 'scale(1)'; }, ANIM_APPEAR_MS);
+            el.style.transition = `transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1)`;
+            el.style.transform = 'scale(1)';
         });
     }
 
