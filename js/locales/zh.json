@@ -44,7 +44,8 @@
         "newBest": "新纪录！",
         "level": "Lv.",
         "undiscovered": "???",
-        "moreGames": "更多游戏"
+        "moreGames": "更多游戏",
+        "combo": "连击"
     },
     "recs": {
         "stackTowerDesc": "堆积木块计时游戏",
@@ -95,7 +96,9 @@
         "maxEmoji": "最高表情符号",
         "noHistory": "还没有合并历史",
         "milestoneReached": "达成里程碑！",
-        "dailyComplete": "每日挑战完成"
+        "dailyComplete": "每日挑战完成",
+        "discovered": "已发现",
+        "newDiscovery": "NEW!"
     },
     "milestone": {
         "achievement": "分达成！"

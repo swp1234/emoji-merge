@@ -44,7 +44,8 @@
         "newBest": "नया रिकॉर्ड!",
         "level": "Lv.",
         "undiscovered": "???",
-        "moreGames": "और गेम"
+        "moreGames": "और गेम",
+        "combo": "कॉम्बो"
     },
     "recs": {
         "stackTowerDesc": "ब्लॉक स्टैकिंग टाइमिंग गेम",
@@ -95,7 +96,9 @@
         "maxEmoji": "सर्वोच्च इमोजी",
         "noHistory": "अभी तक कोई मर्ज इतिहास नहीं",
         "milestoneReached": "मील का पत्थर पहुंचा!",
-        "dailyComplete": "दैनिक चुनौती पूर्ण"
+        "dailyComplete": "दैनिक चुनौती पूर्ण",
+        "discovered": "खोजे गए",
+        "newDiscovery": "नया!"
     },
     "milestone": {
         "achievement": "अंक प्राप्त!"

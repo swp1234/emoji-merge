@@ -44,7 +44,8 @@
         "newBest": "NOUVEAU RECORD !",
         "level": "Nv.",
         "undiscovered": "???",
-        "moreGames": "Plus de jeux"
+        "moreGames": "Plus de jeux",
+        "combo": "COMBO"
     },
     "recs": {
         "stackTowerDesc": "Jeu de timing de stacking de blocs",
@@ -95,7 +96,9 @@
         "maxEmoji": "Emoji Maximal",
         "noHistory": "Pas d'historique de fusion encore",
         "milestoneReached": "Jalon Atteint!",
-        "dailyComplete": "Défi Quotidien Complété"
+        "dailyComplete": "Défi Quotidien Complété",
+        "discovered": "Découvert",
+        "newDiscovery": "NOUVEAU !"
     },
     "milestone": {
         "achievement": "points atteints !"

@@ -44,7 +44,8 @@
         "newBest": "YENİ REKOR!",
         "level": "Sv.",
         "undiscovered": "???",
-        "moreGames": "Daha fazla oyun"
+        "moreGames": "Daha fazla oyun",
+        "combo": "KOMBO"
     },
     "recs": {
         "stackTowerDesc": "Blok yığımlama zamanlama oyunu",
@@ -95,7 +96,9 @@
         "maxEmoji": "Maksimum Emoji",
         "noHistory": "Henüz birleştirme geçmişi yok",
         "milestoneReached": "Kilometre Taşına Ulaşıldı!",
-        "dailyComplete": "Günlük Meydan Okuma Tamamlandı"
+        "dailyComplete": "Günlük Meydan Okuma Tamamlandı",
+        "discovered": "Keşfedilen",
+        "newDiscovery": "YENİ!"
     },
     "milestone": {
         "achievement": "puan ulaşıldı!"

@@ -44,7 +44,8 @@
         "newBest": "신기록!",
         "level": "Lv.",
         "undiscovered": "???",
-        "moreGames": "더 많은 게임"
+        "moreGames": "더 많은 게임",
+        "combo": "콤보"
     },
     "recs": {
         "stackTowerDesc": "블록 쌓기 타이밍 게임",
@@ -95,7 +96,9 @@
         "maxEmoji": "최고 이모지",
         "noHistory": "합성 기록이 없습니다",
         "milestoneReached": "마일스톤 달성!",
-        "dailyComplete": "일일 도전 완료"
+        "dailyComplete": "일일 도전 완료",
+        "discovered": "발견",
+        "newDiscovery": "NEW!"
     },
     "milestone": {
         "achievement": "점 달성!"

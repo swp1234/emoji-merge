@@ -44,7 +44,8 @@
         "newBest": "НОВЫЙ РЕКОРД!",
         "level": "Ур.",
         "undiscovered": "???",
-        "moreGames": "Ещё игры"
+        "moreGames": "Ещё игры",
+        "combo": "КОМБО"
     },
     "recs": {
         "stackTowerDesc": "Игра с нарастанием блоков по времени",
@@ -95,7 +96,9 @@
         "maxEmoji": "Макс эмодзи",
         "noHistory": "История объединений еще нет",
         "milestoneReached": "Веха достигнута!",
-        "dailyComplete": "Ежедневный вызов завершен"
+        "dailyComplete": "Ежедневный вызов завершен",
+        "discovered": "Открыто",
+        "newDiscovery": "НОВОЕ!"
     },
     "milestone": {
         "achievement": "очков достигнуто!"

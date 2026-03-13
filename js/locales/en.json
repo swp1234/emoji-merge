@@ -44,7 +44,8 @@
         "newBest": "NEW BEST!",
         "level": "Lv.",
         "undiscovered": "???",
-        "moreGames": "More Games"
+        "moreGames": "More Games",
+        "combo": "COMBO"
     },
     "recs": {
         "stackTowerDesc": "Block stacking timing game",
@@ -95,7 +96,9 @@
         "maxEmoji": "Highest Emoji",
         "noHistory": "No merge history yet",
         "milestoneReached": "Milestone Reached!",
-        "dailyComplete": "Daily Challenge Complete"
+        "dailyComplete": "Daily Challenge Complete",
+        "discovered": "Discovered",
+        "newDiscovery": "NEW!"
     },
     "milestone": {
         "achievement": "points achieved!"

@@ -112,6 +112,9 @@
     let mergeCombo = 0;
     let lastMergeScore = 0;
     let reachedStages = {}; // Track which stages have been reached
+    let comboDisplay = null; // Combo counter DOM element
+    let inactivityTimer = null; // Auto-hint timer
+    const INACTIVITY_HINT_MS = 10000; // 10 seconds
 
     // Collection & Analytics
     let discoveredEmojis = {}; // Track discovered emoji values
@@ -167,6 +170,96 @@
         const discovered = allValues.filter(v => discoveredEmojis[v]).length;
         const percentage = Math.round((discovered / allValues.length) * 100);
         return { discovered, total: allValues.length, percentage, allValues };
+    }
+
+    // === Discovery Progress Tracker ===
+    function updateDiscoveryTracker() {
+        const stats = getCollectionStats();
+        let tracker = document.getElementById('discovery-tracker');
+        if (!tracker) {
+            tracker = document.createElement('div');
+            tracker.id = 'discovery-tracker';
+            tracker.className = 'discovery-tracker';
+            const headerControls = document.querySelector('.header-controls');
+            if (headerControls) {
+                headerControls.parentNode.insertBefore(tracker, headerControls.nextSibling);
+            }
+        }
+        const discoveredLabel = window.i18n?.t('collection.discovered') || 'Discovered';
+        tracker.innerHTML = `
+            <div class="discovery-bar">
+                <div class="discovery-fill" style="width: ${stats.percentage}%"></div>
+            </div>
+            <span class="discovery-text">${discoveredLabel}: ${stats.discovered}/${stats.total}</span>
+        `;
+    }
+
+    // === NEW! Discovery Animation ===
+    function showNewDiscoveryAnimation(emoji, x, y) {
+        const badge = document.createElement('div');
+        badge.className = 'new-discovery-badge';
+        const newLabel = window.i18n?.t('collection.newDiscovery') || 'NEW!';
+        badge.innerHTML = `<span class="new-emoji">${emoji}</span><span class="new-label">${newLabel}</span>`;
+        badge.style.left = x + 'px';
+        badge.style.top = y + 'px';
+        document.body.appendChild(badge);
+        if (sfx) sfx.levelUp();
+        setTimeout(() => badge.remove(), 1500);
+    }
+
+    // === Combo Chain Display ===
+    function updateComboDisplay(combo) {
+        if (combo < 2) {
+            if (comboDisplay) {
+                comboDisplay.classList.add('combo-fade');
+                setTimeout(() => { if (comboDisplay) { comboDisplay.remove(); comboDisplay = null; } }, 300);
+            }
+            return;
+        }
+        if (!comboDisplay) {
+            comboDisplay = document.createElement('div');
+            comboDisplay.className = 'combo-counter';
+            document.body.appendChild(comboDisplay);
+        }
+        const comboLabel = window.i18n?.t('game.combo') || 'COMBO';
+        comboDisplay.innerHTML = `<span class="combo-number">x${combo}</span><span class="combo-label">${comboLabel}</span>`;
+        comboDisplay.classList.remove('combo-fade');
+        comboDisplay.classList.add('combo-pop');
+        setTimeout(() => comboDisplay?.classList.remove('combo-pop'), 200);
+    }
+
+    // === Inactivity Hint System ===
+    function resetInactivityTimer() {
+        if (inactivityTimer) clearTimeout(inactivityTimer);
+        if (gameOver || animating) return;
+        inactivityTimer = setTimeout(() => {
+            if (!gameOver && !animating) {
+                showAutoHint();
+            }
+        }, INACTIVITY_HINT_MS);
+    }
+
+    function showAutoHint() {
+        const pairs = findMergePairs();
+        if (pairs.length === 0) return;
+        const pair = pairs[Math.floor(Math.random() * pairs.length)];
+
+        // Show subtle pulse on hint button
+        const hintBtn = document.getElementById('btn-hint');
+        if (hintBtn) {
+            hintBtn.classList.add('hint-pulse');
+            setTimeout(() => hintBtn.classList.remove('hint-pulse'), 2000);
+        }
+
+        // Glow the mergeable tiles subtly
+        for (const cell of pair) {
+            const id = tileMap[cell.r][cell.c];
+            const el = tileElements[id];
+            if (el) {
+                el.classList.add('hint-subtle');
+                setTimeout(() => el.classList.remove('hint-subtle'), 2000);
+            }
+        }
     }
 
     function trackMerge(fromValue, toValue) {
@@ -529,16 +622,33 @@
         moveCount++;
 
         // Dopamine effects on move
-        mergeCombo++;
+        if (merges.length > 0) {
+            mergeCombo++;
+        } else {
+            mergeCombo = 0;
+        }
         if (mergeCombo > bestCombo) bestCombo = mergeCombo;
         lastMergeScore = scoreGain;
+        updateComboDisplay(mergeCombo);
 
         // Track merges and discoveries
         for (const merge of merges) {
+            const wasDiscovered = discoveredEmojis[merge.newValue];
             trackMerge(merge.fromIds[0], merge.newValue);
             updateDiscoveredEmojis();
+            // Show NEW! animation for first-time discoveries
+            if (!wasDiscovered && discoveredEmojis[merge.newValue]) {
+                const mPos = positionFor(merge.toRow, merge.toCol);
+                const boardRect = document.getElementById('game-board').getBoundingClientRect();
+                showNewDiscoveryAnimation(
+                    getEmoji(merge.newValue),
+                    boardRect.left + mPos.left + mPos.size / 2,
+                    boardRect.top + mPos.top
+                );
+            }
             checkMilestones();
         }
+        updateDiscoveryTracker();
 
         const currentMax = Math.max(...grid.flat(), 0);
         if (currentMax > maxTileEver) maxTileEver = currentMax;
@@ -670,6 +780,9 @@
         }
 
         if (moves.length > 0 && sfx) sfx.swoosh();
+
+        // Reset inactivity timer on every move
+        resetInactivityTimer();
 
         return true;
     }
@@ -993,6 +1106,9 @@
         updateScoreDisplay();
         updateEvolutionBar();
         updateCollectionUI();
+        updateDiscoveryTracker();
+        updateComboDisplay(0);
+        resetInactivityTimer();
         saveState();
     }
 
@@ -1164,7 +1280,7 @@
         if (chainModal && !chainModal.classList.contains('hidden')) return;
         const map = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down', a: 'left', d: 'right', w: 'up', s: 'down' };
         const dir = map[e.key];
-        if (dir) { e.preventDefault(); move(dir); }
+        if (dir) { e.preventDefault(); resetInactivityTimer(); move(dir); }
         if (e.key === 'h' || e.key === 'H') showHint();
     });
 
@@ -1230,25 +1346,46 @@
     }
 
     function showCollectionModal() {
-        const stats = getCollectionStats();
         const chain = EVOLUTION_CHAINS[currentChain];
         const modal = document.createElement('div');
         modal.className = 'modal hidden collection-modal';
         modal.id = 'collection-modal';
 
-        const collectionGrid = stats.allValues.map(value => {
-            const discovered = discoveredEmojis[value];
-            const emoji = discovered ? chain.map[value] : '?';
-            const lvPrefix = window.i18n?.t('game.level') || 'Lv.';
-            const undiscovered = window.i18n?.t('game.undiscovered') || '???';
-            const name = discovered ? `${chain.map[value]} ${lvPrefix}${Math.log2(value).toFixed(0)}` : undiscovered;
-            return `
-                <div class="collection-item${discovered ? ' discovered' : ''}">
-                    <div class="collection-emoji">${emoji}</div>
-                    <div class="collection-name">${name}</div>
+        // Build grid for all 4 chains
+        const chainKeys = Object.keys(EVOLUTION_CHAINS);
+        let chainsHtml = '';
+        let totalDiscovered = 0;
+        let totalEmojis = 0;
+
+        chainKeys.forEach(key => {
+            const c = EVOLUTION_CHAINS[key];
+            const values = Object.keys(c.map).map(Number).sort((a, b) => a - b);
+            const chainDiscovered = values.filter(v => discoveredEmojis[v]).length;
+            totalDiscovered += chainDiscovered;
+            totalEmojis += values.length;
+            const chainName = window.i18n?.t(c.nameKey) || c.name;
+            const isActive = key === currentChain;
+
+            const items = values.map((value, idx) => {
+                const discovered = discoveredEmojis[value];
+                const emoji = discovered ? c.map[value] : '?';
+                const lvPrefix = window.i18n?.t('game.level') || 'Lv.';
+                const undiscovered = window.i18n?.t('game.undiscovered') || '???';
+                const name = discovered ? `${lvPrefix}${Math.log2(value).toFixed(0)}` : undiscovered;
+                const arrow = idx < values.length - 1 ? '<span class="coll-arrow">&#8594;</span>' : '';
+                return `<div class="collection-item${discovered ? ' discovered' : ''}"><div class="collection-emoji">${emoji}</div><div class="collection-name">${name}</div></div>${arrow}`;
+            }).join('');
+
+            chainsHtml += `
+                <div class="collection-chain${isActive ? ' active-chain' : ''}">
+                    <div class="chain-label">${c.icon} ${chainName} <span class="chain-count">${chainDiscovered}/${values.length}</span></div>
+                    <div class="collection-chain-grid">${items}</div>
                 </div>
             `;
-        }).join('');
+        });
+
+        const overallPct = totalEmojis > 0 ? Math.round((totalDiscovered / totalEmojis) * 100) : 0;
+        const discoveredLabel = window.i18n?.t('collection.discovered') || 'Discovered';
 
         modal.innerHTML = `
             <div class="modal-backdrop" id="collection-backdrop"></div>
@@ -1257,12 +1394,12 @@
                     <h3 class="modal-title" data-i18n="collection.title">Collection</h3>
                     <div class="collection-progress">
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${stats.percentage}%"></div>
+                            <div class="progress-fill" style="width: ${overallPct}%"></div>
                         </div>
-                        <div class="progress-text">${stats.discovered}/${stats.total} (${stats.percentage}%)</div>
+                        <div class="progress-text">${discoveredLabel}: ${totalDiscovered}/${totalEmojis} (${overallPct}%)</div>
                     </div>
                 </div>
-                <div class="collection-grid">${collectionGrid}</div>
+                <div class="collection-chains">${chainsHtml}</div>
                 <button class="modal-close" id="collection-close" data-i18n="game.close">Close</button>
             </div>
         `;
@@ -1604,6 +1741,8 @@
         updateEvolutionBar();
         updateStats();
         updateCollectionUI();
+        updateDiscoveryTracker();
+        resetInactivityTimer();
 
         // Setup collection UI event listeners
         const collectionBtn = document.getElementById('btn-collection');
