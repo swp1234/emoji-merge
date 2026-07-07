@@ -3,9 +3,17 @@ class I18n {
         this.translations = {};
         this.supportedLanguages = ['ko', 'en', 'ja', 'es', 'pt', 'zh', 'id', 'tr', 'de', 'fr', 'hi', 'ru'];
         this.currentLang = this.detectLanguage();
+        document.documentElement.lang = this.currentLang;
     }
 
     detectLanguage() {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = params.get('lang');
+            if (urlLang && this.supportedLanguages.includes(urlLang)) return urlLang;
+        } catch (e) {
+            console.warn('URL language detection failed', e);
+        }
         try {
             const savedLang = localStorage.getItem('app_language');
             if (savedLang && this.supportedLanguages.includes(savedLang)) return savedLang;
@@ -54,6 +62,7 @@ class I18n {
     }
 
     updateUI() {
+        document.documentElement.lang = this.currentLang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             el.textContent = this.t(el.getAttribute('data-i18n'));
         });
