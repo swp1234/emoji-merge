@@ -70,6 +70,15 @@
     let _newBestShown = false;
     let hasContinued = false;
 
+    const emojiMergeStages = new Set();
+    function trackEmojiMergeStage(name) {
+        if (emojiMergeStages.has(name)) return;
+        emojiMergeStages.add(name);
+        if (typeof gtag === 'function') {
+            gtag('event', name, { event_category: 'emoji_merge' });
+        }
+    }
+
     function showNewBest() {
         let el = document.getElementById('new-best-flash');
         if (!el) {
@@ -91,21 +100,6 @@
     let leaderboard = null;
     if (typeof LeaderboardManager !== 'undefined') {
         leaderboard = new LeaderboardManager('emoji-merge', 10);
-    }
-
-    // GameAchievements integration
-    if (typeof GameAchievements !== 'undefined') {
-        GameAchievements.init({
-            gameId: 'emoji-merge',
-            defs: [
-                { id: 'score_500', stat: 'bestScore', target: 500, icon: '⭐', name: 'Merger' },
-                { id: 'score_2000', stat: 'bestScore', target: 2000, icon: '🏆', name: 'Merge Master' },
-                { id: 'score_5000', stat: 'bestScore', target: 5000, icon: '👑', name: 'Merge Legend' },
-                { id: 'games_10', stat: 'totalGames', target: 10, icon: '🎮', name: 'Regular Player' },
-                { id: 'games_50', stat: 'totalGames', target: 50, icon: '🔥', name: 'Dedicated' },
-                { id: 'combo_5', stat: 'bestCombo', target: 5, icon: '💥', name: 'Chain Reaction' }
-            ]
-        });
     }
 
     // Dopamine enhancements
@@ -620,6 +614,8 @@
             }
         }
         moveCount++;
+        if (moveCount === 1) trackEmojiMergeStage('emoji_merge_start');
+        if (moveCount === 3) trackEmojiMergeStage('emoji_merge_progress');
 
         // Dopamine effects on move
         if (merges.length > 0) {
@@ -762,16 +758,8 @@
                     if (typeof Haptic !== 'undefined') Haptic.heavy();
                     clearGameState();
                     savePersistentStats();
-                    setTimeout(() => {
-                        if (typeof GameAds !== 'undefined') {
-                            GameAds.showInterstitial({ onComplete: () => showGameOver() });
-                        } else {
-                            showGameOver();
-                        }
-                    }, 300);
+                    setTimeout(() => showGameOver(), 300);
                 }
-
-                if (moveCount > 0 && moveCount % 100 === 0) triggerInterstitialAd();
             } catch(e) {
                 console.error('Animation callback error:', e);
             } finally {
@@ -1028,46 +1016,13 @@
         }
 
         if (gameOverOverlay) gameOverOverlay.classList.remove('hidden');
-        if (typeof gtag === 'function')
-            gtag('event', 'game_over', { event_category: 'emoji_merge', score, max_tile: maxVal, chain: currentChain, moves: moveCount });
-
-        // Save best score to dedicated localStorage key for daily-streak
-        try { localStorage.setItem('emojiMerge_bestScore', Math.max(score, bestScore)); } catch (e) { /* ignore */ }
-
-        // Report score to daily streak system
-        if (typeof DailyStreak !== 'undefined') DailyStreak.report(score);
-
-        // Report achievements
-        if (typeof GameAchievements !== 'undefined') {
-            GameAchievements.report({
-                bestScore: bestScore,
-                totalGames: totalGames,
-                bestCombo: bestCombo
-            });
-        }
-
-        // Rewarded ad: watch ad for 2x score
-        if (typeof GameAds !== 'undefined') {
-            GameAds.injectRewardButton({
-                container: '#game-over-overlay',
-                label: 'Watch Ad for 2x Score',
-                onReward: () => {
-                    score *= 2;
-                    if (finalScoreEl) finalScoreEl.textContent = score.toLocaleString();
-                    updateScoreDisplay();
-                    if (typeof gtag === 'function')
-                        gtag('event', 'rewarded_ad', { event_category: 'emoji_merge', type: '2x_score', score });
-                }
-            });
-        }
+        trackEmojiMergeStage('emoji_merge_complete');
     }
 
     function showWin() {
         winScoreEl.textContent = score.toLocaleString();
         document.getElementById('win-emoji').textContent = getEmoji(2048);
         winOverlay.classList.remove('hidden');
-        if (typeof gtag === 'function')
-            gtag('event', 'game_win', { event_category: 'emoji_merge', score, chain: currentChain, moves: moveCount });
     }
 
     function newGame() {
@@ -1093,7 +1048,6 @@
         const continueBtn = document.getElementById('btn-continue-game');
         if (continueBtn) continueBtn.style.display = '';
         if (undoBtn) undoBtn.disabled = true;
-        if (typeof GameAds !== 'undefined') GameAds.removeRewardButton('#game-over-overlay');
         if (gameOverOverlay) gameOverOverlay.classList.add('hidden');
         if (winOverlay) winOverlay.classList.add('hidden');
 
@@ -1119,8 +1073,6 @@
         const continueBtn = document.getElementById('btn-continue-game');
         if (continueBtn) continueBtn.style.display = 'none';
         undo();
-        if (typeof gtag === 'function')
-            gtag('event', 'continue_game', { event_category: 'emoji_merge', score });
     }
 
     function undo() {
@@ -1544,157 +1496,25 @@
         });
     }
 
-    // === Ad ===
-    function triggerInterstitialAd() {
-        showInterstitialAd();
-    }
-
-    // === Premium ===
-    let adTimer = null;
-    let adCloseHandler = null;
-
-    function showInterstitialAd() {
-        return new Promise((resolve) => {
-            const overlay = document.getElementById('interstitial-overlay');
-            const closeBtn = document.getElementById('btn-close-ad');
-            const countdown1 = document.getElementById('ad-countdown');
-
-            // Clean up any previous ad state
-            if (adTimer) { clearInterval(adTimer); adTimer = null; }
-            if (adCloseHandler) {
-                closeBtn.removeEventListener('click', adCloseHandler);
-                adCloseHandler = null;
-            }
-
-            overlay.classList.remove('hidden');
-            closeBtn.disabled = true;
-            let seconds = 5;
-
-            // Update countdown displays safely
-            function updateCountdown(sec) {
-                if (countdown1) countdown1.textContent = sec;
-                const btnCountdown = document.getElementById('ad-countdown-btn');
-                if (btnCountdown) btnCountdown.textContent = sec;
-            }
-
-            updateCountdown(seconds);
-
-            adTimer = setInterval(() => {
-                seconds--;
-                updateCountdown(seconds);
-                if (seconds <= 0) {
-                    clearInterval(adTimer);
-                    adTimer = null;
-                    closeBtn.disabled = false;
-                }
-            }, 1000);
-
-            // Fallback: force-enable close button after 6 seconds
-            const fallbackTimeout = setTimeout(() => {
-                if (adTimer) { clearInterval(adTimer); adTimer = null; }
-                closeBtn.disabled = false;
-            }, 6500);
-
-            function closeAd() {
-                clearTimeout(fallbackTimeout);
-                if (adTimer) { clearInterval(adTimer); adTimer = null; }
-                closeBtn.removeEventListener('click', closeAd);
-                adCloseHandler = null;
-                overlay.classList.add('hidden');
-                resolve();
-            }
-
-            adCloseHandler = closeAd;
-            closeBtn.addEventListener('click', closeAd);
-        });
-    }
-
-    function generatePremiumAnalysis() {
-        const maxVal = Math.max(...grid.flat(), 0);
-        const filledCells = grid.flat().filter(v => v > 0).length;
-        const emptyCellCount = 16 - filledCells;
-        const chain = EVOLUTION_CHAINS[currentChain];
-        const titleInfo = getTitleForScore(score);
-        const efficiency = moveCount > 0 ? (score / moveCount).toFixed(1) : 0;
-        const maxLevel = Math.log2(maxVal || 2);
-
-        // Value distribution
-        const valueCounts = {};
-        grid.flat().filter(v => v > 0).forEach(v => {
-            valueCounts[v] = (valueCounts[v] || 0) + 1;
-        });
-
-        // Board density score
-        const densityScore = Math.round((filledCells / 16) * 100);
-
-        // Strategy tips based on state
-        let strategyTip = '';
-        if (emptyCellCount <= 3) {
-            strategyTip = i18n.t('premium.tooFewEmpty');
-        } else if (maxVal >= 512) {
-            strategyTip = i18n.t('premium.nearEnd');
-        } else if (maxVal >= 128) {
-            strategyTip = i18n.t('premium.goodFlow');
-        } else {
-            strategyTip = i18n.t('premium.beginnerTip');
-        }
-
-        // Prediction
-        const predictedMax = Math.min(2048, maxVal * (emptyCellCount > 4 ? 4 : 2));
-
-        const content = document.getElementById('premium-content');
-        content.innerHTML = `
-            <div class="premium-stat-grid">
-                <div class="premium-stat"><span class="stat-val">${score.toLocaleString()}</span><span class="stat-lbl">${i18n.t('premium.currentScore')}</span></div>
-                <div class="premium-stat"><span class="stat-val">${efficiency}</span><span class="stat-lbl">${i18n.t('premium.scorePerMove')}</span></div>
-                <div class="premium-stat"><span class="stat-val">${moveCount}</span><span class="stat-lbl">${i18n.t('premium.totalMoves')}</span></div>
-                <div class="premium-stat"><span class="stat-val">${densityScore}%</span><span class="stat-lbl">${i18n.t('premium.boardDensity')}</span></div>
-            </div>
-            <div class="premium-analysis-item">
-                <h4>🏆 ${i18n.t('premium.titleBadge')}: ${window.i18n?.t(titleInfo.titleKey) || titleInfo.title}</h4>
-                <p>${window.i18n?.t(titleInfo.descKey) || titleInfo.desc} - ${window.i18n?.t(chain.nameKey) || chain.name} ${i18n.t('premium.chainWith')} ${getEmoji(maxVal)} (${i18n.t('premium.level')} ${maxLevel}) ${i18n.t('premium.until')}</p>
-            </div>
-            <div class="premium-analysis-item">
-                <h4>📊 ${i18n.t('premium.boardStatus')}</h4>
-                <p>${i18n.t('premium.emptyCount')} ${emptyCellCount}, ${i18n.t('premium.filledCount')} ${filledCells}. ${Object.entries(valueCounts).map(([v, c]) => `${getEmoji(Number(v))}×${c}`).join(' ')}</p>
-            </div>
-            <div class="premium-analysis-item">
-                <h4>💡 ${i18n.t('premium.strategyTip')}</h4>
-                <p>${strategyTip}</p>
-            </div>
-            <div class="premium-analysis-item">
-                <h4>🔮 ${i18n.t('premium.predictedMax')}</h4>
-                <p>${getEmoji(predictedMax)} (${predictedMax}). ${predictedMax >= 2048 ? i18n.t('premium.canAchieveMax') : i18n.t('premium.playMore')}</p>
-            </div>
-        `;
-
-        document.getElementById('premium-result').classList.remove('hidden');
-        document.getElementById('premium-result').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    document.getElementById('btn-premium').addEventListener('click', async () => {
-        if (score === 0 && moveCount === 0) {
-            alert(i18n.t('game.alertPlayFirst'));
-            return;
-        }
-        await showInterstitialAd();
-        generatePremiumAnalysis();
-    });
-
     // === Share ===
-    function shareResult() {
-        const maxVal = Math.max(...grid.flat());
-        const titleInfo = getTitleForScore(score);
-        const chain = EVOLUTION_CHAINS[currentChain];
-        const chainLabel = i18n.t('premium.chainWith');
-        const maxEvoLabel = i18n.t('game.maxEvolution');
-        const scoreLabel = i18n.t('game.score');
-        const titleLabel = i18n.t('premium.titleBadge') || 'Title';
-        const text = `Emoji Merge\n${chainLabel}: ${window.i18n?.t(chain.nameKey) || chain.name}\n${maxEvoLabel}: ${getEmoji(maxVal)}\n${scoreLabel}: ${score.toLocaleString()}\n${titleLabel}: ${window.i18n?.t(titleInfo.titleKey) || titleInfo.title}\n\nhttps://dopabrain.com/emoji-merge/`;
-        if (navigator.share) {
-            navigator.share({ title: i18n.t('game.resultTitle'), text });
-        } else if (navigator.clipboard) {
-            navigator.clipboard.writeText(text).then(() => alert(i18n.t('game.resultCopied')));
+    async function shareResult() {
+        const shareData = {
+            title: 'Emoji Merge',
+            text: 'Combine matching emojis and keep evolving.',
+            url: 'https://dopabrain.com/emoji-merge/'
+        };
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else if (navigator.clipboard) {
+                await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+                alert(i18n.t('game.resultCopied'));
+            } else {
+                return;
+            }
+            trackEmojiMergeStage('emoji_merge_share');
+        } catch (error) {
+            if (error?.name !== 'AbortError') console.warn('Share failed:', error.message);
         }
     }
 
@@ -1718,6 +1538,11 @@
     document.getElementById('chain-close').addEventListener('click', () => chainModal.classList.add('hidden'));
     document.getElementById('btn-retry')?.addEventListener('click', () => newGame());
     document.getElementById('btn-share')?.addEventListener('click', shareResult);
+    document.querySelector('.related-grid')?.addEventListener('click', (event) => {
+        if (event.target.closest('.related-card')) {
+            trackEmojiMergeStage('emoji_merge_related_click');
+        }
+    });
     document.getElementById('btn-continue-game')?.addEventListener('click', () => continueGame());
     document.getElementById('btn-continue').addEventListener('click', () => { keepPlaying = true; winOverlay.classList.add('hidden'); });
     document.getElementById('btn-new-after-win').addEventListener('click', () => { totalGames++; newGame(); });
@@ -1756,10 +1581,7 @@
         const hintBtn = document.getElementById('btn-hint');
         if (hintBtn) hintBtn.addEventListener('click', showHint);
 
-        if (typeof gtag === 'function') {
-            const pageTitle = i18n.t('analytics.pageTitle') || 'Emoji Merge';
-            gtag('event', 'page_view', { page_title: pageTitle, page_location: window.location.href });
-        }
+        trackEmojiMergeStage('emoji_merge_view');
     }
 
     function displayEmojiMergeLeaderboard(leaderboardResult) {
@@ -1800,13 +1622,6 @@
     } catch (e) {
         console.warn('Init error:', e);
     }
-
-    // Daily streak retention system
-    if (typeof DailyStreak !== 'undefined') {
-        DailyStreak.init({ gameId: 'emoji-merge', bestScoreKey: 'emojiMerge_bestScore', minTarget: 100 });
-    }
-
-    if (typeof GameAds !== 'undefined') GameAds.init();
 
     // Hide app loader
     const loader = document.getElementById('app-loader');

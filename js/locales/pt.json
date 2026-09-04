@@ -1,163 +1,186 @@
 {
-    "app": {
-        "title": "Emoji Merge - Jogo de Quebra-Cabeça com Evolução | DopaBrain",
-        "description": "Mescle os mesmos emojis para evoluir! 🥚→🐣→🐥→🦅→🐉→👑 De ovo para dragão, de semente para árvore do mundo! 4 cadeias de evolução. Jogo de quebra-cabeça cerebral gratuito!"
+  "app": {
+    "title": "Emoji Merge - Jogo de Quebra-Cabeça com Evolução | DopaBrain",
+    "description": "Mescle os mesmos emojis para evoluir! 🥚→🐣→🐥→🦅→🐉→👑 De ovo para dragão, de semente para árvore do mundo! 4 cadeias de evolução. Jogo de quebra-cabeça cerebral gratuito!"
+  },
+  "game": {
+    "title": "Emoji Merge",
+    "subtitle": "Mescle e evolua emojis",
+    "score": "Pontuação",
+    "best": "Melhor",
+    "bestScore": "Melhor Pontuação",
+    "newGame": "Novo Jogo",
+    "undo": "Desfazer",
+    "hint": "Dica",
+    "theme": "Tema",
+    "gameOver": "Evolução Completa!",
+    "retry": "Tentar Novamente",
+    "share": "Compartilhar Resultado",
+    "win": "Evolução Final Conquistada!",
+    "continuePlay": "Continuar Jogando",
+    "continueGame": "Continuar",
+    "selectChain": "Selecione Cadeia de Evolução",
+    "close": "Fechar",
+    "games": "Jogos Jogados",
+    "maxEvolution": "Evolução Máxima",
+    "howToPlay": "Como Jogar",
+    "swipe": "Deslize",
+    "swipeDesc": "para mover ladrilhos",
+    "merge": "Mescle emojis iguais para",
+    "mergeDesc": "evoluir",
+    "achieve": "Conquiste a",
+    "achieveDesc": "evolução final!",
+    "tryMore": "Experimente Mais!",
+    "back": "Página Inicial do DopaBrain",
+    "copyright": "© 2026 DopaBrain",
+    "confirmNewGame": "Tem certeza de que deseja iniciar um novo jogo e perder seu progresso atual?",
+    "resultCopied": "Resultado copiado!",
+    "newBest": "NOVO RECORDE!",
+    "level": "Nv.",
+    "undiscovered": "???",
+    "moreGames": "Mais jogos",
+    "combo": "COMBO"
+  },
+  "stages": {
+    "levelUp": "Subida de Nível!",
+    "beginner": "Iniciante",
+    "intermediate": "Intermediário",
+    "advanced": "Avançado",
+    "master": "Mestre",
+    "legend": "Lenda"
+  },
+  "collection": {
+    "title": "Coleção",
+    "recentMerges": "Mesclagens Recentes",
+    "dailyChallenge": "Desafio Diário",
+    "merges": "mesclagens",
+    "create": "criar",
+    "totalMerges": "Total de Mesclagens",
+    "maxEmoji": "Emoji Máximo",
+    "noHistory": "Sem histórico de mesclagem ainda",
+    "milestoneReached": "Marco Alcançado!",
+    "dailyComplete": "Desafio Diário Concluído",
+    "discovered": "Descoberto",
+    "newDiscovery": "NOVO!"
+  },
+  "milestone": {
+    "achievement": "pontos alcançados!"
+  },
+  "stage": {
+    "achieved": "Alcançado!",
+    "bonus": "pontos de bônus!",
+    "intro": {
+      "name": "Introdução",
+      "desc": "Alcançar 128"
     },
-    "game": {
-        "title": "Emoji Merge",
-        "subtitle": "Mescle e evolua emojis",
-        "score": "Pontuação",
-        "best": "Melhor",
-        "bestScore": "Melhor Pontuação",
-        "newGame": "Novo Jogo",
-        "undo": "Desfazer",
-        "hint": "Dica",
-        "theme": "Tema",
-        "gameOver": "Evolução Completa!",
-        "retry": "Tentar Novamente",
-        "share": "Compartilhar Resultado",
-        "win": "Evolução Final Conquistada!",
-        "continuePlay": "Continuar Jogando",
-        "continueGame": "Continuar",
-        "selectChain": "Selecione Cadeia de Evolução",
-        "close": "Fechar",
-        "games": "Jogos Jogados",
-        "maxEvolution": "Evolução Máxima",
-        "howToPlay": "Como Jogar",
-        "swipe": "Deslize",
-        "swipeDesc": "para mover ladrilhos",
-        "merge": "Mescle emojis iguais para",
-        "mergeDesc": "evoluir",
-        "achieve": "Conquiste a",
-        "achieveDesc": "evolução final!",
-        "tryMore": "Experimente Mais!",
-        "premium": "Análise de Jogo com IA",
-        "premiumPro": "PRO",
-        "ad": "Publicidade",
-        "adCountdown": "segundos até poder fechar",
-        "back": "Página Inicial do DopaBrain",
-        "copyright": "© 2026 DopaBrain",
-        "alertPlayFirst": "Por favor, jogue primeiro!",
-        "confirmNewGame": "Tem certeza de que deseja iniciar um novo jogo e perder seu progresso atual?",
-        "resultCopied": "Resultado copiado!",
-        "resultTitle": "Resultado do Emoji Merge",
-        "newBest": "NOVO RECORDE!",
-        "level": "Nv.",
-        "undiscovered": "???",
-        "moreGames": "Mais jogos",
-        "combo": "COMBO"
+    "beginner": {
+      "name": "Iniciante",
+      "desc": "Alcançar 256"
     },
-    "recs": {
-        "stackTowerDesc": "Jogo de timing de empilhamento de blocos",
-        "zigzagDesc": "Arcade de mudança de direção",
-        "emotionName": "Termômetro de Emoção",
-        "emotionDesc": "Qual é sua temperatura de emoção?",
-        "pastLifeName": "Profissão da Vida Anterior",
-        "pastLifeDesc": "Qual era sua profissão na vida anterior?",
-        "colorMemoryName": "Memória de Cores",
-        "colorMemoryDesc": "Jogo de desafio de memória"
+    "intermediate": {
+      "name": "Intermediário",
+      "desc": "Alcançar 512"
     },
-    "premium": {
-        "currentScore": "Pontuação Atual",
-        "scorePerMove": "Pontuação por Movimento",
-        "totalMoves": "Movimentos Totais",
-        "boardDensity": "Densidade do Tabuleiro",
-        "titleBadge": "Título",
-        "boardStatus": "Status do Tabuleiro",
-        "strategyTip": "Dica de Estratégia",
-        "predictedMax": "Evolução Máxima Prevista",
-        "emptyCount": "Células vazias",
-        "filledCount": "Células preenchidas",
-        "tooFewEmpty": "Muito poucas células vazias! Pressione em uma direção para criar espaço. Mantenha valores grandes na borda.",
-        "nearEnd": "Aproximando-se da evolução final! Bloqueie o mosaico com o valor mais alto em um canto e organize os mosaicos adjacentes.",
-        "goodFlow": "Ótimo fluxo! Foco em uma direção (esquerda ou baixo) enquanto reúne valores grandes em um lado.",
-        "beginnerTip": "No início, foco em uma direção para pegar a sensação. Usar desfazer ajudará você a obter pontuações mais altas.",
-        "canAchieveMax": "A evolução final é possível!",
-        "playMore": "Tente jogar mais estrategicamente.",
-        "chainWith": "cadeia com",
-        "level": "nível",
-        "until": "alcançado."
+    "advanced": {
+      "name": "Avançado",
+      "desc": "Alcançar 1024"
     },
-    "stages": {
-        "levelUp": "Subida de Nível!",
-        "beginner": "Iniciante",
-        "intermediate": "Intermediário",
-        "advanced": "Avançado",
-        "master": "Mestre",
-        "legend": "Lenda"
+    "master": {
+      "name": "Mestre",
+      "desc": "Alcançar 2048"
     },
-    "collection": {
-        "title": "Coleção",
-        "recentMerges": "Mesclagens Recentes",
-        "dailyChallenge": "Desafio Diário",
-        "merges": "mesclagens",
-        "create": "criar",
-        "totalMerges": "Total de Mesclagens",
-        "maxEmoji": "Emoji Máximo",
-        "noHistory": "Sem histórico de mesclagem ainda",
-        "milestoneReached": "Marco Alcançado!",
-        "dailyComplete": "Desafio Diário Concluído",
-        "discovered": "Descoberto",
-        "newDiscovery": "NOVO!"
-    },
-    "milestone": {
-        "achievement": "pontos alcançados!"
-    },
-    "stage": {
-        "achieved": "Alcançado!",
-        "bonus": "pontos de bônus!",
-        "intro": { "name": "Introdução", "desc": "Alcançar 128" },
-        "beginner": { "name": "Iniciante", "desc": "Alcançar 256" },
-        "intermediate": { "name": "Intermediário", "desc": "Alcançar 512" },
-        "advanced": { "name": "Avançado", "desc": "Alcançar 1024" },
-        "master": { "name": "Mestre", "desc": "Alcançar 2048" },
-        "legend": { "name": "Lenda", "desc": "Alcançar 4096" }
-    },
-    "modal": {
-        "collectionTitle": "Coleção",
-        "recentMergesTitle": "Mesclagens Recientes",
-        "dailyChallengeTitle": "Desafio Diário",
-        "close": "Fechar"
-    },
-    "stats": {
-        "totalMerges": "Total de Mesclagens",
-        "maxEmoji": "Emoji Máximo",
-        "stages": "Estágios Alcançados"
-    },
-    "related": {
-        "idleClicker": "Clicker Idle",
-        "blockPuzzle": "Puzzle de Blocos",
-        "stackTower": "Torre Empilhável",
-        "colorMemory": "Memória de Cores"
-    },
-    "analytics": {
-        "pageTitle": "Emoji Merge"
-    },
-    "chain": {
-        "animal": { "name": "Do ovo ao dragão", "desc": "O ovo eclode, o pássaro cresce e se torna um dragão lendário!" },
-        "plant": { "name": "Da semente à árvore do mundo", "desc": "Uma pequena semente brota e cresce até se tornar uma floresta enorme!" },
-        "space": { "name": "Da gota à galáxia", "desc": "Uma gota de água se torna o mar, depois estrelas preenchendo o universo!" },
-        "emotion": { "name": "Subida de nível emocional", "desc": "De um começo calmo a uma explosão de emoções cada vez mais intensa!" }
-    },
-    "title": {
-        "novice": { "name": "Pesquisador novato", "desc": "O início da evolução" },
-        "apprentice": { "name": "Treinador aprendiz", "desc": "Começando a pegar o jeito" },
-        "challenger": { "name": "Desafiante da evolução", "desc": "A diversão de mesclar" },
-        "mutant": { "name": "Estudioso de mutações", "desc": "Padrões emergem" },
-        "geneticist": { "name": "Engenheiro genético", "desc": "Mesclagem estratégica" },
-        "master": { "name": "Mestre da evolução", "desc": "Estratégia avançada" },
-        "architect": { "name": "Arquiteto da vida", "desc": "Domínio total" },
-        "demigod": { "name": "Aprendiz de semideus", "desc": "Quase no reino divino" },
-        "creator": { "name": "Deus da criação", "desc": "O início da lenda" },
-        "ruler": { "name": "Governante de tudo", "desc": "Liderando toda a evolução" },
-        "cosmic": { "name": "Criador cósmico", "desc": "Aquele que abre novos universos" }
-    },
-    "error": {
-        "storage": "Algumas funções podem ser limitadas no modo privado.",
-        "data": "Erro ao carregar dados. Atualize a página.",
-        "canvas": "Problema de renderização. Tente novamente.",
-        "audio": "Áudio indisponível. Você pode continuar.",
-        "network": "Verifique sua conexão e tente novamente.",
-        "general": "Algo deu errado. Atualize ou tente novamente."
+    "legend": {
+      "name": "Lenda",
+      "desc": "Alcançar 4096"
     }
+  },
+  "modal": {
+    "collectionTitle": "Coleção",
+    "recentMergesTitle": "Mesclagens Recientes",
+    "dailyChallengeTitle": "Desafio Diário",
+    "close": "Fechar"
+  },
+  "stats": {
+    "totalMerges": "Total de Mesclagens",
+    "maxEmoji": "Emoji Máximo",
+    "stages": "Estágios Alcançados"
+  },
+  "related": {
+    "idleClicker": "Clicker Idle",
+    "blockPuzzle": "Puzzle de Blocos",
+    "stackTower": "Torre Empilhável",
+    "colorMemory": "Memória de Cores"
+  },
+  "chain": {
+    "animal": {
+      "name": "Do ovo ao dragão",
+      "desc": "O ovo eclode, o pássaro cresce e se torna um dragão lendário!"
+    },
+    "plant": {
+      "name": "Da semente à árvore do mundo",
+      "desc": "Uma pequena semente brota e cresce até se tornar uma floresta enorme!"
+    },
+    "space": {
+      "name": "Da gota à galáxia",
+      "desc": "Uma gota de água se torna o mar, depois estrelas preenchendo o universo!"
+    },
+    "emotion": {
+      "name": "Subida de nível emocional",
+      "desc": "De um começo calmo a uma explosão de emoções cada vez mais intensa!"
+    }
+  },
+  "title": {
+    "novice": {
+      "name": "Pesquisador novato",
+      "desc": "O início da evolução"
+    },
+    "apprentice": {
+      "name": "Treinador aprendiz",
+      "desc": "Começando a pegar o jeito"
+    },
+    "challenger": {
+      "name": "Desafiante da evolução",
+      "desc": "A diversão de mesclar"
+    },
+    "mutant": {
+      "name": "Estudioso de mutações",
+      "desc": "Padrões emergem"
+    },
+    "geneticist": {
+      "name": "Engenheiro genético",
+      "desc": "Mesclagem estratégica"
+    },
+    "master": {
+      "name": "Mestre da evolução",
+      "desc": "Estratégia avançada"
+    },
+    "architect": {
+      "name": "Arquiteto da vida",
+      "desc": "Domínio total"
+    },
+    "demigod": {
+      "name": "Aprendiz de semideus",
+      "desc": "Quase no reino divino"
+    },
+    "creator": {
+      "name": "Deus da criação",
+      "desc": "O início da lenda"
+    },
+    "ruler": {
+      "name": "Governante de tudo",
+      "desc": "Liderando toda a evolução"
+    },
+    "cosmic": {
+      "name": "Criador cósmico",
+      "desc": "Aquele que abre novos universos"
+    }
+  },
+  "error": {
+    "storage": "Algumas funções podem ser limitadas no modo privado.",
+    "data": "Erro ao carregar dados. Atualize a página.",
+    "canvas": "Problema de renderização. Tente novamente.",
+    "audio": "Áudio indisponível. Você pode continuar.",
+    "network": "Verifique sua conexão e tente novamente.",
+    "general": "Algo deu errado. Atualize ou tente novamente."
+  }
 }

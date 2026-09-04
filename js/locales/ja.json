@@ -1,163 +1,186 @@
 {
-    "app": {
-        "title": "絵文字マージ - 進化パズルゲーム | DopaBrain",
-        "description": "同じ絵文字をマージして進化させる！🥚→🐣→🐥→🦅→🐉→👑 卵からドラゴンへ、種から世界樹へ！4進化チェーン。無料脳トレパズルゲーム！"
+  "app": {
+    "title": "絵文字マージ - 進化パズルゲーム | DopaBrain",
+    "description": "同じ絵文字をマージして進化させる！🥚→🐣→🐥→🦅→🐉→👑 卵からドラゴンへ、種から世界樹へ！4進化チェーン。無料脳トレパズルゲーム！"
+  },
+  "game": {
+    "title": "Emoji Merge",
+    "subtitle": "絵文字をマージして進化させよう",
+    "score": "スコア",
+    "best": "ベスト",
+    "bestScore": "ベストスコア",
+    "newGame": "新ゲーム",
+    "undo": "戻す",
+    "hint": "ヒント",
+    "theme": "テーマ",
+    "gameOver": "進化完了！",
+    "retry": "リトライ",
+    "share": "結果をシェア",
+    "win": "最終進化達成！",
+    "continuePlay": "プレイ継続",
+    "continueGame": "続ける",
+    "selectChain": "進化チェーンを選択",
+    "close": "閉じる",
+    "games": "プレイ回数",
+    "maxEvolution": "最高進化",
+    "howToPlay": "遊び方",
+    "swipe": "スワイプ",
+    "swipeDesc": "タイルを動かす",
+    "merge": "同じ絵文字をマージして",
+    "mergeDesc": "進化させる",
+    "achieve": "最終進化を",
+    "achieveDesc": "達成しよう！",
+    "tryMore": "こちらも試してみてください！",
+    "back": "DopaBrain ホーム",
+    "copyright": "© 2026 DopaBrain",
+    "confirmNewGame": "現在のゲームを失い、新しいゲームを開始しますか？",
+    "resultCopied": "結果をコピーしました！",
+    "newBest": "新記録！",
+    "level": "Lv.",
+    "undiscovered": "???",
+    "moreGames": "もっとゲーム",
+    "combo": "コンボ"
+  },
+  "stages": {
+    "levelUp": "レベルアップ！",
+    "beginner": "初心者",
+    "intermediate": "中級",
+    "advanced": "上級",
+    "master": "マスター",
+    "legend": "レジェンド"
+  },
+  "collection": {
+    "title": "図鑑",
+    "recentMerges": "最近のマージ",
+    "dailyChallenge": "毎日チャレンジ",
+    "merges": "マージ",
+    "create": "作成",
+    "totalMerges": "合計マージ数",
+    "maxEmoji": "最高絵文字",
+    "noHistory": "マージ履歴がまだありません",
+    "milestoneReached": "マイルストーン達成！",
+    "dailyComplete": "毎日チャレンジ完了",
+    "discovered": "発見済み",
+    "newDiscovery": "NEW!"
+  },
+  "milestone": {
+    "achievement": "ポイント達成！"
+  },
+  "stage": {
+    "achieved": "達成！",
+    "bonus": "ボーナスポイント！",
+    "intro": {
+      "name": "導入",
+      "desc": "128 達成"
     },
-    "game": {
-        "title": "Emoji Merge",
-        "subtitle": "絵文字をマージして進化させよう",
-        "score": "スコア",
-        "best": "ベスト",
-        "bestScore": "ベストスコア",
-        "newGame": "新ゲーム",
-        "undo": "戻す",
-        "hint": "ヒント",
-        "theme": "テーマ",
-        "gameOver": "進化完了！",
-        "retry": "リトライ",
-        "share": "結果をシェア",
-        "win": "最終進化達成！",
-        "continuePlay": "プレイ継続",
-        "continueGame": "続ける",
-        "selectChain": "進化チェーンを選択",
-        "close": "閉じる",
-        "games": "プレイ回数",
-        "maxEvolution": "最高進化",
-        "howToPlay": "遊び方",
-        "swipe": "スワイプ",
-        "swipeDesc": "タイルを動かす",
-        "merge": "同じ絵文字をマージして",
-        "mergeDesc": "進化させる",
-        "achieve": "最終進化を",
-        "achieveDesc": "達成しよう！",
-        "tryMore": "こちらも試してみてください！",
-        "premium": "AI ゲーム分析",
-        "premiumPro": "プロ",
-        "ad": "広告",
-        "adCountdown": "秒で閉じられます",
-        "back": "DopaBrain ホーム",
-        "copyright": "© 2026 DopaBrain",
-        "alertPlayFirst": "まずゲームをプレイしてください！",
-        "confirmNewGame": "現在のゲームを失い、新しいゲームを開始しますか？",
-        "resultCopied": "結果をコピーしました！",
-        "resultTitle": "絵文字マージ結果",
-        "newBest": "新記録！",
-        "level": "Lv.",
-        "undiscovered": "???",
-        "moreGames": "もっとゲーム",
-        "combo": "コンボ"
+    "beginner": {
+      "name": "入門",
+      "desc": "256 達成"
     },
-    "recs": {
-        "stackTowerDesc": "ブロック積み重ねタイミングゲーム",
-        "zigzagDesc": "方向変更アーケード",
-        "emotionName": "感情温度計",
-        "emotionDesc": "あなたの感情温度は？",
-        "pastLifeName": "前世の職業",
-        "pastLifeDesc": "あなたの前世の職業は？",
-        "colorMemoryName": "色のメモリー",
-        "colorMemoryDesc": "メモリーチャレンジゲーム"
+    "intermediate": {
+      "name": "中級",
+      "desc": "512 達成"
     },
-    "premium": {
-        "currentScore": "現在のスコア",
-        "scorePerMove": "移動ごとのスコア",
-        "totalMoves": "総移動数",
-        "boardDensity": "ボード密度",
-        "titleBadge": "タイトル",
-        "boardStatus": "ボード状態",
-        "strategyTip": "戦略のヒント",
-        "predictedMax": "予測最大進化",
-        "emptyCount": "空白セル",
-        "filledCount": "埋まったセル",
-        "tooFewEmpty": "空白が不足しています！一方向に押して空間を作りましょう。大きな値は端に保つのが良いです。",
-        "nearEnd": "最終進化に近づいています！最高値タイルをコーナーにロックし、隣接タイルを順番に配置してください。",
-        "goodFlow": "素晴らしい流れです！一方向（左または下）に焦点を当てながら、大きな値を一方に集めましょう。",
-        "beginnerTip": "最初は一方向に焦点を当てて感覚をつかんでください。戻すを使うと高いスコアが得られます。",
-        "canAchieveMax": "最終進化が達成可能です！",
-        "playMore": "もっと戦略的にプレイしてみてください。",
-        "chainWith": "チェーンで",
-        "level": "レベル",
-        "until": "に到達しました。"
+    "advanced": {
+      "name": "上級",
+      "desc": "1024 達成"
     },
-    "stages": {
-        "levelUp": "レベルアップ！",
-        "beginner": "初心者",
-        "intermediate": "中級",
-        "advanced": "上級",
-        "master": "マスター",
-        "legend": "レジェンド"
+    "master": {
+      "name": "マスター",
+      "desc": "2048 達成"
     },
-    "collection": {
-        "title": "図鑑",
-        "recentMerges": "最近のマージ",
-        "dailyChallenge": "毎日チャレンジ",
-        "merges": "マージ",
-        "create": "作成",
-        "totalMerges": "合計マージ数",
-        "maxEmoji": "最高絵文字",
-        "noHistory": "マージ履歴がまだありません",
-        "milestoneReached": "マイルストーン達成！",
-        "dailyComplete": "毎日チャレンジ完了",
-        "discovered": "発見済み",
-        "newDiscovery": "NEW!"
-    },
-    "milestone": {
-        "achievement": "ポイント達成！"
-    },
-    "stage": {
-        "achieved": "達成！",
-        "bonus": "ボーナスポイント！",
-        "intro": { "name": "導入", "desc": "128 達成" },
-        "beginner": { "name": "入門", "desc": "256 達成" },
-        "intermediate": { "name": "中級", "desc": "512 達成" },
-        "advanced": { "name": "上級", "desc": "1024 達成" },
-        "master": { "name": "マスター", "desc": "2048 達成" },
-        "legend": { "name": "レジェンド", "desc": "4096 達成" }
-    },
-    "modal": {
-        "collectionTitle": "図鑑",
-        "recentMergesTitle": "最近のマージ",
-        "dailyChallengeTitle": "毎日チャレンジ",
-        "close": "閉じる"
-    },
-    "stats": {
-        "totalMerges": "合計マージ数",
-        "maxEmoji": "最高絵文字",
-        "stages": "達成ステージ"
-    },
-    "related": {
-        "idleClicker": "放置クリッカー",
-        "blockPuzzle": "ブロックパズル",
-        "stackTower": "スタックタワー",
-        "colorMemory": "カラーメモリー"
-    },
-    "analytics": {
-        "pageTitle": "絵文字マージ"
-    },
-    "chain": {
-        "animal": { "name": "卵からドラゴンへ", "desc": "卵が孵化し、鳥が育ち、伝説のドラゴンになる！" },
-        "plant": { "name": "種から世界樹へ", "desc": "小さな種が芽吹き、巨大な森に育つ！" },
-        "space": { "name": "水滴から銀河へ", "desc": "一滴の水が海となり、星となって宇宙を満たす！" },
-        "emotion": { "name": "感情レベルアップ", "desc": "穏やかな始まりからどんどん熱くなる感情の爆発！" }
-    },
-    "title": {
-        "novice": { "name": "初心者研究員", "desc": "進化の始まり" },
-        "apprentice": { "name": "見習いトレーナー", "desc": "コツをつかみ始める" },
-        "challenger": { "name": "進化チャレンジャー", "desc": "合体の楽しさ" },
-        "mutant": { "name": "突然変異学者", "desc": "パターンが見える" },
-        "geneticist": { "name": "遺伝子工学者", "desc": "戦略的マージ" },
-        "master": { "name": "進化マスター", "desc": "高度な戦略" },
-        "architect": { "name": "生命の建築家", "desc": "自在に操る" },
-        "demigod": { "name": "創造主の見習い", "desc": "ほぼ神の領域" },
-        "creator": { "name": "創造の神", "desc": "伝説の始まり" },
-        "ruler": { "name": "万物の支配者", "desc": "すべての進化を導く" },
-        "cosmic": { "name": "宇宙の創造者", "desc": "新たな宇宙を開く者" }
-    },
-    "error": {
-        "storage": "プライベートモードでは一部機能が制限されます。",
-        "data": "データ読み込みエラー。ページを更新してください。",
-        "canvas": "グラフィック描画の問題。もう一度お試しください。",
-        "audio": "音声が利用できません。続行できます。",
-        "network": "接続を確認して再試行してください。",
-        "general": "問題が発生しました。更新するか再試行してください。"
+    "legend": {
+      "name": "レジェンド",
+      "desc": "4096 達成"
     }
+  },
+  "modal": {
+    "collectionTitle": "図鑑",
+    "recentMergesTitle": "最近のマージ",
+    "dailyChallengeTitle": "毎日チャレンジ",
+    "close": "閉じる"
+  },
+  "stats": {
+    "totalMerges": "合計マージ数",
+    "maxEmoji": "最高絵文字",
+    "stages": "達成ステージ"
+  },
+  "related": {
+    "idleClicker": "放置クリッカー",
+    "blockPuzzle": "ブロックパズル",
+    "stackTower": "スタックタワー",
+    "colorMemory": "カラーメモリー"
+  },
+  "chain": {
+    "animal": {
+      "name": "卵からドラゴンへ",
+      "desc": "卵が孵化し、鳥が育ち、伝説のドラゴンになる！"
+    },
+    "plant": {
+      "name": "種から世界樹へ",
+      "desc": "小さな種が芽吹き、巨大な森に育つ！"
+    },
+    "space": {
+      "name": "水滴から銀河へ",
+      "desc": "一滴の水が海となり、星となって宇宙を満たす！"
+    },
+    "emotion": {
+      "name": "感情レベルアップ",
+      "desc": "穏やかな始まりからどんどん熱くなる感情の爆発！"
+    }
+  },
+  "title": {
+    "novice": {
+      "name": "初心者研究員",
+      "desc": "進化の始まり"
+    },
+    "apprentice": {
+      "name": "見習いトレーナー",
+      "desc": "コツをつかみ始める"
+    },
+    "challenger": {
+      "name": "進化チャレンジャー",
+      "desc": "合体の楽しさ"
+    },
+    "mutant": {
+      "name": "突然変異学者",
+      "desc": "パターンが見える"
+    },
+    "geneticist": {
+      "name": "遺伝子工学者",
+      "desc": "戦略的マージ"
+    },
+    "master": {
+      "name": "進化マスター",
+      "desc": "高度な戦略"
+    },
+    "architect": {
+      "name": "生命の建築家",
+      "desc": "自在に操る"
+    },
+    "demigod": {
+      "name": "創造主の見習い",
+      "desc": "ほぼ神の領域"
+    },
+    "creator": {
+      "name": "創造の神",
+      "desc": "伝説の始まり"
+    },
+    "ruler": {
+      "name": "万物の支配者",
+      "desc": "すべての進化を導く"
+    },
+    "cosmic": {
+      "name": "宇宙の創造者",
+      "desc": "新たな宇宙を開く者"
+    }
+  },
+  "error": {
+    "storage": "プライベートモードでは一部機能が制限されます。",
+    "data": "データ読み込みエラー。ページを更新してください。",
+    "canvas": "グラフィック描画の問題。もう一度お試しください。",
+    "audio": "音声が利用できません。続行できます。",
+    "network": "接続を確認して再試行してください。",
+    "general": "問題が発生しました。更新するか再試行してください。"
+  }
 }

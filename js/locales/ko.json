@@ -1,163 +1,186 @@
 {
-    "app": {
-        "title": "이모지 머지 - 진화 퍼즐 게임 | DopaBrain",
-        "description": "같은 이모지를 합쳐 진화시키세요! 🥚→🐣→🐥→🦅→🐉→👑 알에서 용까지, 씨앗에서 세계수까지! 4가지 진화 체인. 무료 두뇌 퍼즐 게임!"
+  "app": {
+    "title": "이모지 머지 - 진화 퍼즐 게임 | DopaBrain",
+    "description": "같은 이모지를 합쳐 진화시키세요! 🥚→🐣→🐥→🦅→🐉→👑 알에서 용까지, 씨앗에서 세계수까지! 4가지 진화 체인. 무료 두뇌 퍼즐 게임!"
+  },
+  "game": {
+    "title": "Emoji Merge",
+    "subtitle": "이모지 합쳐 진화시키기",
+    "score": "점수",
+    "best": "최고",
+    "bestScore": "최고 점수",
+    "newGame": "새 게임",
+    "undo": "되돌리기",
+    "hint": "힌트",
+    "theme": "테마",
+    "gameOver": "진화 종료!",
+    "retry": "다시 하기",
+    "share": "결과 공유",
+    "win": "최종 진화 달성!",
+    "continuePlay": "계속 진화하기",
+    "continueGame": "이어하기",
+    "selectChain": "진화 체인 선택",
+    "close": "닫기",
+    "games": "게임 수",
+    "maxEvolution": "최고 진화",
+    "howToPlay": "게임 방법",
+    "swipe": "스와이프",
+    "swipeDesc": "하여 타일 이동",
+    "merge": "같은 이모지를 합쳐",
+    "mergeDesc": "진화",
+    "achieve": "최종 진화",
+    "achieveDesc": "를 달성하세요!",
+    "tryMore": "이것도 해보세요!",
+    "back": "DopaBrain 홈",
+    "copyright": "© 2026 DopaBrain",
+    "confirmNewGame": "현재 게임을 포기하고 새 게임을 시작할까요?",
+    "resultCopied": "결과가 복사되었습니다!",
+    "newBest": "신기록!",
+    "level": "Lv.",
+    "undiscovered": "???",
+    "moreGames": "더 많은 게임",
+    "combo": "콤보"
+  },
+  "stages": {
+    "levelUp": "레벨 업!",
+    "beginner": "입문",
+    "intermediate": "중급",
+    "advanced": "고급",
+    "master": "마스터",
+    "legend": "전설"
+  },
+  "collection": {
+    "title": "도감",
+    "recentMerges": "최근 합성",
+    "dailyChallenge": "일일 도전",
+    "merges": "합성",
+    "create": "생성",
+    "totalMerges": "총 합성 횟수",
+    "maxEmoji": "최고 이모지",
+    "noHistory": "합성 기록이 없습니다",
+    "milestoneReached": "마일스톤 달성!",
+    "dailyComplete": "일일 도전 완료",
+    "discovered": "발견",
+    "newDiscovery": "NEW!"
+  },
+  "milestone": {
+    "achievement": "점 달성!"
+  },
+  "stage": {
+    "achieved": "달성!",
+    "bonus": "보너스 점수!",
+    "intro": {
+      "name": "도입",
+      "desc": "128 달성"
     },
-    "game": {
-        "title": "Emoji Merge",
-        "subtitle": "이모지 합쳐 진화시키기",
-        "score": "점수",
-        "best": "최고",
-        "bestScore": "최고 점수",
-        "newGame": "새 게임",
-        "undo": "되돌리기",
-        "hint": "힌트",
-        "theme": "테마",
-        "gameOver": "진화 종료!",
-        "retry": "다시 하기",
-        "share": "결과 공유",
-        "win": "최종 진화 달성!",
-        "continuePlay": "계속 진화하기",
-        "continueGame": "이어하기",
-        "selectChain": "진화 체인 선택",
-        "close": "닫기",
-        "games": "게임 수",
-        "maxEvolution": "최고 진화",
-        "howToPlay": "게임 방법",
-        "swipe": "스와이프",
-        "swipeDesc": "하여 타일 이동",
-        "merge": "같은 이모지를 합쳐",
-        "mergeDesc": "진화",
-        "achieve": "최종 진화",
-        "achieveDesc": "를 달성하세요!",
-        "tryMore": "이것도 해보세요!",
-        "premium": "AI 게임 분석",
-        "premiumPro": "PRO",
-        "ad": "광고",
-        "adCountdown": "초 후 닫기 가능",
-        "back": "DopaBrain 홈",
-        "copyright": "© 2026 DopaBrain",
-        "alertPlayFirst": "먼저 게임을 플레이해주세요!",
-        "confirmNewGame": "현재 게임을 포기하고 새 게임을 시작할까요?",
-        "resultCopied": "결과가 복사되었습니다!",
-        "resultTitle": "이모지 머지 결과",
-        "newBest": "신기록!",
-        "level": "Lv.",
-        "undiscovered": "???",
-        "moreGames": "더 많은 게임",
-        "combo": "콤보"
+    "beginner": {
+      "name": "입문",
+      "desc": "256 달성"
     },
-    "recs": {
-        "stackTowerDesc": "블록 쌓기 타이밍 게임",
-        "zigzagDesc": "방향 전환 아케이드",
-        "emotionName": "감정 온도계",
-        "emotionDesc": "나의 감정 온도는?",
-        "pastLifeName": "전생 직업",
-        "pastLifeDesc": "나의 전생 직업은?",
-        "colorMemoryName": "색상 기억력",
-        "colorMemoryDesc": "기억력 도전 게임"
+    "intermediate": {
+      "name": "중급",
+      "desc": "512 달성"
     },
-    "premium": {
-        "currentScore": "현재 점수",
-        "scorePerMove": "이동당 점수",
-        "totalMoves": "총 이동 수",
-        "boardDensity": "보드 밀도",
-        "titleBadge": "칭호",
-        "boardStatus": "보드 상태",
-        "strategyTip": "전략 팁",
-        "predictedMax": "예상 최대 진화",
-        "emptyCount": "빈 칸",
-        "filledCount": "채워진 칸",
-        "tooFewEmpty": "빈 칸이 부족합니다! 한쪽 방향으로 밀어서 공간을 확보하세요. 큰 값은 모서리에 유지하는 것이 좋습니다.",
-        "nearEnd": "최종 진화에 가까워지고 있습니다! 최고 값 타일을 모서리에 고정하고, 인접 타일을 순서대로 정렬하세요.",
-        "goodFlow": "좋은 흐름입니다! 한 방향(왼쪽 또는 아래)을 주로 사용하면서 큰 값을 한쪽에 모으세요.",
-        "beginnerTip": "초반에는 한 방향을 위주로 이동하면서 감을 잡으세요. 되돌리기를 활용하면 더 높은 점수를 얻을 수 있습니다.",
-        "canAchieveMax": "최종 진화 달성이 가능합니다!",
-        "playMore": "조금 더 전략적으로 플레이해보세요.",
-        "chainWith": "체인으로",
-        "level": "레벨",
-        "until": "까지 진화했습니다."
+    "advanced": {
+      "name": "고급",
+      "desc": "1024 달성"
     },
-    "stages": {
-        "levelUp": "레벨 업!",
-        "beginner": "입문",
-        "intermediate": "중급",
-        "advanced": "고급",
-        "master": "마스터",
-        "legend": "전설"
+    "master": {
+      "name": "마스터",
+      "desc": "2048 달성"
     },
-    "collection": {
-        "title": "도감",
-        "recentMerges": "최근 합성",
-        "dailyChallenge": "일일 도전",
-        "merges": "합성",
-        "create": "생성",
-        "totalMerges": "총 합성 횟수",
-        "maxEmoji": "최고 이모지",
-        "noHistory": "합성 기록이 없습니다",
-        "milestoneReached": "마일스톤 달성!",
-        "dailyComplete": "일일 도전 완료",
-        "discovered": "발견",
-        "newDiscovery": "NEW!"
-    },
-    "milestone": {
-        "achievement": "점 달성!"
-    },
-    "stage": {
-        "achieved": "달성!",
-        "bonus": "보너스 점수!",
-        "intro": { "name": "도입", "desc": "128 달성" },
-        "beginner": { "name": "입문", "desc": "256 달성" },
-        "intermediate": { "name": "중급", "desc": "512 달성" },
-        "advanced": { "name": "고급", "desc": "1024 달성" },
-        "master": { "name": "마스터", "desc": "2048 달성" },
-        "legend": { "name": "전설", "desc": "4096 달성" }
-    },
-    "modal": {
-        "collectionTitle": "이모지 도감",
-        "recentMergesTitle": "최근 합성",
-        "dailyChallengeTitle": "일일 도전",
-        "close": "닫기"
-    },
-    "stats": {
-        "totalMerges": "총 병합 횟수",
-        "maxEmoji": "최고 이모지",
-        "stages": "달성한 스테이지"
-    },
-    "related": {
-        "idleClicker": "아이들 클리커",
-        "blockPuzzle": "블록 퍼즐",
-        "stackTower": "스택 타워",
-        "colorMemory": "컬러 메모리"
-    },
-    "analytics": {
-        "pageTitle": "이모지 머지"
-    },
-    "chain": {
-        "animal": { "name": "알에서 용까지", "desc": "알이 부화하고, 새가 자라 전설의 용이 되다!" },
-        "plant": { "name": "씨앗에서 세계수까지", "desc": "작은 씨앗이 싹트고 자라 거대한 숲이 되다!" },
-        "space": { "name": "물방울에서 은하까지", "desc": "한 방울의 물이 바다가 되고, 별이 되어 우주를 채우다!" },
-        "emotion": { "name": "감정 레벨업", "desc": "차분한 시작에서 점점 뜨거워지는 감정의 폭발!" }
-    },
-    "title": {
-        "novice": { "name": "초보 연구원", "desc": "진화의 시작" },
-        "apprentice": { "name": "견습 조련사", "desc": "감을 잡기 시작" },
-        "challenger": { "name": "진화 도전자", "desc": "합치기의 재미" },
-        "mutant": { "name": "돌연변이 학자", "desc": "패턴이 보인다" },
-        "geneticist": { "name": "유전공학자", "desc": "전략적 합치기" },
-        "master": { "name": "진화 마스터", "desc": "고도의 전략" },
-        "architect": { "name": "생명의 건축가", "desc": "자유자재로" },
-        "demigod": { "name": "조물주 견습생", "desc": "거의 신의 영역" },
-        "creator": { "name": "창조의 신", "desc": "전설의 시작" },
-        "ruler": { "name": "만물의 지배자", "desc": "모든 진화를 이끌다" },
-        "cosmic": { "name": "우주 창조자", "desc": "새로운 우주를 여는 자" }
-    },
-    "error": {
-        "storage": "개인 정보 보호 모드에서는 일부 기능이 제한될 수 있습니다.",
-        "data": "데이터 로드 중 문제가 발생했습니다. 새로고침해주세요.",
-        "canvas": "그래픽 렌더링 중 문제가 발생했습니다. 다시 시도해주세요.",
-        "audio": "음성 기능을 사용할 수 없습니다. 계속 진행하실 수 있습니다.",
-        "network": "네트워크 연결을 확인해주세요.",
-        "general": "문제가 발생했습니다. 새로고침하거나 다시 시도해주세요."
+    "legend": {
+      "name": "전설",
+      "desc": "4096 달성"
     }
+  },
+  "modal": {
+    "collectionTitle": "이모지 도감",
+    "recentMergesTitle": "최근 합성",
+    "dailyChallengeTitle": "일일 도전",
+    "close": "닫기"
+  },
+  "stats": {
+    "totalMerges": "총 병합 횟수",
+    "maxEmoji": "최고 이모지",
+    "stages": "달성한 스테이지"
+  },
+  "related": {
+    "idleClicker": "아이들 클리커",
+    "blockPuzzle": "블록 퍼즐",
+    "stackTower": "스택 타워",
+    "colorMemory": "컬러 메모리"
+  },
+  "chain": {
+    "animal": {
+      "name": "알에서 용까지",
+      "desc": "알이 부화하고, 새가 자라 전설의 용이 되다!"
+    },
+    "plant": {
+      "name": "씨앗에서 세계수까지",
+      "desc": "작은 씨앗이 싹트고 자라 거대한 숲이 되다!"
+    },
+    "space": {
+      "name": "물방울에서 은하까지",
+      "desc": "한 방울의 물이 바다가 되고, 별이 되어 우주를 채우다!"
+    },
+    "emotion": {
+      "name": "감정 레벨업",
+      "desc": "차분한 시작에서 점점 뜨거워지는 감정의 폭발!"
+    }
+  },
+  "title": {
+    "novice": {
+      "name": "초보 연구원",
+      "desc": "진화의 시작"
+    },
+    "apprentice": {
+      "name": "견습 조련사",
+      "desc": "감을 잡기 시작"
+    },
+    "challenger": {
+      "name": "진화 도전자",
+      "desc": "합치기의 재미"
+    },
+    "mutant": {
+      "name": "돌연변이 학자",
+      "desc": "패턴이 보인다"
+    },
+    "geneticist": {
+      "name": "유전공학자",
+      "desc": "전략적 합치기"
+    },
+    "master": {
+      "name": "진화 마스터",
+      "desc": "고도의 전략"
+    },
+    "architect": {
+      "name": "생명의 건축가",
+      "desc": "자유자재로"
+    },
+    "demigod": {
+      "name": "조물주 견습생",
+      "desc": "거의 신의 영역"
+    },
+    "creator": {
+      "name": "창조의 신",
+      "desc": "전설의 시작"
+    },
+    "ruler": {
+      "name": "만물의 지배자",
+      "desc": "모든 진화를 이끌다"
+    },
+    "cosmic": {
+      "name": "우주 창조자",
+      "desc": "새로운 우주를 여는 자"
+    }
+  },
+  "error": {
+    "storage": "개인 정보 보호 모드에서는 일부 기능이 제한될 수 있습니다.",
+    "data": "데이터 로드 중 문제가 발생했습니다. 새로고침해주세요.",
+    "canvas": "그래픽 렌더링 중 문제가 발생했습니다. 다시 시도해주세요.",
+    "audio": "음성 기능을 사용할 수 없습니다. 계속 진행하실 수 있습니다.",
+    "network": "네트워크 연결을 확인해주세요.",
+    "general": "문제가 발생했습니다. 새로고침하거나 다시 시도해주세요."
+  }
 }

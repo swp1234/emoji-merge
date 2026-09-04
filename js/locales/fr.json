@@ -1,163 +1,186 @@
 {
-    "app": {
-        "title": "Emoji Merge - Jeu de Puzzle Évolutif | DopaBrain",
-        "description": "Fusionne les mêmes emojis pour évoluer! 🥚→🐣→🐥→🦅→🐉→👑 De l'œuf au dragon, de la graine à l'arbre du monde! 4 chaînes d'évolution. Jeu de puzzle cérébral gratuit!"
+  "app": {
+    "title": "Emoji Merge - Jeu de Puzzle Évolutif | DopaBrain",
+    "description": "Fusionne les mêmes emojis pour évoluer! 🥚→🐣→🐥→🦅→🐉→👑 De l'œuf au dragon, de la graine à l'arbre du monde! 4 chaînes d'évolution. Jeu de puzzle cérébral gratuit!"
+  },
+  "game": {
+    "title": "Emoji Merge",
+    "subtitle": "Fusionne et évolue les emojis",
+    "score": "Score",
+    "best": "Meilleur",
+    "bestScore": "Meilleur Score",
+    "newGame": "Nouveau Jeu",
+    "undo": "Annuler",
+    "hint": "Indice",
+    "theme": "Thème",
+    "gameOver": "Évolution Complète!",
+    "retry": "Réessayer",
+    "share": "Partager le Résultat",
+    "win": "Évolution Finale Réalisée!",
+    "continuePlay": "Continuer à Jouer",
+    "continueGame": "Continuer",
+    "selectChain": "Sélectionner la Chaîne d'Évolution",
+    "close": "Fermer",
+    "games": "Jeux Joués",
+    "maxEvolution": "Évolution Max",
+    "howToPlay": "Comment Jouer",
+    "swipe": "Glisse",
+    "swipeDesc": "pour déplacer les tuiles",
+    "merge": "Fusionne les mêmes emojis pour",
+    "mergeDesc": "évoluer",
+    "achieve": "Réalise l'",
+    "achieveDesc": "évolution finale!",
+    "tryMore": "Essaie aussi!",
+    "back": "Accueil DopaBrain",
+    "copyright": "© 2026 DopaBrain",
+    "confirmNewGame": "Êtes-vous sûr de vouloir commencer un nouveau jeu et perdre votre progression actuelle?",
+    "resultCopied": "Résultat copié!",
+    "newBest": "NOUVEAU RECORD !",
+    "level": "Nv.",
+    "undiscovered": "???",
+    "moreGames": "Plus de jeux",
+    "combo": "COMBO"
+  },
+  "stages": {
+    "levelUp": "Montée de Niveau!",
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé",
+    "master": "Maître",
+    "legend": "Légende"
+  },
+  "collection": {
+    "title": "Collection",
+    "recentMerges": "Fusions Récentes",
+    "dailyChallenge": "Défi Quotidien",
+    "merges": "fusions",
+    "create": "créer",
+    "totalMerges": "Total des Fusions",
+    "maxEmoji": "Emoji Maximal",
+    "noHistory": "Pas d'historique de fusion encore",
+    "milestoneReached": "Jalon Atteint!",
+    "dailyComplete": "Défi Quotidien Complété",
+    "discovered": "Découvert",
+    "newDiscovery": "NOUVEAU !"
+  },
+  "milestone": {
+    "achievement": "points atteints !"
+  },
+  "stage": {
+    "achieved": "Atteint !",
+    "bonus": "points bonus !",
+    "intro": {
+      "name": "Introduction",
+      "desc": "Atteindre 128"
     },
-    "game": {
-        "title": "Emoji Merge",
-        "subtitle": "Fusionne et évolue les emojis",
-        "score": "Score",
-        "best": "Meilleur",
-        "bestScore": "Meilleur Score",
-        "newGame": "Nouveau Jeu",
-        "undo": "Annuler",
-        "hint": "Indice",
-        "theme": "Thème",
-        "gameOver": "Évolution Complète!",
-        "retry": "Réessayer",
-        "share": "Partager le Résultat",
-        "win": "Évolution Finale Réalisée!",
-        "continuePlay": "Continuer à Jouer",
-        "continueGame": "Continuer",
-        "selectChain": "Sélectionner la Chaîne d'Évolution",
-        "close": "Fermer",
-        "games": "Jeux Joués",
-        "maxEvolution": "Évolution Max",
-        "howToPlay": "Comment Jouer",
-        "swipe": "Glisse",
-        "swipeDesc": "pour déplacer les tuiles",
-        "merge": "Fusionne les mêmes emojis pour",
-        "mergeDesc": "évoluer",
-        "achieve": "Réalise l'",
-        "achieveDesc": "évolution finale!",
-        "tryMore": "Essaie aussi!",
-        "premium": "Analyse de Jeu IA",
-        "premiumPro": "PRO",
-        "ad": "Publicité",
-        "adCountdown": "secondes avant fermeture",
-        "back": "Accueil DopaBrain",
-        "copyright": "© 2026 DopaBrain",
-        "alertPlayFirst": "Veuillez jouer au jeu d'abord!",
-        "confirmNewGame": "Êtes-vous sûr de vouloir commencer un nouveau jeu et perdre votre progression actuelle?",
-        "resultCopied": "Résultat copié!",
-        "resultTitle": "Résultat d'Emoji Merge",
-        "newBest": "NOUVEAU RECORD !",
-        "level": "Nv.",
-        "undiscovered": "???",
-        "moreGames": "Plus de jeux",
-        "combo": "COMBO"
+    "beginner": {
+      "name": "Débutant",
+      "desc": "Atteindre 256"
     },
-    "recs": {
-        "stackTowerDesc": "Jeu de timing de stacking de blocs",
-        "zigzagDesc": "Arcade de changement de direction",
-        "emotionName": "Thermomètre d'Émotion",
-        "emotionDesc": "Quelle est ta température d'émotion?",
-        "pastLifeName": "Profession de Vie Passée",
-        "pastLifeDesc": "Quelle était ta profession dans une vie passée?",
-        "colorMemoryName": "Mémoire des Couleurs",
-        "colorMemoryDesc": "Jeu de défi mémoire"
+    "intermediate": {
+      "name": "Intermédiaire",
+      "desc": "Atteindre 512"
     },
-    "premium": {
-        "currentScore": "Score Actuel",
-        "scorePerMove": "Score par Mouvement",
-        "totalMoves": "Mouvements Totaux",
-        "boardDensity": "Densité du Plateau",
-        "titleBadge": "Titre",
-        "boardStatus": "État du Plateau",
-        "strategyTip": "Conseil Stratégique",
-        "predictedMax": "Évolution Maximale Prédite",
-        "emptyCount": "Cellules vides",
-        "filledCount": "Cellules remplies",
-        "tooFewEmpty": "Trop peu de cellules vides! Poussez dans une direction pour créer de l'espace. Gardez les grandes valeurs au bord.",
-        "nearEnd": "S'approchant de l'évolution finale! Verrouillez le carreau avec la plus grande valeur dans un coin et organisez les carreaux adjacents.",
-        "goodFlow": "Excellent flux! Concentrez-vous sur une direction (gauche ou bas) tout en rassemblant les grandes valeurs d'un côté.",
-        "beginnerTip": "Au début, concentrez-vous sur une direction pour prendre la sensation. L'utilisation d'annuler vous aidera à obtenir des scores plus élevés.",
-        "canAchieveMax": "L'évolution finale est possible!",
-        "playMore": "Essayez de jouer plus stratégiquement.",
-        "chainWith": "chaîne avec",
-        "level": "niveau",
-        "until": "atteint."
+    "advanced": {
+      "name": "Avancé",
+      "desc": "Atteindre 1024"
     },
-    "stages": {
-        "levelUp": "Montée de Niveau!",
-        "beginner": "Débutant",
-        "intermediate": "Intermédiaire",
-        "advanced": "Avancé",
-        "master": "Maître",
-        "legend": "Légende"
+    "master": {
+      "name": "Maître",
+      "desc": "Atteindre 2048"
     },
-    "collection": {
-        "title": "Collection",
-        "recentMerges": "Fusions Récentes",
-        "dailyChallenge": "Défi Quotidien",
-        "merges": "fusions",
-        "create": "créer",
-        "totalMerges": "Total des Fusions",
-        "maxEmoji": "Emoji Maximal",
-        "noHistory": "Pas d'historique de fusion encore",
-        "milestoneReached": "Jalon Atteint!",
-        "dailyComplete": "Défi Quotidien Complété",
-        "discovered": "Découvert",
-        "newDiscovery": "NOUVEAU !"
-    },
-    "milestone": {
-        "achievement": "points atteints !"
-    },
-    "stage": {
-        "achieved": "Atteint !",
-        "bonus": "points bonus !",
-        "intro": { "name": "Introduction", "desc": "Atteindre 128" },
-        "beginner": { "name": "Débutant", "desc": "Atteindre 256" },
-        "intermediate": { "name": "Intermédiaire", "desc": "Atteindre 512" },
-        "advanced": { "name": "Avancé", "desc": "Atteindre 1024" },
-        "master": { "name": "Maître", "desc": "Atteindre 2048" },
-        "legend": { "name": "Légende", "desc": "Atteindre 4096" }
-    },
-    "modal": {
-        "collectionTitle": "Collection",
-        "recentMergesTitle": "Fusions Récentes",
-        "dailyChallengeTitle": "Défi Quotidien",
-        "close": "Fermer"
-    },
-    "stats": {
-        "totalMerges": "Total des Fusions",
-        "maxEmoji": "Emoji Maximal",
-        "stages": "Étapes Atteintes"
-    },
-    "related": {
-        "idleClicker": "Clicker Idle",
-        "blockPuzzle": "Puzzle de Blocs",
-        "stackTower": "Tour Empilable",
-        "colorMemory": "Mémoire de Couleurs"
-    },
-    "analytics": {
-        "pageTitle": "Emoji Merge"
-    },
-    "chain": {
-        "animal": { "name": "De l'œuf au dragon", "desc": "L'œuf éclot, l'oiseau grandit et devient un dragon légendaire !" },
-        "plant": { "name": "De la graine à l'arbre du monde", "desc": "Une petite graine germe et grandit pour devenir une forêt immense !" },
-        "space": { "name": "De la goutte à la galaxie", "desc": "Une goutte d'eau devient la mer, puis des étoiles remplissent l'univers !" },
-        "emotion": { "name": "Montée de niveau émotionnel", "desc": "D'un début calme à une explosion d'émotions de plus en plus intense !" }
-    },
-    "title": {
-        "novice": { "name": "Chercheur débutant", "desc": "Le début de l'évolution" },
-        "apprentice": { "name": "Entraîneur apprenti", "desc": "Commencer à comprendre" },
-        "challenger": { "name": "Challenger d'évolution", "desc": "Le plaisir de fusionner" },
-        "mutant": { "name": "Érudit des mutations", "desc": "Les motifs apparaissent" },
-        "geneticist": { "name": "Ingénieur génétique", "desc": "Fusion stratégique" },
-        "master": { "name": "Maître de l'évolution", "desc": "Stratégie avancée" },
-        "architect": { "name": "Architecte de la vie", "desc": "Maîtrise totale" },
-        "demigod": { "name": "Apprenti demi-dieu", "desc": "Presque dans le royaume divin" },
-        "creator": { "name": "Dieu de la création", "desc": "Le début de la légende" },
-        "ruler": { "name": "Maître de tout", "desc": "Mener toute l'évolution" },
-        "cosmic": { "name": "Créateur cosmique", "desc": "Celui qui ouvre de nouveaux univers" }
-    },
-    "error": {
-        "storage": "Certaines fonctions peuvent être limitées en mode privé.",
-        "data": "Erreur de chargement. Veuillez rafraîchir la page.",
-        "canvas": "Problème de rendu graphique. Veuillez réessayer.",
-        "audio": "Audio indisponible. Vous pouvez continuer.",
-        "network": "Vérifiez votre connexion et réessayez.",
-        "general": "Un problème est survenu. Rafraîchissez ou réessayez."
+    "legend": {
+      "name": "Légende",
+      "desc": "Atteindre 4096"
     }
+  },
+  "modal": {
+    "collectionTitle": "Collection",
+    "recentMergesTitle": "Fusions Récentes",
+    "dailyChallengeTitle": "Défi Quotidien",
+    "close": "Fermer"
+  },
+  "stats": {
+    "totalMerges": "Total des Fusions",
+    "maxEmoji": "Emoji Maximal",
+    "stages": "Étapes Atteintes"
+  },
+  "related": {
+    "idleClicker": "Clicker Idle",
+    "blockPuzzle": "Puzzle de Blocs",
+    "stackTower": "Tour Empilable",
+    "colorMemory": "Mémoire de Couleurs"
+  },
+  "chain": {
+    "animal": {
+      "name": "De l'œuf au dragon",
+      "desc": "L'œuf éclot, l'oiseau grandit et devient un dragon légendaire !"
+    },
+    "plant": {
+      "name": "De la graine à l'arbre du monde",
+      "desc": "Une petite graine germe et grandit pour devenir une forêt immense !"
+    },
+    "space": {
+      "name": "De la goutte à la galaxie",
+      "desc": "Une goutte d'eau devient la mer, puis des étoiles remplissent l'univers !"
+    },
+    "emotion": {
+      "name": "Montée de niveau émotionnel",
+      "desc": "D'un début calme à une explosion d'émotions de plus en plus intense !"
+    }
+  },
+  "title": {
+    "novice": {
+      "name": "Chercheur débutant",
+      "desc": "Le début de l'évolution"
+    },
+    "apprentice": {
+      "name": "Entraîneur apprenti",
+      "desc": "Commencer à comprendre"
+    },
+    "challenger": {
+      "name": "Challenger d'évolution",
+      "desc": "Le plaisir de fusionner"
+    },
+    "mutant": {
+      "name": "Érudit des mutations",
+      "desc": "Les motifs apparaissent"
+    },
+    "geneticist": {
+      "name": "Ingénieur génétique",
+      "desc": "Fusion stratégique"
+    },
+    "master": {
+      "name": "Maître de l'évolution",
+      "desc": "Stratégie avancée"
+    },
+    "architect": {
+      "name": "Architecte de la vie",
+      "desc": "Maîtrise totale"
+    },
+    "demigod": {
+      "name": "Apprenti demi-dieu",
+      "desc": "Presque dans le royaume divin"
+    },
+    "creator": {
+      "name": "Dieu de la création",
+      "desc": "Le début de la légende"
+    },
+    "ruler": {
+      "name": "Maître de tout",
+      "desc": "Mener toute l'évolution"
+    },
+    "cosmic": {
+      "name": "Créateur cosmique",
+      "desc": "Celui qui ouvre de nouveaux univers"
+    }
+  },
+  "error": {
+    "storage": "Certaines fonctions peuvent être limitées en mode privé.",
+    "data": "Erreur de chargement. Veuillez rafraîchir la page.",
+    "canvas": "Problème de rendu graphique. Veuillez réessayer.",
+    "audio": "Audio indisponible. Vous pouvez continuer.",
+    "network": "Vérifiez votre connexion et réessayez.",
+    "general": "Un problème est survenu. Rafraîchissez ou réessayez."
+  }
 }

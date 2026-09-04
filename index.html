@@ -2,21 +2,17 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="max-image-preview:large">
 
-    <!-- Preconnect to external services for performance -->
+    <!-- Preconnect to measurement services only. Ad serving is suspended. -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
-
-    <!-- AdSense Script (loaded once in head) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882" crossorigin="anonymous"></script>
 
     <!-- SEO Meta Tags -->
     <title>Emoji Merge - Free Online Evolution Puzzle Game | DopaBrain</title>
     <meta name="description" content="Merge matching emojis to evolve them! Egg to dragon, seed to world tree. 4 evolution chains in this free addictive puzzle game!">
-    <meta name="dateModified" content="2026-07-07">
+    <meta name="dateModified" content="2026-09-05">
     <meta name="keywords" content="이모지 머지, 진화 퍼즐, 합치기 게임, 이모지 게임, 2048, 무료 게임, 브라우저 게임, 캐주얼 게임, emoji merge, 진화 게임">
     <meta name="author" content="DopaBrain">
     <meta name="robots" content="index, follow">
@@ -99,64 +95,7 @@
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.4",
-            "ratingCount": "1680",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
         "featureList": "Emoji merge gameplay, 4 evolution themes, drag and drop controls, score system, high score saving, multilingual support, responsive design"
-    }
-    </script>
-
-    <!-- FAQPage Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What is Emoji Merge?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Emoji Merge is a free online puzzle game where you merge matching emojis to evolve them through 4 unique evolution chains. Combine eggs into dragons, seeds into world trees, droplets into galaxies, and level up emotions. It is inspired by 2048-style merge mechanics."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How do I play Emoji Merge?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Swipe in any direction (up, down, left, right) to move all tiles on the 4x4 board. When two identical emojis collide, they merge into the next evolution stage. Keep merging to reach the final evolution in each chain. The game ends when no more moves are possible."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is Emoji Merge free to play? Do I need to download anything?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, Emoji Merge is completely free to play directly in your web browser. No download, installation, or sign-up is required. Just open the page and start merging emojis instantly."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What tips can help me reach the final evolution?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Keep your highest-level emoji in a corner and build around it. Avoid random swipes — plan each move. Use the undo button to correct mistakes. Try different evolution chains for variety. Focus on creating combos by setting up multiple merges in a single swipe."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can I play Emoji Merge on my phone?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes! Emoji Merge is fully optimized for mobile with responsive touch controls. Swipe gestures work smoothly on smartphones and tablets. The game adapts to any screen size for a seamless experience."
-                }
-            }
-        ]
     }
     </script>
 
@@ -177,9 +116,8 @@
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J8GSWM40TV');</script>
-<script>setTimeout(function(){if(typeof gtag!=='undefined')gtag('event','page_engage',{event_category:'emoji_merge',engagement_time_msec:5000})},5000);</script>
 </head>
-<body>
+<body data-ad-serving="suspended-invalid-traffic-2026-09-03">
     <div class="app-loader" id="app-loader">
         <div class="loader-content">
             <div class="loader-emoji">🧬</div>
@@ -219,11 +157,6 @@
                 <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी</button>
                 <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
             </div>
-        </div>
-
-        <!-- Ad Banner Top -->
-        <div class="ad-banner ad-top">
-            <span class="ad-placeholder" data-i18n="ads.banner">AD</span>
         </div>
 
         <!-- Header -->
@@ -368,31 +301,6 @@
             </div>
         </section>
 
-        <!-- Premium Button -->
-        <section class="premium-section">
-            <button class="premium-btn" id="btn-premium">
-                <span class="premium-icon">🧠</span>
-                <span class="premium-text" data-i18n="game.premium">AI 게임 분석</span>
-                <span class="premium-badge" data-i18n="game.premiumPro">PRO</span>
-            </button>
-        </section>
-
-        <!-- Interstitial Ad Modal -->
-        <div class="overlay hidden" id="interstitial-overlay">
-            <div class="overlay-content interstitial">
-                <p class="ad-notice" data-i18n="game.ad">광고</p>
-                <div class="ad-placeholder-large" data-i18n="ads.banner">AD</div>
-                <p class="ad-timer"><span id="ad-countdown">5</span><span data-i18n="game.adCountdown">초 후 닫기 가능</span></p>
-                <button class="btn-secondary" id="btn-close-ad" disabled><span data-i18n="game.close">닫기</span> (<span id="ad-countdown-btn">5</span>)</button>
-            </div>
-        </div>
-
-        <!-- Premium Result -->
-        <section class="premium-result hidden" id="premium-result">
-            <h3 class="premium-result-title"><span>🧠 </span><span data-i18n="game.premium">AI 게임 분석</span></h3>
-            <div id="premium-content"></div>
-        </section>
-
         <!-- How to Play -->
         <section class="how-to-play">
             <h2 data-i18n="game.howToPlay">게임 방법</h2>
@@ -448,10 +356,6 @@
             <p class="copyright"><span>&copy; 2026 DopaBrain</span></p>
         </footer>
 
-        <!-- Ad Banner Bottom -->
-        <div class="ad-banner ad-bottom">
-            <span class="ad-placeholder" data-i18n="ads.banner">AD</span>
-        </div>
     </div>
 
     <script defer src="js/storage-manager.js"></script>
@@ -460,9 +364,6 @@
     <script defer src="js/game-data.js"></script>
     <script defer src="js/sound-engine.js"></script>
     <script defer src="/portal/js/haptic.js"></script>
-    <script defer src="/portal/js/daily-streak.js"></script>
-    <script defer src="/portal/js/game-ads.js"></script>
-    <script defer src="/portal/js/achievements.js"></script>
     <script defer src="js/app.js"></script>
     <script>
     if ('serviceWorker' in navigator) {
@@ -478,9 +379,9 @@
         .sound-toggle {
             position: fixed;
             top: 12px;
-            right: 52px;
-            width: 40px;
-            height: 40px;
+            right: 76px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
@@ -497,7 +398,6 @@
         .sound-toggle:hover { background: rgba(255,255,255,0.2); }
         .sound-toggle:active { transform: scale(0.95); }
     </style>
-    <script src="/portal/js/cross-promo.js" defer></script>
     <script src="/portal/js/pwa-install.js" defer></script>
 </body>
 </html>

@@ -1,163 +1,186 @@
 {
-    "app": {
-        "title": "Emoji Merge - Permainan Puzzle Evolusi | DopaBrain",
-        "description": "Gabungkan emoji yang sama untuk berkembang! 🥚→🐣→🐥→🦅→🐉→👑 Dari telur hingga naga, dari benih hingga pohon dunia! 4 rantai evolusi. Permainan puzzle otak gratis!"
+  "app": {
+    "title": "Emoji Merge - Permainan Puzzle Evolusi | DopaBrain",
+    "description": "Gabungkan emoji yang sama untuk berkembang! 🥚→🐣→🐥→🦅→🐉→👑 Dari telur hingga naga, dari benih hingga pohon dunia! 4 rantai evolusi. Permainan puzzle otak gratis!"
+  },
+  "game": {
+    "title": "Emoji Merge",
+    "subtitle": "Gabungkan dan kembangkan emoji",
+    "score": "Skor",
+    "best": "Terbaik",
+    "bestScore": "Skor Terbaik",
+    "newGame": "Permainan Baru",
+    "undo": "Batalkan",
+    "hint": "Petunjuk",
+    "theme": "Tema",
+    "gameOver": "Evolusi Selesai!",
+    "retry": "Coba Lagi",
+    "share": "Bagikan Hasil",
+    "win": "Evolusi Final Tercapai!",
+    "continuePlay": "Lanjutkan Bermain",
+    "continueGame": "Lanjutkan",
+    "selectChain": "Pilih Rantai Evolusi",
+    "close": "Tutup",
+    "games": "Permainan Dimainkan",
+    "maxEvolution": "Evolusi Maksimal",
+    "howToPlay": "Cara Bermain",
+    "swipe": "Geser",
+    "swipeDesc": "untuk memindahkan ubin",
+    "merge": "Gabungkan emoji yang sama untuk",
+    "mergeDesc": "berkembang",
+    "achieve": "Capai",
+    "achieveDesc": "evolusi akhir!",
+    "tryMore": "Coba Juga!",
+    "back": "Beranda DopaBrain",
+    "copyright": "© 2026 DopaBrain",
+    "confirmNewGame": "Apakah Anda yakin ingin memulai permainan baru dan kehilangan kemajuan saat ini?",
+    "resultCopied": "Hasil disalin!",
+    "newBest": "REKOR BARU!",
+    "level": "Lv.",
+    "undiscovered": "???",
+    "moreGames": "Game lainnya",
+    "combo": "KOMBO"
+  },
+  "stages": {
+    "levelUp": "Naik Level!",
+    "beginner": "Pemula",
+    "intermediate": "Menengah",
+    "advanced": "Lanjutan",
+    "master": "Master",
+    "legend": "Legendaris"
+  },
+  "collection": {
+    "title": "Koleksi",
+    "recentMerges": "Penggabungan Terbaru",
+    "dailyChallenge": "Tantangan Harian",
+    "merges": "penggabungan",
+    "create": "buat",
+    "totalMerges": "Total Penggabungan",
+    "maxEmoji": "Emoji Maksimal",
+    "noHistory": "Belum ada riwayat penggabungan",
+    "milestoneReached": "Milestone Tercapai!",
+    "dailyComplete": "Tantangan Harian Selesai",
+    "discovered": "Ditemukan",
+    "newDiscovery": "BARU!"
+  },
+  "milestone": {
+    "achievement": "poin tercapai!"
+  },
+  "stage": {
+    "achieved": "Tercapai!",
+    "bonus": "poin bonus!",
+    "intro": {
+      "name": "Pengantar",
+      "desc": "Capai 128"
     },
-    "game": {
-        "title": "Emoji Merge",
-        "subtitle": "Gabungkan dan kembangkan emoji",
-        "score": "Skor",
-        "best": "Terbaik",
-        "bestScore": "Skor Terbaik",
-        "newGame": "Permainan Baru",
-        "undo": "Batalkan",
-        "hint": "Petunjuk",
-        "theme": "Tema",
-        "gameOver": "Evolusi Selesai!",
-        "retry": "Coba Lagi",
-        "share": "Bagikan Hasil",
-        "win": "Evolusi Final Tercapai!",
-        "continuePlay": "Lanjutkan Bermain",
-        "continueGame": "Lanjutkan",
-        "selectChain": "Pilih Rantai Evolusi",
-        "close": "Tutup",
-        "games": "Permainan Dimainkan",
-        "maxEvolution": "Evolusi Maksimal",
-        "howToPlay": "Cara Bermain",
-        "swipe": "Geser",
-        "swipeDesc": "untuk memindahkan ubin",
-        "merge": "Gabungkan emoji yang sama untuk",
-        "mergeDesc": "berkembang",
-        "achieve": "Capai",
-        "achieveDesc": "evolusi akhir!",
-        "tryMore": "Coba Juga!",
-        "premium": "Analisis Permainan AI",
-        "premiumPro": "PRO",
-        "ad": "Iklan",
-        "adCountdown": "detik hingga dapat ditutup",
-        "back": "Beranda DopaBrain",
-        "copyright": "© 2026 DopaBrain",
-        "alertPlayFirst": "Harap mainkan game terlebih dahulu!",
-        "confirmNewGame": "Apakah Anda yakin ingin memulai permainan baru dan kehilangan kemajuan saat ini?",
-        "resultCopied": "Hasil disalin!",
-        "resultTitle": "Hasil Emoji Merge",
-        "newBest": "REKOR BARU!",
-        "level": "Lv.",
-        "undiscovered": "???",
-        "moreGames": "Game lainnya",
-        "combo": "KOMBO"
+    "beginner": {
+      "name": "Pemula",
+      "desc": "Capai 256"
     },
-    "recs": {
-        "stackTowerDesc": "Permainan penumpukan blok waktu",
-        "zigzagDesc": "Arkade perubahan arah",
-        "emotionName": "Termometer Emosi",
-        "emotionDesc": "Berapa suhu emosi Anda?",
-        "pastLifeName": "Pekerjaan Kehidupan Lalu",
-        "pastLifeDesc": "Apa pekerjaan Anda di kehidupan lalu?",
-        "colorMemoryName": "Memori Warna",
-        "colorMemoryDesc": "Permainan tantangan memori"
+    "intermediate": {
+      "name": "Menengah",
+      "desc": "Capai 512"
     },
-    "premium": {
-        "currentScore": "Skor Saat Ini",
-        "scorePerMove": "Skor Per Gerakan",
-        "totalMoves": "Total Gerakan",
-        "boardDensity": "Kepadatan Papan",
-        "titleBadge": "Gelar",
-        "boardStatus": "Status Papan",
-        "strategyTip": "Tips Strategi",
-        "predictedMax": "Evolusi Maksimal yang Diprediksi",
-        "emptyCount": "Sel kosong",
-        "filledCount": "Sel terisi",
-        "tooFewEmpty": "Terlalu sedikit sel kosong! Dorong ke satu arah untuk membuat ruang. Jaga nilai besar di tepi.",
-        "nearEnd": "Mendekati evolusi akhir! Kunci ubin dengan nilai tertinggi ke sudut dan atur ubin yang berdekatan.",
-        "goodFlow": "Aliran yang bagus! Fokus pada satu arah (kiri atau bawah) sambil mengumpulkan nilai besar di satu sisi.",
-        "beginnerTip": "Di awalnya, fokus pada satu arah untuk mendapatkan rasanya. Menggunakan batalkan akan membantu Anda mendapatkan skor yang lebih tinggi.",
-        "canAchieveMax": "Evolusi akhir dimungkinkan!",
-        "playMore": "Coba bermain lebih strategis.",
-        "chainWith": "rantai dengan",
-        "level": "tingkat",
-        "until": "tercapai."
+    "advanced": {
+      "name": "Lanjutan",
+      "desc": "Capai 1024"
     },
-    "stages": {
-        "levelUp": "Naik Level!",
-        "beginner": "Pemula",
-        "intermediate": "Menengah",
-        "advanced": "Lanjutan",
-        "master": "Master",
-        "legend": "Legendaris"
+    "master": {
+      "name": "Master",
+      "desc": "Capai 2048"
     },
-    "collection": {
-        "title": "Koleksi",
-        "recentMerges": "Penggabungan Terbaru",
-        "dailyChallenge": "Tantangan Harian",
-        "merges": "penggabungan",
-        "create": "buat",
-        "totalMerges": "Total Penggabungan",
-        "maxEmoji": "Emoji Maksimal",
-        "noHistory": "Belum ada riwayat penggabungan",
-        "milestoneReached": "Milestone Tercapai!",
-        "dailyComplete": "Tantangan Harian Selesai",
-        "discovered": "Ditemukan",
-        "newDiscovery": "BARU!"
-    },
-    "milestone": {
-        "achievement": "poin tercapai!"
-    },
-    "stage": {
-        "achieved": "Tercapai!",
-        "bonus": "poin bonus!",
-        "intro": { "name": "Pengantar", "desc": "Capai 128" },
-        "beginner": { "name": "Pemula", "desc": "Capai 256" },
-        "intermediate": { "name": "Menengah", "desc": "Capai 512" },
-        "advanced": { "name": "Lanjutan", "desc": "Capai 1024" },
-        "master": { "name": "Master", "desc": "Capai 2048" },
-        "legend": { "name": "Legendaris", "desc": "Capai 4096" }
-    },
-    "modal": {
-        "collectionTitle": "Koleksi",
-        "recentMergesTitle": "Penggabungan Terbaru",
-        "dailyChallengeTitle": "Tantangan Harian",
-        "close": "Tutup"
-    },
-    "stats": {
-        "totalMerges": "Total Penggabungan",
-        "maxEmoji": "Emoji Maksimal",
-        "stages": "Tahap Tercapai"
-    },
-    "related": {
-        "idleClicker": "Idle Clicker",
-        "blockPuzzle": "Teka-teki Blok",
-        "stackTower": "Menara Tumpuk",
-        "colorMemory": "Memori Warna"
-    },
-    "analytics": {
-        "pageTitle": "Emoji Merge"
-    },
-    "chain": {
-        "animal": { "name": "Dari telur ke naga", "desc": "Telur menetas, burung tumbuh, dan menjadi naga legendaris!" },
-        "plant": { "name": "Dari benih ke pohon dunia", "desc": "Benih kecil bertunas dan tumbuh menjadi hutan raksasa!" },
-        "space": { "name": "Dari tetesan ke galaksi", "desc": "Setetes air menjadi lautan, lalu bintang-bintang mengisi alam semesta!" },
-        "emotion": { "name": "Naik level emosi", "desc": "Dari awal yang tenang hingga ledakan emosi yang semakin membara!" }
-    },
-    "title": {
-        "novice": { "name": "Peneliti pemula", "desc": "Awal evolusi" },
-        "apprentice": { "name": "Pelatih magang", "desc": "Mulai mengerti" },
-        "challenger": { "name": "Penantang evolusi", "desc": "Kesenangan menggabungkan" },
-        "mutant": { "name": "Cendekiawan mutasi", "desc": "Pola mulai terlihat" },
-        "geneticist": { "name": "Insinyur genetika", "desc": "Penggabungan strategis" },
-        "master": { "name": "Master evolusi", "desc": "Strategi tingkat lanjut" },
-        "architect": { "name": "Arsitek kehidupan", "desc": "Penguasaan total" },
-        "demigod": { "name": "Murid dewa", "desc": "Hampir di ranah ilahi" },
-        "creator": { "name": "Dewa penciptaan", "desc": "Awal legenda" },
-        "ruler": { "name": "Penguasa segalanya", "desc": "Memimpin semua evolusi" },
-        "cosmic": { "name": "Pencipta kosmik", "desc": "Pembuka alam semesta baru" }
-    },
-    "error": {
-        "storage": "Beberapa fitur mungkin terbatas dalam mode privat.",
-        "data": "Kesalahan memuat data. Silakan muat ulang.",
-        "canvas": "Masalah rendering grafis. Silakan coba lagi.",
-        "audio": "Audio tidak tersedia. Anda dapat melanjutkan.",
-        "network": "Periksa koneksi Anda dan coba lagi.",
-        "general": "Terjadi kesalahan. Muat ulang atau coba lagi."
+    "legend": {
+      "name": "Legendaris",
+      "desc": "Capai 4096"
     }
+  },
+  "modal": {
+    "collectionTitle": "Koleksi",
+    "recentMergesTitle": "Penggabungan Terbaru",
+    "dailyChallengeTitle": "Tantangan Harian",
+    "close": "Tutup"
+  },
+  "stats": {
+    "totalMerges": "Total Penggabungan",
+    "maxEmoji": "Emoji Maksimal",
+    "stages": "Tahap Tercapai"
+  },
+  "related": {
+    "idleClicker": "Idle Clicker",
+    "blockPuzzle": "Teka-teki Blok",
+    "stackTower": "Menara Tumpuk",
+    "colorMemory": "Memori Warna"
+  },
+  "chain": {
+    "animal": {
+      "name": "Dari telur ke naga",
+      "desc": "Telur menetas, burung tumbuh, dan menjadi naga legendaris!"
+    },
+    "plant": {
+      "name": "Dari benih ke pohon dunia",
+      "desc": "Benih kecil bertunas dan tumbuh menjadi hutan raksasa!"
+    },
+    "space": {
+      "name": "Dari tetesan ke galaksi",
+      "desc": "Setetes air menjadi lautan, lalu bintang-bintang mengisi alam semesta!"
+    },
+    "emotion": {
+      "name": "Naik level emosi",
+      "desc": "Dari awal yang tenang hingga ledakan emosi yang semakin membara!"
+    }
+  },
+  "title": {
+    "novice": {
+      "name": "Peneliti pemula",
+      "desc": "Awal evolusi"
+    },
+    "apprentice": {
+      "name": "Pelatih magang",
+      "desc": "Mulai mengerti"
+    },
+    "challenger": {
+      "name": "Penantang evolusi",
+      "desc": "Kesenangan menggabungkan"
+    },
+    "mutant": {
+      "name": "Cendekiawan mutasi",
+      "desc": "Pola mulai terlihat"
+    },
+    "geneticist": {
+      "name": "Insinyur genetika",
+      "desc": "Penggabungan strategis"
+    },
+    "master": {
+      "name": "Master evolusi",
+      "desc": "Strategi tingkat lanjut"
+    },
+    "architect": {
+      "name": "Arsitek kehidupan",
+      "desc": "Penguasaan total"
+    },
+    "demigod": {
+      "name": "Murid dewa",
+      "desc": "Hampir di ranah ilahi"
+    },
+    "creator": {
+      "name": "Dewa penciptaan",
+      "desc": "Awal legenda"
+    },
+    "ruler": {
+      "name": "Penguasa segalanya",
+      "desc": "Memimpin semua evolusi"
+    },
+    "cosmic": {
+      "name": "Pencipta kosmik",
+      "desc": "Pembuka alam semesta baru"
+    }
+  },
+  "error": {
+    "storage": "Beberapa fitur mungkin terbatas dalam mode privat.",
+    "data": "Kesalahan memuat data. Silakan muat ulang.",
+    "canvas": "Masalah rendering grafis. Silakan coba lagi.",
+    "audio": "Audio tidak tersedia. Anda dapat melanjutkan.",
+    "network": "Periksa koneksi Anda dan coba lagi.",
+    "general": "Terjadi kesalahan. Muat ulang atau coba lagi."
+  }
 }

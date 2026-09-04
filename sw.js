@@ -1,9 +1,6 @@
-/**
- * Service Worker for Emoji Merge Game
- * Enables offline functionality with caching and improved performance
- */
-
-const CACHE_NAME = 'emoji-merge-v4';
+const CACHE_PREFIX = 'emoji-merge-';
+const CACHE_NAME = `${CACHE_PREFIX}v5`;
+const APP_PATH = new URL('./', self.location.href).pathname;
 const ASSETS = [
     './',
     './index.html',
@@ -12,6 +9,8 @@ const ASSETS = [
     './js/app.js',
     './js/game-data.js',
     './js/sound-engine.js',
+    './js/storage-manager.js',
+    './js/leaderboard-manager.js',
     './js/locales/ko.json',
     './js/locales/en.json',
     './js/locales/zh.json',
@@ -29,54 +28,36 @@ const ASSETS = [
     './icon-512.svg'
 ];
 
-// Install event - cache essential assets
 self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(ASSETS).catch((error) => {
-                console.warn('Cache addAll failed:', error);
-                // Continue even if some assets fail to cache
-            });
-        })
-    );
+    event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
     self.skipWaiting();
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
     event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames
-                    .filter((name) => name !== CACHE_NAME)
-                    .map((name) => caches.delete(name))
-            );
-        })
+        caches.keys().then((names) => Promise.all(
+            names
+                .filter((name) => name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME)
+                .map((name) => caches.delete(name))
+        ))
     );
     self.clients.claim();
 });
 
-// Fetch event - network first, fallback to cache
 self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
-
-    // Skip external requests (ads, analytics, etc.)
-    if (!event.request.url.startsWith(self.location.origin)) return;
+    const url = new URL(event.request.url);
+    if (url.origin !== self.location.origin || !url.pathname.startsWith(APP_PATH)) return;
 
     event.respondWith(
         fetch(event.request)
             .then((response) => {
-                if (response && response.status === 200) {
-                    const responseToCache = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, responseToCache);
-                    });
+                if (response.ok) {
+                    const copy = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
                 }
                 return response;
             })
-            .catch(() => {
-                return caches.match(event.request)
-                    .then((cached) => cached || caches.match('./index.html'));
-            })
+            .catch(() => caches.match(event.request).then((cached) => cached || caches.match('./index.html')))
     );
 });

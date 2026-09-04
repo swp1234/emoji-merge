@@ -1,163 +1,186 @@
 {
-    "app": {
-        "title": "Emoji Merge - Evolution Puzzle Game | DopaBrain",
-        "description": "Merge the same emojis to evolve! 🥚→🐣→🐥→🦅→🐉→👑 From egg to dragon, from seed to world tree! 4 evolution chains. Free brain puzzle game!"
+  "app": {
+    "title": "Emoji Merge - Evolution Puzzle Game | DopaBrain",
+    "description": "Merge the same emojis to evolve! 🥚→🐣→🐥→🦅→🐉→👑 From egg to dragon, from seed to world tree! 4 evolution chains. Free brain puzzle game!"
+  },
+  "game": {
+    "title": "Emoji Merge",
+    "subtitle": "Merge and evolve emojis",
+    "score": "Score",
+    "best": "Best",
+    "bestScore": "Best Score",
+    "newGame": "New Game",
+    "undo": "Undo",
+    "hint": "Hint",
+    "theme": "Theme",
+    "gameOver": "Evolution Complete!",
+    "retry": "Retry",
+    "share": "Share Result",
+    "win": "Final Evolution Achieved!",
+    "continuePlay": "Keep Playing",
+    "continueGame": "Continue",
+    "selectChain": "Select Evolution Chain",
+    "close": "Close",
+    "games": "Games Played",
+    "maxEvolution": "Max Evolution",
+    "howToPlay": "How to Play",
+    "swipe": "Swipe",
+    "swipeDesc": "to move tiles",
+    "merge": "Merge same emojis to",
+    "mergeDesc": "evolve",
+    "achieve": "Achieve the",
+    "achieveDesc": "final evolution!",
+    "tryMore": "Try These Too!",
+    "back": "DopaBrain Home",
+    "copyright": "© 2026 DopaBrain",
+    "confirmNewGame": "Are you sure you want to start a new game and lose your current progress?",
+    "resultCopied": "Result copied!",
+    "newBest": "NEW BEST!",
+    "level": "Lv.",
+    "undiscovered": "???",
+    "moreGames": "More Games",
+    "combo": "COMBO"
+  },
+  "stages": {
+    "levelUp": "Level Up!",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "master": "Master",
+    "legend": "Legend"
+  },
+  "collection": {
+    "title": "Collection",
+    "recentMerges": "Recent Merges",
+    "dailyChallenge": "Daily Challenge",
+    "merges": "merges",
+    "create": "create",
+    "totalMerges": "Total Merges",
+    "maxEmoji": "Highest Emoji",
+    "noHistory": "No merge history yet",
+    "milestoneReached": "Milestone Reached!",
+    "dailyComplete": "Daily Challenge Complete",
+    "discovered": "Discovered",
+    "newDiscovery": "NEW!"
+  },
+  "milestone": {
+    "achievement": "points achieved!"
+  },
+  "stage": {
+    "achieved": "Achieved!",
+    "bonus": "bonus points!",
+    "intro": {
+      "name": "Intro",
+      "desc": "Reach 128"
     },
-    "game": {
-        "title": "Emoji Merge",
-        "subtitle": "Merge and evolve emojis",
-        "score": "Score",
-        "best": "Best",
-        "bestScore": "Best Score",
-        "newGame": "New Game",
-        "undo": "Undo",
-        "hint": "Hint",
-        "theme": "Theme",
-        "gameOver": "Evolution Complete!",
-        "retry": "Retry",
-        "share": "Share Result",
-        "win": "Final Evolution Achieved!",
-        "continuePlay": "Keep Playing",
-        "continueGame": "Continue",
-        "selectChain": "Select Evolution Chain",
-        "close": "Close",
-        "games": "Games Played",
-        "maxEvolution": "Max Evolution",
-        "howToPlay": "How to Play",
-        "swipe": "Swipe",
-        "swipeDesc": "to move tiles",
-        "merge": "Merge same emojis to",
-        "mergeDesc": "evolve",
-        "achieve": "Achieve the",
-        "achieveDesc": "final evolution!",
-        "tryMore": "Try These Too!",
-        "premium": "AI Game Analysis",
-        "premiumPro": "PRO",
-        "ad": "Advertisement",
-        "adCountdown": "seconds until closeable",
-        "back": "DopaBrain Home",
-        "copyright": "© 2026 DopaBrain",
-        "alertPlayFirst": "Please play the game first!",
-        "confirmNewGame": "Are you sure you want to start a new game and lose your current progress?",
-        "resultCopied": "Result copied!",
-        "resultTitle": "Emoji Merge Result",
-        "newBest": "NEW BEST!",
-        "level": "Lv.",
-        "undiscovered": "???",
-        "moreGames": "More Games",
-        "combo": "COMBO"
+    "beginner": {
+      "name": "Beginner",
+      "desc": "Reach 256"
     },
-    "recs": {
-        "stackTowerDesc": "Block stacking timing game",
-        "zigzagDesc": "Direction-changing arcade",
-        "emotionName": "Emotion Thermometer",
-        "emotionDesc": "What's your emotion temperature?",
-        "pastLifeName": "Past Life Job",
-        "pastLifeDesc": "What was your past life job?",
-        "colorMemoryName": "Color Memory",
-        "colorMemoryDesc": "Memory challenge game"
+    "intermediate": {
+      "name": "Intermediate",
+      "desc": "Reach 512"
     },
-    "premium": {
-        "currentScore": "Current Score",
-        "scorePerMove": "Score Per Move",
-        "totalMoves": "Total Moves",
-        "boardDensity": "Board Density",
-        "titleBadge": "Title",
-        "boardStatus": "Board Status",
-        "strategyTip": "Strategy Tip",
-        "predictedMax": "Predicted Max Evolution",
-        "emptyCount": "Empty cells",
-        "filledCount": "Filled cells",
-        "tooFewEmpty": "Too few empty cells! Push in one direction to create space. Keep large values on the edge.",
-        "nearEnd": "Getting close to final evolution! Lock the highest value tile to a corner and arrange adjacent tiles in order.",
-        "goodFlow": "Great flow! Focus on one direction (left or down) while gathering large values on one side.",
-        "beginnerTip": "In the beginning, focus on one direction to get a feel. Using undo will help you get higher scores.",
-        "canAchieveMax": "Final evolution is possible!",
-        "playMore": "Try playing more strategically.",
-        "chainWith": "chain with",
-        "level": "level",
-        "until": "reached."
+    "advanced": {
+      "name": "Advanced",
+      "desc": "Reach 1024"
     },
-    "stages": {
-        "levelUp": "Level Up!",
-        "beginner": "Beginner",
-        "intermediate": "Intermediate",
-        "advanced": "Advanced",
-        "master": "Master",
-        "legend": "Legend"
+    "master": {
+      "name": "Master",
+      "desc": "Reach 2048"
     },
-    "collection": {
-        "title": "Collection",
-        "recentMerges": "Recent Merges",
-        "dailyChallenge": "Daily Challenge",
-        "merges": "merges",
-        "create": "create",
-        "totalMerges": "Total Merges",
-        "maxEmoji": "Highest Emoji",
-        "noHistory": "No merge history yet",
-        "milestoneReached": "Milestone Reached!",
-        "dailyComplete": "Daily Challenge Complete",
-        "discovered": "Discovered",
-        "newDiscovery": "NEW!"
-    },
-    "milestone": {
-        "achievement": "points achieved!"
-    },
-    "stage": {
-        "achieved": "Achieved!",
-        "bonus": "bonus points!",
-        "intro": { "name": "Intro", "desc": "Reach 128" },
-        "beginner": { "name": "Beginner", "desc": "Reach 256" },
-        "intermediate": { "name": "Intermediate", "desc": "Reach 512" },
-        "advanced": { "name": "Advanced", "desc": "Reach 1024" },
-        "master": { "name": "Master", "desc": "Reach 2048" },
-        "legend": { "name": "Legend", "desc": "Reach 4096" }
-    },
-    "modal": {
-        "collectionTitle": "Collection",
-        "recentMergesTitle": "Recent Merges",
-        "dailyChallengeTitle": "Daily Challenge",
-        "close": "Close"
-    },
-    "stats": {
-        "totalMerges": "Total Merges",
-        "maxEmoji": "Max Emoji",
-        "stages": "Stages Reached"
-    },
-    "related": {
-        "idleClicker": "Idle Clicker",
-        "blockPuzzle": "Block Puzzle",
-        "stackTower": "Stack Tower",
-        "colorMemory": "Color Memory"
-    },
-    "analytics": {
-        "pageTitle": "Emoji Merge"
-    },
-    "chain": {
-        "animal": { "name": "From Egg to Dragon", "desc": "An egg hatches, a bird grows, and becomes a legendary dragon!" },
-        "plant": { "name": "From Seed to World Tree", "desc": "A tiny seed sprouts and grows into a massive forest!" },
-        "space": { "name": "From Droplet to Galaxy", "desc": "A drop of water becomes the sea, then stars filling the universe!" },
-        "emotion": { "name": "Emotion Level Up", "desc": "From calm beginnings to an explosion of emotions!" }
-    },
-    "title": {
-        "novice": { "name": "Novice Researcher", "desc": "The start of evolution" },
-        "apprentice": { "name": "Apprentice Trainer", "desc": "Getting the hang of it" },
-        "challenger": { "name": "Evolution Challenger", "desc": "The fun of merging" },
-        "mutant": { "name": "Mutation Scholar", "desc": "Patterns emerge" },
-        "geneticist": { "name": "Genetic Engineer", "desc": "Strategic merging" },
-        "master": { "name": "Evolution Master", "desc": "Advanced strategy" },
-        "architect": { "name": "Architect of Life", "desc": "Total mastery" },
-        "demigod": { "name": "Demigod Apprentice", "desc": "Near divine realm" },
-        "creator": { "name": "God of Creation", "desc": "The start of legend" },
-        "ruler": { "name": "Ruler of All", "desc": "Leading all evolution" },
-        "cosmic": { "name": "Cosmic Creator", "desc": "One who opens new universes" }
-    },
-    "error": {
-        "storage": "Some features may be limited in private mode. You can continue.",
-        "data": "Data loading error. Please refresh the page.",
-        "canvas": "Graphics rendering issue. Please try again.",
-        "audio": "Audio unavailable. You can still continue.",
-        "network": "Please check your connection and try again.",
-        "general": "Something went wrong. Please refresh or try again."
+    "legend": {
+      "name": "Legend",
+      "desc": "Reach 4096"
     }
+  },
+  "modal": {
+    "collectionTitle": "Collection",
+    "recentMergesTitle": "Recent Merges",
+    "dailyChallengeTitle": "Daily Challenge",
+    "close": "Close"
+  },
+  "stats": {
+    "totalMerges": "Total Merges",
+    "maxEmoji": "Max Emoji",
+    "stages": "Stages Reached"
+  },
+  "related": {
+    "idleClicker": "Idle Clicker",
+    "blockPuzzle": "Block Puzzle",
+    "stackTower": "Stack Tower",
+    "colorMemory": "Color Memory"
+  },
+  "chain": {
+    "animal": {
+      "name": "From Egg to Dragon",
+      "desc": "An egg hatches, a bird grows, and becomes a legendary dragon!"
+    },
+    "plant": {
+      "name": "From Seed to World Tree",
+      "desc": "A tiny seed sprouts and grows into a massive forest!"
+    },
+    "space": {
+      "name": "From Droplet to Galaxy",
+      "desc": "A drop of water becomes the sea, then stars filling the universe!"
+    },
+    "emotion": {
+      "name": "Emotion Level Up",
+      "desc": "From calm beginnings to an explosion of emotions!"
+    }
+  },
+  "title": {
+    "novice": {
+      "name": "Novice Researcher",
+      "desc": "The start of evolution"
+    },
+    "apprentice": {
+      "name": "Apprentice Trainer",
+      "desc": "Getting the hang of it"
+    },
+    "challenger": {
+      "name": "Evolution Challenger",
+      "desc": "The fun of merging"
+    },
+    "mutant": {
+      "name": "Mutation Scholar",
+      "desc": "Patterns emerge"
+    },
+    "geneticist": {
+      "name": "Genetic Engineer",
+      "desc": "Strategic merging"
+    },
+    "master": {
+      "name": "Evolution Master",
+      "desc": "Advanced strategy"
+    },
+    "architect": {
+      "name": "Architect of Life",
+      "desc": "Total mastery"
+    },
+    "demigod": {
+      "name": "Demigod Apprentice",
+      "desc": "Near divine realm"
+    },
+    "creator": {
+      "name": "God of Creation",
+      "desc": "The start of legend"
+    },
+    "ruler": {
+      "name": "Ruler of All",
+      "desc": "Leading all evolution"
+    },
+    "cosmic": {
+      "name": "Cosmic Creator",
+      "desc": "One who opens new universes"
+    }
+  },
+  "error": {
+    "storage": "Some features may be limited in private mode. You can continue.",
+    "data": "Data loading error. Please refresh the page.",
+    "canvas": "Graphics rendering issue. Please try again.",
+    "audio": "Audio unavailable. You can still continue.",
+    "network": "Please check your connection and try again.",
+    "general": "Something went wrong. Please refresh or try again."
+  }
 }

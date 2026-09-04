@@ -1,163 +1,186 @@
 {
-    "app": {
-        "title": "Emoji Merge - Evrim Bulmaca Oyunu | DopaBrain",
-        "description": "Aynı emojileri birleştirerek evrimle! 🥚→🐣→🐥→🦅→🐉→👑 Yumurtadan ejderhaya, tohumdan dünya ağacına! 4 evrim zinciri. Ücretsiz beyin bulmaca oyunu!"
+  "app": {
+    "title": "Emoji Merge - Evrim Bulmaca Oyunu | DopaBrain",
+    "description": "Aynı emojileri birleştirerek evrimle! 🥚→🐣→🐥→🦅→🐉→👑 Yumurtadan ejderhaya, tohumdan dünya ağacına! 4 evrim zinciri. Ücretsiz beyin bulmaca oyunu!"
+  },
+  "game": {
+    "title": "Emoji Merge",
+    "subtitle": "Emojileri birleştir ve evrimle",
+    "score": "Puan",
+    "best": "En İyi",
+    "bestScore": "En İyi Puan",
+    "newGame": "Yeni Oyun",
+    "undo": "Geri Al",
+    "hint": "İpucu",
+    "theme": "Tema",
+    "gameOver": "Evrim Tamamlandı!",
+    "retry": "Yeniden Dene",
+    "share": "Sonucu Paylaş",
+    "win": "Son Evrim Başarıldı!",
+    "continuePlay": "Oynamaya Devam Et",
+    "continueGame": "Devam Et",
+    "selectChain": "Evrim Zinciri Seç",
+    "close": "Kapat",
+    "games": "Oynanan Oyunlar",
+    "maxEvolution": "Maksimum Evrim",
+    "howToPlay": "Nasıl Oynanır",
+    "swipe": "Kaydır",
+    "swipeDesc": "karoleri hareket ettirmek için",
+    "merge": "Aynı emojileri birleştir",
+    "mergeDesc": "evrimle",
+    "achieve": "Başarı sağla",
+    "achieveDesc": "son evrim!",
+    "tryMore": "Bunları da Dene!",
+    "back": "DopaBrain Ana Sayfa",
+    "copyright": "© 2026 DopaBrain",
+    "confirmNewGame": "Mevcut oyunu kaybetmek ve yeni bir oyun başlatmak istediğinizden emin misiniz?",
+    "resultCopied": "Sonuç kopyalandı!",
+    "newBest": "YENİ REKOR!",
+    "level": "Sv.",
+    "undiscovered": "???",
+    "moreGames": "Daha fazla oyun",
+    "combo": "KOMBO"
+  },
+  "stages": {
+    "levelUp": "Seviye Yükselişi!",
+    "beginner": "Başlangıç",
+    "intermediate": "Orta",
+    "advanced": "İleri",
+    "master": "Usta",
+    "legend": "Efsane"
+  },
+  "collection": {
+    "title": "Koleksiyon",
+    "recentMerges": "Son Birleştirmeler",
+    "dailyChallenge": "Günlük Meydan Okuma",
+    "merges": "birleştirmeler",
+    "create": "oluştur",
+    "totalMerges": "Toplam Birleştirmeler",
+    "maxEmoji": "Maksimum Emoji",
+    "noHistory": "Henüz birleştirme geçmişi yok",
+    "milestoneReached": "Kilometre Taşına Ulaşıldı!",
+    "dailyComplete": "Günlük Meydan Okuma Tamamlandı",
+    "discovered": "Keşfedilen",
+    "newDiscovery": "YENİ!"
+  },
+  "milestone": {
+    "achievement": "puan ulaşıldı!"
+  },
+  "stage": {
+    "achieved": "Ulaşıldı!",
+    "bonus": "bonus puanlar!",
+    "intro": {
+      "name": "Giriş",
+      "desc": "128'e Ulaş"
     },
-    "game": {
-        "title": "Emoji Merge",
-        "subtitle": "Emojileri birleştir ve evrimle",
-        "score": "Puan",
-        "best": "En İyi",
-        "bestScore": "En İyi Puan",
-        "newGame": "Yeni Oyun",
-        "undo": "Geri Al",
-        "hint": "İpucu",
-        "theme": "Tema",
-        "gameOver": "Evrim Tamamlandı!",
-        "retry": "Yeniden Dene",
-        "share": "Sonucu Paylaş",
-        "win": "Son Evrim Başarıldı!",
-        "continuePlay": "Oynamaya Devam Et",
-        "continueGame": "Devam Et",
-        "selectChain": "Evrim Zinciri Seç",
-        "close": "Kapat",
-        "games": "Oynanan Oyunlar",
-        "maxEvolution": "Maksimum Evrim",
-        "howToPlay": "Nasıl Oynanır",
-        "swipe": "Kaydır",
-        "swipeDesc": "karoleri hareket ettirmek için",
-        "merge": "Aynı emojileri birleştir",
-        "mergeDesc": "evrimle",
-        "achieve": "Başarı sağla",
-        "achieveDesc": "son evrim!",
-        "tryMore": "Bunları da Dene!",
-        "premium": "YZ Oyun Analizi",
-        "premiumPro": "PRO",
-        "ad": "Reklam",
-        "adCountdown": "kapatılabilir hale gelmesine kadar saniye",
-        "back": "DopaBrain Ana Sayfa",
-        "copyright": "© 2026 DopaBrain",
-        "alertPlayFirst": "Lütfen önce oyunu oynayın!",
-        "confirmNewGame": "Mevcut oyunu kaybetmek ve yeni bir oyun başlatmak istediğinizden emin misiniz?",
-        "resultCopied": "Sonuç kopyalandı!",
-        "resultTitle": "Emoji Merge Sonucu",
-        "newBest": "YENİ REKOR!",
-        "level": "Sv.",
-        "undiscovered": "???",
-        "moreGames": "Daha fazla oyun",
-        "combo": "KOMBO"
+    "beginner": {
+      "name": "Başlangıç",
+      "desc": "256'ya Ulaş"
     },
-    "recs": {
-        "stackTowerDesc": "Blok yığımlama zamanlama oyunu",
-        "zigzagDesc": "Yön değiştirme arcade",
-        "emotionName": "Duygu Termometresi",
-        "emotionDesc": "Senin duygu sıcaklığın nedir?",
-        "pastLifeName": "Önceki Yaşam Mesleği",
-        "pastLifeDesc": "Önceki hayatında ne iş yapıyordun?",
-        "colorMemoryName": "Renk Belleği",
-        "colorMemoryDesc": "Bellek Meydan Okuma Oyunu"
+    "intermediate": {
+      "name": "Orta",
+      "desc": "512'ye Ulaş"
     },
-    "premium": {
-        "currentScore": "Mevcut Puan",
-        "scorePerMove": "Hareket Başına Puan",
-        "totalMoves": "Toplam Harekette",
-        "boardDensity": "Tahta Yoğunluğu",
-        "titleBadge": "Başlık",
-        "boardStatus": "Tahta Durumu",
-        "strategyTip": "Strateji İpucu",
-        "predictedMax": "Öngörülen Maksimum Evrim",
-        "emptyCount": "Boş hücreler",
-        "filledCount": "Dolu hücreler",
-        "tooFewEmpty": "Çok az boş hücre! Alan oluşturmak için bir yöne itin. Büyük değerleri kenarya tutun.",
-        "nearEnd": "Son evrime yaklaşıyor! En yüksek değerli karoyu köşeye kilitleyin ve bitişik karoları sıraya koyun.",
-        "goodFlow": "Harika akış! Bir yöne (sol veya aşağı) odaklanırken büyük değerleri bir tarafa toplayın.",
-        "beginnerTip": "Başlangıçta duyguyu anlamak için bir yöne odaklanın. Geri almayı kullanmak daha yüksek puanlar almanıza yardımcı olacaktır.",
-        "canAchieveMax": "Son evrim mümkün!",
-        "playMore": "Daha stratejik oynamayı deneyin.",
-        "chainWith": "zincir ile",
-        "level": "seviye",
-        "until": "ulaşıldı."
+    "advanced": {
+      "name": "İleri",
+      "desc": "1024'e Ulaş"
     },
-    "stages": {
-        "levelUp": "Seviye Yükselişi!",
-        "beginner": "Başlangıç",
-        "intermediate": "Orta",
-        "advanced": "İleri",
-        "master": "Usta",
-        "legend": "Efsane"
+    "master": {
+      "name": "Usta",
+      "desc": "2048'e Ulaş"
     },
-    "collection": {
-        "title": "Koleksiyon",
-        "recentMerges": "Son Birleştirmeler",
-        "dailyChallenge": "Günlük Meydan Okuma",
-        "merges": "birleştirmeler",
-        "create": "oluştur",
-        "totalMerges": "Toplam Birleştirmeler",
-        "maxEmoji": "Maksimum Emoji",
-        "noHistory": "Henüz birleştirme geçmişi yok",
-        "milestoneReached": "Kilometre Taşına Ulaşıldı!",
-        "dailyComplete": "Günlük Meydan Okuma Tamamlandı",
-        "discovered": "Keşfedilen",
-        "newDiscovery": "YENİ!"
-    },
-    "milestone": {
-        "achievement": "puan ulaşıldı!"
-    },
-    "stage": {
-        "achieved": "Ulaşıldı!",
-        "bonus": "bonus puanlar!",
-        "intro": { "name": "Giriş", "desc": "128'e Ulaş" },
-        "beginner": { "name": "Başlangıç", "desc": "256'ya Ulaş" },
-        "intermediate": { "name": "Orta", "desc": "512'ye Ulaş" },
-        "advanced": { "name": "İleri", "desc": "1024'e Ulaş" },
-        "master": { "name": "Usta", "desc": "2048'e Ulaş" },
-        "legend": { "name": "Efsane", "desc": "4096'ya Ulaş" }
-    },
-    "modal": {
-        "collectionTitle": "Koleksiyon",
-        "recentMergesTitle": "Son Birleştirmeler",
-        "dailyChallengeTitle": "Günlük Meydan Okuma",
-        "close": "Kapat"
-    },
-    "stats": {
-        "totalMerges": "Toplam Birleştirmeler",
-        "maxEmoji": "Maksimum Emoji",
-        "stages": "Ulaşılan Aşamalar"
-    },
-    "related": {
-        "idleClicker": "Boşta Tıklayıcı",
-        "blockPuzzle": "Blok Bulmaca",
-        "stackTower": "Yığın Kule",
-        "colorMemory": "Renk Hafıza"
-    },
-    "analytics": {
-        "pageTitle": "Emoji Merge"
-    },
-    "chain": {
-        "animal": { "name": "Yumurtadan ejderhaya", "desc": "Yumurta çatlar, kuş büyür ve efsanevi bir ejderha olur!" },
-        "plant": { "name": "Tohumdan dünya ağacına", "desc": "Küçük bir tohum filizlenir ve devasa bir ormana dönüşür!" },
-        "space": { "name": "Damladan galaksiye", "desc": "Bir damla su deniz olur, sonra yıldızlar evreni doldurur!" },
-        "emotion": { "name": "Duygu seviye atlama", "desc": "Sakin bir başlangıçtan giderek yoğunlaşan bir duygu patlamasına!" }
-    },
-    "title": {
-        "novice": { "name": "Acemi araştırmacı", "desc": "Evrimin başlangıcı" },
-        "apprentice": { "name": "Çırak eğitmen", "desc": "İşi kavramaya başlama" },
-        "challenger": { "name": "Evrim meydan okuyucusu", "desc": "Birleştirmenin eğlencesi" },
-        "mutant": { "name": "Mutasyon bilgini", "desc": "Kalıplar ortaya çıkıyor" },
-        "geneticist": { "name": "Genetik mühendisi", "desc": "Stratejik birleştirme" },
-        "master": { "name": "Evrim ustası", "desc": "İleri strateji" },
-        "architect": { "name": "Yaşam mimarı", "desc": "Tam ustalık" },
-        "demigod": { "name": "Yarı tanrı çırağı", "desc": "Neredeyse ilahi alan" },
-        "creator": { "name": "Yaratılış tanrısı", "desc": "Efsanenin başlangıcı" },
-        "ruler": { "name": "Her şeyin hükümdarı", "desc": "Tüm evrimi yönetmek" },
-        "cosmic": { "name": "Kozmik yaratıcı", "desc": "Yeni evrenleri açan" }
-    },
-    "error": {
-        "storage": "Gizli modda bazı özellikler sınırlı olabilir.",
-        "data": "Veri yükleme hatası. Lütfen sayfayı yenileyin.",
-        "canvas": "Grafik oluşturma sorunu. Lütfen tekrar deneyin.",
-        "audio": "Ses kullanılamıyor. Devam edebilirsiniz.",
-        "network": "Bağlantınızı kontrol edip tekrar deneyin.",
-        "general": "Bir şeyler ters gitti. Yenileyip tekrar deneyin."
+    "legend": {
+      "name": "Efsane",
+      "desc": "4096'ya Ulaş"
     }
+  },
+  "modal": {
+    "collectionTitle": "Koleksiyon",
+    "recentMergesTitle": "Son Birleştirmeler",
+    "dailyChallengeTitle": "Günlük Meydan Okuma",
+    "close": "Kapat"
+  },
+  "stats": {
+    "totalMerges": "Toplam Birleştirmeler",
+    "maxEmoji": "Maksimum Emoji",
+    "stages": "Ulaşılan Aşamalar"
+  },
+  "related": {
+    "idleClicker": "Boşta Tıklayıcı",
+    "blockPuzzle": "Blok Bulmaca",
+    "stackTower": "Yığın Kule",
+    "colorMemory": "Renk Hafıza"
+  },
+  "chain": {
+    "animal": {
+      "name": "Yumurtadan ejderhaya",
+      "desc": "Yumurta çatlar, kuş büyür ve efsanevi bir ejderha olur!"
+    },
+    "plant": {
+      "name": "Tohumdan dünya ağacına",
+      "desc": "Küçük bir tohum filizlenir ve devasa bir ormana dönüşür!"
+    },
+    "space": {
+      "name": "Damladan galaksiye",
+      "desc": "Bir damla su deniz olur, sonra yıldızlar evreni doldurur!"
+    },
+    "emotion": {
+      "name": "Duygu seviye atlama",
+      "desc": "Sakin bir başlangıçtan giderek yoğunlaşan bir duygu patlamasına!"
+    }
+  },
+  "title": {
+    "novice": {
+      "name": "Acemi araştırmacı",
+      "desc": "Evrimin başlangıcı"
+    },
+    "apprentice": {
+      "name": "Çırak eğitmen",
+      "desc": "İşi kavramaya başlama"
+    },
+    "challenger": {
+      "name": "Evrim meydan okuyucusu",
+      "desc": "Birleştirmenin eğlencesi"
+    },
+    "mutant": {
+      "name": "Mutasyon bilgini",
+      "desc": "Kalıplar ortaya çıkıyor"
+    },
+    "geneticist": {
+      "name": "Genetik mühendisi",
+      "desc": "Stratejik birleştirme"
+    },
+    "master": {
+      "name": "Evrim ustası",
+      "desc": "İleri strateji"
+    },
+    "architect": {
+      "name": "Yaşam mimarı",
+      "desc": "Tam ustalık"
+    },
+    "demigod": {
+      "name": "Yarı tanrı çırağı",
+      "desc": "Neredeyse ilahi alan"
+    },
+    "creator": {
+      "name": "Yaratılış tanrısı",
+      "desc": "Efsanenin başlangıcı"
+    },
+    "ruler": {
+      "name": "Her şeyin hükümdarı",
+      "desc": "Tüm evrimi yönetmek"
+    },
+    "cosmic": {
+      "name": "Kozmik yaratıcı",
+      "desc": "Yeni evrenleri açan"
+    }
+  },
+  "error": {
+    "storage": "Gizli modda bazı özellikler sınırlı olabilir.",
+    "data": "Veri yükleme hatası. Lütfen sayfayı yenileyin.",
+    "canvas": "Grafik oluşturma sorunu. Lütfen tekrar deneyin.",
+    "audio": "Ses kullanılamıyor. Devam edebilirsiniz.",
+    "network": "Bağlantınızı kontrol edip tekrar deneyin.",
+    "general": "Bir şeyler ters gitti. Yenileyip tekrar deneyin."
+  }
 }
