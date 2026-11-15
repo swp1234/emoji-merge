@@ -1,7 +1,9 @@
 {
   "app": {
     "title": "Emoji Merge - Permainan Puzzle Evolusi | DopaBrain",
-    "description": "Gabungkan emoji yang sama untuk berkembang! 🥚→🐣→🐥→🦅→🐉→👑 Dari telur hingga naga, dari benih hingga pohon dunia! 4 rantai evolusi. Permainan puzzle otak gratis!"
+    "description": "Gabungkan emoji yang sama untuk berkembang! 🥚→🐣→🐥→🦅→🐉→👑 Dari telur hingga naga, dari benih hingga pohon dunia! 4 rantai evolusi. Permainan puzzle otak gratis!",
+    "skipLink": "Lewati ke konten",
+    "loading": "Memuat..."
   },
   "game": {
     "title": "Emoji Merge",

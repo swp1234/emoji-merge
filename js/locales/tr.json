@@ -1,7 +1,9 @@
 {
   "app": {
     "title": "Emoji Merge - Evrim Bulmaca Oyunu | DopaBrain",
-    "description": "Aynı emojileri birleştirerek evrimle! 🥚→🐣→🐥→🦅→🐉→👑 Yumurtadan ejderhaya, tohumdan dünya ağacına! 4 evrim zinciri. Ücretsiz beyin bulmaca oyunu!"
+    "description": "Aynı emojileri birleştirerek evrimle! 🥚→🐣→🐥→🦅→🐉→👑 Yumurtadan ejderhaya, tohumdan dünya ağacına! 4 evrim zinciri. Ücretsiz beyin bulmaca oyunu!",
+    "skipLink": "İçeriğe geç",
+    "loading": "Yükleniyor..."
   },
   "game": {
     "title": "Emoji Merge",

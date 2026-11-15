@@ -1,7 +1,9 @@
 {
   "app": {
     "title": "Emoji Merge - Evolution Puzzle Game | DopaBrain",
-    "description": "Merge the same emojis to evolve! 🥚→🐣→🐥→🦅→🐉→👑 From egg to dragon, from seed to world tree! 4 evolution chains. Free brain puzzle game!"
+    "description": "Merge the same emojis to evolve! 🥚→🐣→🐥→🦅→🐉→👑 From egg to dragon, from seed to world tree! 4 evolution chains. Free brain puzzle game!",
+    "skipLink": "Skip to content",
+    "loading": "Loading..."
   },
   "game": {
     "title": "Emoji Merge",

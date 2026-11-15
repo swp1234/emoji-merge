@@ -1,7 +1,9 @@
 {
   "app": {
     "title": "Emoji Merge - Jeu de Puzzle Évolutif | DopaBrain",
-    "description": "Fusionne les mêmes emojis pour évoluer! 🥚→🐣→🐥→🦅→🐉→👑 De l'œuf au dragon, de la graine à l'arbre du monde! 4 chaînes d'évolution. Jeu de puzzle cérébral gratuit!"
+    "description": "Fusionne les mêmes emojis pour évoluer! 🥚→🐣→🐥→🦅→🐉→👑 De l'œuf au dragon, de la graine à l'arbre du monde! 4 chaînes d'évolution. Jeu de puzzle cérébral gratuit!",
+    "skipLink": "Aller au contenu",
+    "loading": "Chargement..."
   },
   "game": {
     "title": "Emoji Merge",

@@ -1,7 +1,9 @@
 {
   "app": {
     "title": "Emoji Merge - Jogo de Quebra-Cabeça com Evolução | DopaBrain",
-    "description": "Mescle os mesmos emojis para evoluir! 🥚→🐣→🐥→🦅→🐉→👑 De ovo para dragão, de semente para árvore do mundo! 4 cadeias de evolução. Jogo de quebra-cabeça cerebral gratuito!"
+    "description": "Mescle os mesmos emojis para evoluir! 🥚→🐣→🐥→🦅→🐉→👑 De ovo para dragão, de semente para árvore do mundo! 4 cadeias de evolução. Jogo de quebra-cabeça cerebral gratuito!",
+    "skipLink": "Ir para o conteúdo",
+    "loading": "Carregando..."
   },
   "game": {
     "title": "Emoji Merge",

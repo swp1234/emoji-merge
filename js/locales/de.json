@@ -1,7 +1,9 @@
 {
   "app": {
     "title": "Emoji Merge - Evolution Puzzle Spiel | DopaBrain",
-    "description": "Verschmelze gleiche Emojis um sie zu entwickeln! 🥚→🐣→🐥→🦅→🐉→👑 Von Ei bis Drache, vom Samen zum Weltenbaum! 4 Entwicklungsketten. Kostenloses Gehirn-Puzzle-Spiel!"
+    "description": "Verschmelze gleiche Emojis um sie zu entwickeln! 🥚→🐣→🐥→🦅→🐉→👑 Von Ei bis Drache, vom Samen zum Weltenbaum! 4 Entwicklungsketten. Kostenloses Gehirn-Puzzle-Spiel!",
+    "skipLink": "Zum Inhalt",
+    "loading": "Wird geladen..."
   },
   "game": {
     "title": "Emoji Merge",

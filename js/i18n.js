@@ -64,7 +64,7 @@ class I18n {
     updateUI() {
         document.documentElement.lang = this.currentLang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
-            el.textContent = this.t(el.getAttribute('data-i18n'));
+            if (!el.querySelector('svg')) el.textContent = this.t(el.getAttribute('data-i18n'));
         });
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             el.placeholder = this.t(el.getAttribute('data-i18n-placeholder'));
@@ -100,4 +100,4 @@ class I18n {
     }
 }
 
-const i18n = new I18n();
+const i18n = window.i18n = new I18n();
